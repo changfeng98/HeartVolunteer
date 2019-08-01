@@ -1,0 +1,351 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input_default{
+    width: 240px;
+    height: 30px;
+    border: rgb(255, 242, 254) solid 2px;
+    border-radius: 20px;
+    text-indent: 1em;
+    background: rgba(253, 251, 255, 0);
+ }
+
+
+.input_square{
+    width: 240px;
+    height: 30px;
+    border: rgb(255, 242, 254) solid 2px;
+    text-indent: 1em;
+    background: rgba(253, 251, 255, 0);
+}
+
+input:hover{
+    border: #ffe3d9 solid 2px;
+}
+
+input:focus{
+    border: #ffe3d9 solid 2px;
+}
+
+button{
+    width: 240px;
+    height: 35px;
+}
+
+.main_button_default{
+    border: #ee4639 solid 2px;
+    border-radius: 20px;
+    background: #ee4639;
+    color: #fff;
+}
+
+.secondary_button_default{
+    border: #ee4639 solid 2px;
+    border-radius: 20px;
+    background: rgba(253, 251, 255, 0);
+    color: #ee4639;
+}
+
+.secondary_button_default_square{
+    border: #ee4639 solid 2px;
+    background: rgba(253, 251, 255, 0);
+    color: #ee4639;
+}
+
+.main_button_default:hover{
+    border: #ff664b solid 2px;
+    background: #ff664b;
+}
+
+.secondary_button_default:hover,.secondary_button_default_square:hover{
+    border: #ff664b solid 2px;
+    background: #ffede8;
+}
+
+/*********header_main**********/
+.header_main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #ee4639;
+}
+
+.header_top_content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo_main{
+    height: 60px;
+    margin: 30px;
+}
+
+.header_right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+}
+
+.header_right_location{
+    height: 41px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.change_city,.go_login,.go_register{
+    padding: 10px;
+    margin-right: 5px;
+    color: #fff;
+}
+
+.go_login:hover,.go_register:hover{
+    background: #ff664b;
+}
+
+.header_bottom_content{
+    width: 1080px;
+    background: rgba(238, 70, 57, 0);
+    color: #fff;
+}
+
+ol,ul{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    text-align: center;
+    list-style: none;
+}
+
+.header_bottom_content ol{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header_bottom_content li{
+    padding: 15px 0;
+    width: 180px;
+    text-align: center;
+}
+
+.header_bottom_content li:hover{
+    background: #ff664b;
+}
+
+/*浮动窗口*/
+.header_change_city_float{
+    width: 87px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 80px;
+    right: 139px;
+    background: rgba(255, 102, 75, 0.9);
+    z-index: 20;
+}
+
+.header_right ul,.header_bottom_content ul{
+    width: 100%;
+}
+
+.header_right li,.header_bottom_content li{
+    padding: 10px 0;
+    color: #fff;
+}
+
+.header_right li:hover,.header_bottom_content li:hover{
+    background: rgba(255, 147, 127,0.5);
+}
+
+.header_right_item_hover{
+    background: #ff664b;
+}
+
+.header_nav_activity{
+    width: 180px;
+    position: absolute;
+    background: rgba(255, 102, 75, 0.9);
+    top: 41px;
+    left: 180px;
+    z-index: 10;
+}
+
+.header_nav_group{
+    width: 180px;
+    position: absolute;
+    background: rgba(255, 102, 75, 0.9);
+    top: 41px;
+    left: 360px;
+    z-index: 10;
+}
+/*导航栏浮动*/
+.scrollNav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: rgba(238, 70, 57, 0.9);
+}
+
+.header_fixed{
+    height: 171px;
+    width: 100%;
+}
+/******************************/
+
+/*********footer_main**********/
+.footer_main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #2b2b2b;
+    margin-top: 50px;
+}
+
+.footer_main_head{
+    width: 100%;
+    height: 5px;
+    background: #ee4639;
+}
+
+.footer_main_top{
+    width: 1080px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.footer_main_top_left,.footer_main_top_right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer_main_top_left{
+    justify-content: left;
+    width: 700px;
+}
+
+.footer_main_top_right{
+    justify-content: space-around;
+    width: 380px;
+}
+
+.footer_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    margin-right: 70px;
+    height: 150px;
+}
+
+.footer_item h3,.footer_item p,.footer_item a{
+    width: 100%;
+    font-size: 14px;
+    text-align: left;
+    margin: 5px 0;
+    padding: 0;
+}
+
+.footer_item h3{
+    color: #ee4639;
+    margin-bottom: 15px;
+}
+
+.footer_item p,.footer_item a{
+    text-decoration: none;
+    color: #939393;
+}
+
+.footer_item p:hover,.footer_item a:hover{
+    color: #fff;
+}
+
+.footer_main_top img{
+    width: 150px;
+    height: 150px;
+}
+
+.footer_main_bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.footer_main_bottom span{
+    color: #808080;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+/******************************/
+
+/*滑块验证********************/
+.drag{
+    width: 240px;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    margin:10px 0 auto;
+    border-radius: 20px;
+    border: rgb(255, 242, 254) solid 2px;
+    color: #757476;
+}
+
+.bg{
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    background-color: #ff664b;
+    border-radius: 20px;
+}
+
+.text{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    user-select: none;
+}
+
+.btn{
+    width:30px;
+    height: 100%;
+    position: absolute;
+    cursor: move;
+    text-align: center;
+    background-color: #fff;
+    user-select: none;
+    color:#666;
+    border-radius: 20px;
+}
+/******************************/

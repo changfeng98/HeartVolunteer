@@ -1,0 +1,107 @@
+body{
+    background: #f6f6f6;
+}
+
+
+
+/*.web_backgroud{*/
+/*    position:absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width:100%;*/
+/*    height:100%;*/
+/*    min-width: 1000px;*/
+/*    z-index:-10;*/
+/*    zoom: 1;*/
+/*    background-color: #fff;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    -webkit-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-position: center 0;*/
+/*}*/
+
+.header_login{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.logo_login{
+    height: 60px;
+    margin: 80px;
+}
+
+.login_content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    left: 50px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.login_content_body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px #e9e9e9;
+    padding: 50px;
+    background-color: rgba(253, 251, 255, 0.82);
+}
+
+.login_title{
+    font-size: 35px;
+    margin-bottom: 50px;
+}
+
+.login_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input_account{
+    margin-bottom: 30px;
+}
+
+.input_password{
+    margin-bottom: 20px;
+}
+
+.forgot_pwd_content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.forgot_pwd{
+    color: #ee4639;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.login_btn_line{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login_btn_line button{
+    width: 100px;
+}

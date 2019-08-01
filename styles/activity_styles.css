@@ -1,0 +1,171 @@
+.content {
+    width: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.tag-items {
+    padding-top: 10px;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: start;
+}
+
+.classify{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.classify-tag{
+    margin-left: 50px;
+}
+
+.classify-tag:hover{
+    color: #ff664b;
+}
+
+.classify-tag-item {
+    height: 26px;
+    overflow: hidden;
+}
+
+.tag-item {
+    color: #666;
+    padding: 3px 30px 3px 35px;
+    position: relative;
+    width: 810px;
+    flex-direction: row;
+}
+
+.tag-item a {
+    display: inline-block;
+    padding: 0 10px;
+    color: #666;
+    margin: 0 5px;
+    height: 22px;
+    word-wrap: break-word;
+    border-radius: 5px;
+    background-clip: padding-box;
+}
+
+.select{
+    width: 100px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.activity-search{
+    height: 28px;
+    border-radius: 15px;
+    margin-left: 30px;
+    flex-direction: row;
+}
+
+.serarch_btn{
+    background: #ff664b;
+    color: #fff;
+    width: 50px;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+.activity-search-btn {
+    width: 50px;
+    align-items: center;
+    color: #ed4639;
+}
+
+.search-line {
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: start;
+}
+
+.project-item-right{
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+}
+
+.project-item-people{
+    width: 200px;
+    display: flex;
+    height: 60px;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10px;
+    justify-content: space-around;
+}
+
+.part-box{
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+}
+
+.project-item-button{
+    margin-top: 10px;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.project-items{
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+}
+
+.project-item{
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: start;
+    border: #e9e9e9 solid 1px;
+}
+
+.project-item-middle{
+    width: 400px;
+    display: flex;
+    height: 60px;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10px;
+}
+
+.activity_apply{
+    width: 100px;
+    background: #ff664b;
+    color: #fff;
+}
+
+.activity-title{
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.activity-introduction{
+
+}
+
+.activity-tag{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+

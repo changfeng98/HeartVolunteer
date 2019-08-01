@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>心志愿-志愿者注册</title>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/register_styles.css" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/affects.js"></script>
+</head>
+<body>
+    <div class="header_register">
+        <img class="logo_register" src="images/logo.png" onclick="location.href='home.html'"/>
+    </div>
+    <div class="register_content">
+        <div class="register_content_body">
+            <div class="register_body">
+                <span class="register_title">组织注册</span>
+
+                <div class="register_body_organize">
+                    <input id="input_organize_name" class="input_default" type="text" placeholder="组织名称" value="" onfocus="onStepOneBlur();" oninput="onStepOneBlur();"/>
+                    <input id="input_organize_email" class="input_default" type="email" placeholder="组织邮箱" value="" onfocus="onStepOneBlur();" oninput="onStepOneBlur();"/>
+                    <input id="input_organize_phone" class="input_default" type="text" placeholder="固定电话" value="" onfocus="onStepOneBlur();" oninput="onStepOneBlur();"/>
+                    <input id="input_organize_password" class="input_default" type="password" placeholder="密码" value="" onfocus="onStepOneBlur();" oninput="onStepOneBlur();"/>
+                </div>
+
+                <div class="register_body_admin" style="display: none;">
+                    <input id="input_admin_email" class="input_default" type="text" placeholder="管理员邮箱" value="" onfocus="onStepTwoBlur();" oninput="onStepTwoBlur();"/>
+                    <div class="verification_line">
+                        <input id="input_verification" class="input_default" type="text" placeholder="验证码" style="width: 130px;" value="" onfocus="onStepTwoBlur();" oninput="onStepTwoBlur();"/>
+                        <button class="secondary_button_default" style="width: 100px;margin-bottom: 50px;">获取验证码</button>
+                    </div>
+                </div>
+
+                <div class="register_body_personal" style="display: none;">
+                    <input id="input_admin_name" class="input_default" type="text" placeholder="管理员姓名" value="" onfocus="onStepThreeBlur();" oninput="onStepThreeBlur();"/>
+                    <input id="input_admin_phone" class="input_default" type="text" placeholder="管理员手机号" value="" onfocus="onStepThreeBlur();" oninput="onStepThreeBlur();"/>
+                    <input id="input_admin_id" class="input_default" type="text" placeholder="管理员身份证号" value="" onfocus="onStepThreeBlur();" oninput="onStepThreeBlur();"/>
+                </div>
+
+<!--                <div class="register_body_service" style="display: none;">-->
+<!--                    <input id="input_client" class="input_default" type="text" placeholder="服务对象" value="" onfocus="onStepFourBlur();" oninput="onStepFourBlur();"/>-->
+<!--                    <input id="input_type" class="input_default" type="text" placeholder="服务类别" value="" onfocus="onStepFourBlur();" oninput="onStepFourBlur();"/>-->
+<!--                </div>-->
+
+                <div class="register_body_complete" style="display: none;">
+                    <img src="images/ic_thanks.png" onclick="" style="width: 100px;height: 100px;"/>
+                    <span style="width: 100%;text-align: center;margin-bottom: 50px;margin-top: 30px;">感谢您的注册<br/>将在5s后将自动跳转到登录页面...</span>
+                </div>
+
+                <button class="main_button_default register_next_btn register_next_btn_forbid">下一步</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="application/javascript" src="js/registerOrganizerPage.js"></script>
+</body>
+</html>
