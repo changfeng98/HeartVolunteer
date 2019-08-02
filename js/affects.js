@@ -63,3 +63,28 @@ var config = {
         opacityOnHover: 1, // 鼠标移上透明度
     },
 }
+
+function waitToLogin(time){
+    if(time > 0){
+        $(".time_left").text(time);
+        setTimeout(function () {
+            waitToLogin(time);
+        }, 1000);
+        time--;
+    }else if (time == 0){
+        location.href = "login.html";
+    }
+}
+
+function waitBtn(time){
+    if(time > 0){
+        $(".time_left_btn").text(time);
+        setTimeout(function () {
+            waitBtn(time);
+        }, 1000);
+        time--;
+    }else if (time == 0){
+        $("#btn_wait").hide();
+        $("#btn_get_code").show();
+    }
+}

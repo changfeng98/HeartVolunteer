@@ -1,4 +1,4 @@
-document.writeln("<div class=\"header_main\">\n" +
+document.writeln("<<div class=\"header_main\">\n" +
     "        <div class=\"header_top_content\">\n" +
     "            <img class=\"logo_main\" src=\"images/logo_white.png\" onclick=\"location.href='home.html'\"/>\n" +
     "            <div class=\"header_right\">\n" +
@@ -16,20 +16,24 @@ document.writeln("<div class=\"header_main\">\n" +
     "                        </ul>\n" +
     "                    </div>\n" +
     "                </div>\n" +
-    "                <span class=\"go_login\" onclick=\"location.href='login.html'\">登录</span>\n" +
-    "                <div class=\"go_register_body\" onmouseover=\"showGoRegisterDialog();\" onmouseleave=\"hideGoRegisterDialog();\">\n" +
+    "                <div class=\"no_login_body\">\n" +
+    "                    <span class=\"go_login\" onclick=\"location.href='login.html'\">登录</span>\n" +
     "                    <span class=\"go_register\" onclick=\"location.href='register.html'\">注册</span>\n" +
+    "                </div>\n" +
+    "                <div class=\"user_body\" style=\"display: none;\" onclick=\"location.href='mine.html'\">\n" +
+    "                    <img class=\"user_head\" src=\"images/ic_head_default.png\" style=\"width: 30px;height: 30px;\"/>\n" +
+    "                    <span class=\"user_name\">心志愿</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "        <div class=\"header_bottom_content\" style=\"position: relative\">\n" +
     "            <ol>\n" +
     "                <li class=\"index_page\" onclick=\"location.href='home.html'\">首页</li>\n" +
-    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\">活动</li>\n" +
-    "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\">社区</li>\n" +
-    "                <li class=\"news_page\">资讯</li>\n" +
-    "                <li class=\"organization_page\">组织团体</li>\n" +
-    "                <li class=\"help_page\">帮助中心</li>\n" +
+    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.html'\">活动</li>\n" +
+    "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\" onclick=\"location.href='group.html'\">社区</li>\n" +
+    "                <li class=\"news_page\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\" onclick=\"location.href='news.html'\">资讯</li>\n" +
+    "                <li class=\"organization_page\" onclick=\"location.href='organization.html'\">组织团体</li>\n" +
+    "                <li class=\"help_page\" onclick=\"location.href='help.html'\">帮助中心</li>\n" +
     "            </ol>\n" +
     "            <div class=\"header_nav_activity\" style=\"display: none;\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\">\n" +
     "                <ul>\n" +
@@ -51,6 +55,12 @@ document.writeln("<div class=\"header_main\">\n" +
     "                    <li id=\"header_2_5\">支教助学</li>\n" +
     "                    <li id=\"header_2_6\">扶老助残</li>\n" +
     "                    <li id=\"header_2_7\">其它</li>\n" +
+    "                </ul>\n" +
+    "            </div>\n" +
+    "            <div class=\"header_nav_news\" style=\"display: none;\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\">\n" +
+    "                <ul>\n" +
+    "                    <li id=\"header_3_1\">视频</li>\n" +
+    "                    <li id=\"header_3_2\">新闻</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -89,19 +99,6 @@ function hideChangeCityDialog(){
     $(".header_change_city_float").slideUp(500);
 }
 
-function showGoRegisterDialog() {
-    $(".header_go_register_float").stop();
-    $(".go_register").addClass("header_right_item_hover");
-    $(".header_go_register_float").slideDown(500);
-}
-
-
-function hideGoRegisterDialog() {
-    $(".header_go_register_float").stop();
-    $(".go_register").removeClass("header_right_item_hover");
-    $(".header_go_register_float").slideUp(500);
-}
-
 function showNavActivityDialog() {
     $(".header_nav_activity").stop();
     $(".activity_page").addClass("header_right_item_hover");
@@ -124,4 +121,16 @@ function hideNavGroupDialog() {
     $(".header_nav_group").stop();
     $(".group_page").removeClass("header_right_item_hover");
     $(".header_nav_group").slideUp(500);
+}
+
+function showNavNewsDialog() {
+    $(".header_nav_news").stop();
+    $(".news_page").addClass("header_right_item_hover");
+    $(".header_nav_news").slideDown(500);
+}
+
+function hideNavNewsDialog() {
+    $(".header_nav_news").stop();
+    $(".news_page").removeClass("header_right_item_hover");
+    $(".header_nav_news").slideUp(500);
 }
