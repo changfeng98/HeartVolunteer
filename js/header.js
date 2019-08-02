@@ -25,11 +25,11 @@ document.writeln("<div class=\"header_main\">\n" +
     "        <div class=\"header_bottom_content\" style=\"position: relative\">\n" +
     "            <ol>\n" +
     "                <li class=\"index_page\" onclick=\"location.href='home.html'\">首页</li>\n" +
-    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\">活动</li>\n" +
-    "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\">社区</li>\n" +
-    "                <li class=\"news_page\">资讯</li>\n" +
-    "                <li class=\"organization_page\">组织团体</li>\n" +
-    "                <li class=\"help_page\">帮助中心</li>\n" +
+    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.html'\">活动</li>\n" +
+    "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\" onclick=\"location.href='group.html'\">社区</li>\n" +
+    "                <li class=\"news_page\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\" onclick=\"location.href='news.html'\">资讯</li>\n" +
+    "                <li class=\"organization_page\" onclick=\"location.href='organization.html'\">组织团体</li>\n" +
+    "                <li class=\"help_page\" onclick=\"location.href='help.html'\">帮助中心</li>\n" +
     "            </ol>\n" +
     "            <div class=\"header_nav_activity\" style=\"display: none;\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\">\n" +
     "                <ul>\n" +
@@ -51,6 +51,12 @@ document.writeln("<div class=\"header_main\">\n" +
     "                    <li id=\"header_2_5\">支教助学</li>\n" +
     "                    <li id=\"header_2_6\">扶老助残</li>\n" +
     "                    <li id=\"header_2_7\">其它</li>\n" +
+    "                </ul>\n" +
+    "            </div>\n" +
+    "            <div class=\"header_nav_news\" style=\"display: none;\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\">\n" +
+    "                <ul>\n" +
+    "                    <li id=\"header_3_1\">视频</li>\n" +
+    "                    <li id=\"header_3_2\">新闻</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -124,4 +130,16 @@ function hideNavGroupDialog() {
     $(".header_nav_group").stop();
     $(".group_page").removeClass("header_right_item_hover");
     $(".header_nav_group").slideUp(500);
+}
+
+function showNavNewsDialog() {
+    $(".header_nav_news").stop();
+    $(".news_page").addClass("header_right_item_hover");
+    $(".header_nav_news").slideDown(500);
+}
+
+function hideNavNewsDialog() {
+    $(".header_nav_news").stop();
+    $(".news_page").removeClass("header_right_item_hover");
+    $(".header_nav_news").slideUp(500);
 }

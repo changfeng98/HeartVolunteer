@@ -200,6 +200,15 @@ li{
     left: 360px;
     z-index: 10;
 }
+
+.header_nav_news{
+    width: 180px;
+    position: absolute;
+    background: rgba(255, 102, 75, 0.9);
+    top: 41px;
+    left: 540px;
+    z-index: 10;
+}
 /*导航栏浮动*/
 .scrollNav{
     position: fixed;

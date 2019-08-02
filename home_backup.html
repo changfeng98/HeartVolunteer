@@ -46,11 +46,11 @@
         <div class="header_bottom_content" style="position: relative">
             <ol>
                 <li class="index_page" onclick="location.href='home.html'">首页</li>
-                <li class="activity_page" onmouseover="showNavActivityDialog();" onmouseleave="hideNavActivityDialog();">活动</li>
-                <li class="group_page" onmouseover="showNavGroupDialog();" onmouseleave="hideNavGroupDialog();">社区</li>
-                <li class="news_page">资讯</li>
-                <li class="organization_page">组织团体</li>
-                <li class="help_page">帮助中心</li>
+                <li class="activity_page" onmouseover="showNavActivityDialog();" onmouseleave="hideNavActivityDialog();" onclick="location.href='activity.html'">活动</li>
+                <li class="group_page" onmouseover="showNavGroupDialog();" onmouseleave="hideNavGroupDialog();" onclick="location.href='group.html'">社区</li>
+                <li class="news_page" onmouseover="showNavNewsDialog();" onmouseleave="hideNavNewsDialog();" onclick="location.href='news.html'">资讯</li>
+                <li class="organization_page" onclick="location.href='organization.html'">组织团体</li>
+                <li class="help_page" onclick="location.href='help.html'">帮助中心</li>
             </ol>
             <div class="header_nav_activity" style="display: none;" onmouseover="showNavActivityDialog();" onmouseleave="hideNavActivityDialog();">
                 <ul>
@@ -72,6 +72,12 @@
                     <li id="header_2_5">支教助学</li>
                     <li id="header_2_6">扶老助残</li>
                     <li id="header_2_7">其它</li>
+                </ul>
+            </div>
+            <div class="header_nav_news" style="display: none;" onmouseover="showNavNewsDialog();" onmouseleave="hideNavNewsDialog();">
+                <ul>
+                    <li id="header_3_1">视频</li>
+                    <li id="header_3_2">新闻</li>
                 </ul>
             </div>
         </div>
