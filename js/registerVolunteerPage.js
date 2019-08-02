@@ -58,9 +58,10 @@ $(".register_body").on("click", ".register_next_btn_to_complete", function () {
                 btnNextStep.addClass("register_next_btn_to_login");
                 btnNextStep.text("立即登录");
                 $(".register_title").text("完成注册");
-                setTimeout(function () {
-                    location.href = "login.html";
-                }, 5000);
+                waitToLogin(5);
+                // setTimeout(function () {
+                //     location.href = "login.html";
+                // }, 5000);
             }else if(msg.a == "0"){
                 alert("该邮箱已被注册！");
             }else{

@@ -27,9 +27,7 @@ $(".register_body").on("click", ".register_next_btn_to_complete", function () {
     btnNextStep.addClass("register_next_btn_to_login");
     btnNextStep.text("立即登录");
     $(".register_title").text("密码已重置");
-    setTimeout(function () {
-        location.href = "login.html";
-    }, 5000);
+    waitToLogin(5);
 });
 
 $(".register_body").on("click", ".register_next_btn_to_login", function () {

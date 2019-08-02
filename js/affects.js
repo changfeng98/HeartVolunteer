@@ -63,3 +63,17 @@ var config = {
         opacityOnHover: 1, // 鼠标移上透明度
     },
 }
+
+
+function waitToLogin(time){
+    console.log(time);
+    if(time > 0){
+        $(".time_left").text(time);
+        setTimeout(function () {
+            waitToContinue(time);
+        }, 1000);
+        time--;
+    }else if (time == 0){
+        location.href = "login.html";
+    }
+}
