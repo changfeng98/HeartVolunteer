@@ -64,16 +64,27 @@ var config = {
     },
 }
 
-
 function waitToLogin(time){
-    console.log(time);
     if(time > 0){
         $(".time_left").text(time);
         setTimeout(function () {
-            waitToContinue(time);
+            waitToLogin(time);
         }, 1000);
         time--;
     }else if (time == 0){
         location.href = "login.html";
+    }
+}
+
+function waitBtn(time){
+    if(time > 0){
+        $(".time_left_btn").text(time);
+        setTimeout(function () {
+            waitBtn(time);
+        }, 1000);
+        time--;
+    }else if (time == 0){
+        $("#btn_wait").hide();
+        $("#btn_get_code").show();
     }
 }
