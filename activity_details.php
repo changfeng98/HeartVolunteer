@@ -1,3 +1,20 @@
+<?php
+include("./php/dbconfig.php");
+    $act_id=$_GET['act_id'];
+    $sql="SELECT * FROM activity where act_id = $act_id";
+    //接收返回值
+    $mysqli_result=$db->query($sql);
+    if($mysqli_result == false){
+        echo "SQL错误";
+        exit;
+    }
+    //因为只有一条数据，用变量储存信息,$mysqli_result->fetch_array(MYSQL_ASSOC)重复调用自动显示下一条数据，直至没有返回null,且该函数调用不可逆，只能用一次
+    $rows;
+    while($row=$mysqli_result->fetch_array(MYSQLI_ASSOC)){
+        $rows=$row;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,23 +36,23 @@
     <div class="activity_details_content">
         <div class="activity_details_content_left">
             <div class="activity_details_content_left_top">
-                <img class="activity_details_pic" src="images/pic_home.jpeg">
+                <img class="activity_details_pic" src="./images/activity_images/<?php echo $rows['picture']?>">
                 <div class="activity_details_content_left_top_right">
-                    <span class="activity_details_title_content">活新时代文明实践“垃圾分类”志愿服务活动</span>
+                    <span class="activity_details_title_content"><?php echo $rows['act_name']; ?></span>
                     <div class="activity_details_time_adress_tag">
-                        <span class="activity_details_time_adress_tag_content">时间：2019-07-25--2019-08-30</span>
-                        <span class="activity_details_time_adress_tag_content">地点：山东省济南市历下区</span>
-                        <span class="activity_details_time_adress_tag_content">分类：其他</span>
+                        <span class="activity_details_time_adress_tag_content">时间：<?php echo $rows['Initiation_time']; ?>--<?php echo $rows['Ending_time']; ?></span>
+                        <span class="activity_details_time_adress_tag_content">地点：<?php echo $rows['act_region']; ?></span>
+                        <span class="activity_details_time_adress_tag_content">分类：<?php echo $rows['act_category']; ?></span>
                     </div>
-                    <span class="organized">发起组织：山东省结束倒计时小团队</span>
+                    <span class="organized">发起组织：<?php echo $rows['Founder']; ?></span>
                 </div>
             </div>
             <ul class="activity_details_content_left_menu_content">
-               <li>活动详情</li>
-               <li>活动评论</li>
+               <li onclick="open_activity_details_content_left_activity_detail()">活动详情</li>
+               <li onclick="open_activity_details_content_left_activity_comments()">活动评论</li>
             </ul>
             <div class="activity_details_content_left_activity">
-                <div class="activity_details_content_left_activity_detail" style="display: none">
+                <div id="activity_details_content_left_activity_detail" class="activity_details_content_left_activity_detail">
                     <span class="activity_details_summary">活动摘要：</span>
                     <p class="activity_summary_content">
                         新时代文明实践”垃圾分类青年志愿服务主题活动定于7月20日（本周六）下午16:00在北京路312号青年文化宫广州青年之家总部门店举行，活动设置垃圾分类宣讲、游戏互动、拍照打卡、宣传单派发等环节。
@@ -55,7 +72,7 @@
                     </p>
                     <p class="rear"></p>
                 </div>
-                <div class="activity_details_content_left_activity_comments">
+                <div id="activity_details_content_left_activity_comments" class="activity_details_content_left_activity_comments" style="display: none">
                     <textarea class="activity_comments"></textarea>
                     <button class="comments_btn">评论</button>
                     <span class="all_comments">所有评论</span>
@@ -96,7 +113,7 @@
             </div>
             <div class="activity_dynamic">
                 <span class="activity_dynamic_title">活动动态</span>
-                <span class="participation_number">29/50人</span>
+                <span class="participation_number"><?php echo $rows['Rec_ing']; ?>/<?php echo $rows['Recruitment']; ?>人</span>
             </div>
             <div class="activity_sign_up_details">
                 <div class="activity_sign_up_details_content">
@@ -116,6 +133,21 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function open_activity_details_content_left_activity_detail() {
+            var activity_details_content_left_activity_detail =  document.getElementById('activity_details_content_left_activity_detail');
+            var activity_details_content_left_activity_comments = document.getElementById('activity_details_content_left_activity_comments');
+            activity_details_content_left_activity_detail.style.display='block';
+            activity_details_content_left_activity_comments.style.display='none';
+        }
+        function open_activity_details_content_left_activity_comments() {
+            var activity_details_content_left_activity_detail =  document.getElementById('activity_details_content_left_activity_detail');
+            var activity_details_content_left_activity_comments = document.getElementById('activity_details_content_left_activity_comments');
+            activity_details_content_left_activity_detail.style.display='none';
+            activity_details_content_left_activity_comments.style.display='block';
+        }
+    </script>
     <script type="text/javascript" src="js/footer.js"></script>
 </body>
 </html>

@@ -92,7 +92,7 @@ include("./php/dbconfig.php");
             ?>
                 <div class="project-items">
                     <div class="project-item">
-                        <a href="activity_details.html" title="<?php echo $row['act_region']; ?>">
+                        <a href="activity_details.php?act_id='<?php echo $row['act_id'] ?>'" title="<?php echo $row['act_region']; ?>">
                             <img src="./images/activity_images/<?php echo $row['picture']?>" width="240" height="160">
                         </a>
                         <div class="project-item-right">
