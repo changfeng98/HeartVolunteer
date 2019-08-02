@@ -1,4 +1,4 @@
-document.writeln("<<div class=\"header_main\">\n" +
+document.writeln("<div class=\"header_main\">\n" +
     "        <div class=\"header_top_content\">\n" +
     "            <img class=\"logo_main\" src=\"images/logo_white.png\" onclick=\"location.href='home.html'\"/>\n" +
     "            <div class=\"header_right\">\n" +
