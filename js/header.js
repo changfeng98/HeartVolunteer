@@ -29,7 +29,7 @@ document.writeln("<<div class=\"header_main\">\n" +
     "        <div class=\"header_bottom_content\" style=\"position: relative\">\n" +
     "            <ol>\n" +
     "                <li class=\"index_page\" onclick=\"location.href='home.html'\">首页</li>\n" +
-    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.html'\">活动</li>\n" +
+    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.php'\">活动</li>\n" +
     "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\" onclick=\"location.href='group.html'\">社区</li>\n" +
     "                <li class=\"news_page\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\" onclick=\"location.href='news.html'\">资讯</li>\n" +
     "                <li class=\"organization_page\" onclick=\"location.href='organization.html'\">组织团体</li>\n" +
