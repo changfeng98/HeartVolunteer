@@ -1,4 +1,4 @@
-document.writeln("<div class=\"header_main\">\n" +
+document.writeln("<<div class=\"header_main\">\n" +
     "        <div class=\"header_top_content\">\n" +
     "            <img class=\"logo_main\" src=\"images/logo_white.png\" onclick=\"location.href='home.html'\"/>\n" +
     "            <div class=\"header_right\">\n" +
@@ -16,9 +16,13 @@ document.writeln("<div class=\"header_main\">\n" +
     "                        </ul>\n" +
     "                    </div>\n" +
     "                </div>\n" +
-    "                <span class=\"go_login\" onclick=\"location.href='login.html'\">登录</span>\n" +
-    "                <div class=\"go_register_body\" onmouseover=\"showGoRegisterDialog();\" onmouseleave=\"hideGoRegisterDialog();\">\n" +
+    "                <div class=\"no_login_body\">\n" +
+    "                    <span class=\"go_login\" onclick=\"location.href='login.html'\">登录</span>\n" +
     "                    <span class=\"go_register\" onclick=\"location.href='register.html'\">注册</span>\n" +
+    "                </div>\n" +
+    "                <div class=\"user_body\" style=\"display: none;\" onclick=\"location.href='mine.html'\">\n" +
+    "                    <img class=\"user_head\" src=\"images/ic_head_default.png\" style=\"width: 30px;height: 30px;\"/>\n" +
+    "                    <span class=\"user_name\">心志愿</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -93,19 +97,6 @@ function hideChangeCityDialog(){
     $(".header_change_city_float").stop();
     $(".header_right_location").removeClass("header_right_item_hover");
     $(".header_change_city_float").slideUp(500);
-}
-
-function showGoRegisterDialog() {
-    $(".header_go_register_float").stop();
-    $(".go_register").addClass("header_right_item_hover");
-    $(".header_go_register_float").slideDown(500);
-}
-
-
-function hideGoRegisterDialog() {
-    $(".header_go_register_float").stop();
-    $(".go_register").removeClass("header_right_item_hover");
-    $(".header_go_register_float").slideUp(500);
 }
 
 function showNavActivityDialog() {

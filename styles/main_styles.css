@@ -107,7 +107,7 @@ button{
     justify-content: center;
 }
 
-.change_city,.go_login,.go_register{
+.change_city,.go_login,.go_register,.user_name{
     padding: 10px;
     margin-right: 5px;
     color: #fff;
@@ -115,6 +115,14 @@ button{
 
 .go_login:hover,.go_register:hover{
     background: #ff664b;
+}
+
+.no_login_body,.user_body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
 }
 
 .header_bottom_content{
