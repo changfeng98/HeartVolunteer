@@ -21,7 +21,7 @@ document.writeln("<div class=\"header_main\">\n" +
     "                    <span class=\"go_register\" onclick=\"location.href='register.html'\">注册</span>\n" +
     "                </div>\n" +
     "                <div class=\"user_body\" style=\"display: none;\" onclick=\"location.href='mine.html'\">\n" +
-    "                    <img class=\"user_head\" src=\"images/ic_head_default.png\" style=\"width: 30px;height: 30px;\"/>\n" +
+    "                    <img class=\"user_head\" src=\"images/initial.jpg\" style=\"width: 30px;height: 30px;\"/>\n" +
     "                    <span class=\"user_name\">心志愿</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -133,4 +133,19 @@ function hideNavNewsDialog() {
     $(".header_nav_news").stop();
     $(".news_page").removeClass("header_right_item_hover");
     $(".header_nav_news").slideUp(500);
+}
+
+var user_info;
+function initUser() {
+    user_info = JSON.parse(sessionStorage.getItem("user_info"));
+    console.log(user_info);
+    if(user_info == null || user_info.a != "1"){
+        $(".no_login_body").show();
+        $(".user_body").hide();
+    }else{
+        $(".no_login_body").hide();
+        $(".user_body").show();
+        $(".user_head").attr("src", user_info.user_avatar);
+        $(".user_name").text(user_info.nickname);
+    }
 }

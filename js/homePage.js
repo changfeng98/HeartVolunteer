@@ -1,7 +1,7 @@
 var catDialog = $("#cat_dialog");
 var catWord = $("#cat_word");
-
 function init() {
+    initUser();
     $(".index_page").css({background: '#ff664b'});
     catWord_1_sleep();
 }
