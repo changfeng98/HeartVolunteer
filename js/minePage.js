@@ -1,6 +1,7 @@
 var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_head"), $("#nav_change_password"), $("#nav_post_topic"), $("#nav_participation_topic"), $("#nav_sent_topic")];
 
 function init(){
+    initUser();
     $("#nav_checking_data").addClass("mine_menu_item_hovered");
 }
 
