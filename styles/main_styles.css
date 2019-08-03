@@ -118,6 +118,7 @@ button{
 }
 
 .no_login_body,.user_body{
+    width: 114px;
     display: flex;
     flex-direction: row;
     align-items: center;
