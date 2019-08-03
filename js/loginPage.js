@@ -7,10 +7,16 @@ $(".login_btn").click(function () {
     console.log(account+":"+password);
     if(account == "" || account == null){
         changeBorderColor(jqelet_acc, "#ff0700");
+        $("#account_tip").text("请输入邮箱！");
         jqelet_acc.shake(2, 10, 400);
     }else if(password == "" || password == null){
+        $("#pwd_tip").text("请输入密码！");
         changeBorderColor(jqelet_pwd, "#ff0700");
         jqelet_pwd.shake(2, 10, 400);
+    }else if(!drag_validate){
+        $("#drag_tip").text("请验证！");
+        changeBorderColor($("#drag"), "#ff0700");
+        $("#drag").shake(2, 10, 400);
     }else{
         //ajax
         //prepared data: usernmae,password
@@ -25,20 +31,14 @@ $(".login_btn").click(function () {
             success: function (msg) {
                 console.log("success!");
                 console.log(msg);
-                sessionStorage.setItem("user_info", JSON.stringify(msg));
                 if(msg.a == "1"){
-                    $(".register_body_personal").hide();
-                    $(".register_body_complete").show();
-                    btnNextStep.removeClass("register_next_btn_forbid");
-                    btnNextStep.addClass("register_next_btn_to_login");
-                    btnNextStep.text("立即登录");
-                    $(".register_title").text("完成注册");
-                    waitToLogin(5);
-                    // setTimeout(function () {
-                    //     location.href = "login.html";
-                    // }, 5000);
+                    //success
+                    sessionStorage.setItem("user_info", JSON.stringify(msg));
+                    location.href = "home.html";
                 }else if(msg.a == "0"){
-                    alert("该邮箱已被注册！");
+                    changeBorderColor(jqelet_acc, "#ff0700");
+                    $("#account_tip").text("该用户不存在！");
+                    jqelet_acc.shake(2, 10, 400);
                 }else{
                     alert("内部错误，请联系管理员！");
                 }

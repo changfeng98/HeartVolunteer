@@ -51,7 +51,6 @@ $(".register_body").on("click", ".register_next_btn_to_complete", function () {
         success: function (msg) {
             console.log("success!");
             console.log(msg);
-            sessionStorage.setItem("user_info", JSON.stringify(msg));
             if(msg.a == "1"){
                 $(".register_body_personal").hide();
                 $(".register_body_complete").show();
