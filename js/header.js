@@ -135,6 +135,7 @@ function hideNavNewsDialog() {
     $(".header_nav_news").slideUp(500);
 }
 
+
 var user_info;
 function initUser() {
     user_info = JSON.parse(sessionStorage.getItem("user_info"));
