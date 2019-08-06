@@ -1,4 +1,4 @@
-var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_head"), $("#nav_change_password"), $("#nav_post_topic"), $("#nav_participation_topic"), $("#nav_sent_topic")];
+var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_head"), $("#nav_change_password"), $("#nav_post_topic"), $("#nav_participation_topic"), $("#nav_sent_topic"), $("#nav_post_activity"), $("#nav_sent_activity")];
 
 function init(){
     initUser();
@@ -6,7 +6,7 @@ function init(){
 }
 
 $.fn.showMineItem = function (obj) {
-    for(var i = 0; i < 7; i++){
+    for(var i = 0; i < 9; i++){
         if(menuItems[i].is(obj)){
             obj.addClass("mine_menu_item_hovered");
         } else {
@@ -25,6 +25,8 @@ $("#nav_checking_data").click(function (e) {
     $(".mine_post_topic").hide();
     $(".mine_participation_topic").hide();
     $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
 });
 
 $("#nav_modify_info").click(function (e) {
@@ -35,6 +37,8 @@ $("#nav_modify_info").click(function (e) {
     $(".mine_post_topic").hide();
     $(".mine_participation_topic").hide();
     $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
 });
 
 $("#nav_change_head").click(function (e) {
@@ -45,6 +49,8 @@ $("#nav_change_head").click(function (e) {
     $(".mine_post_topic").hide();
     $(".mine_participation_topic").hide();
     $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
 });
 
 $("#nav_change_password").click(function (e) {
@@ -55,6 +61,8 @@ $("#nav_change_password").click(function (e) {
     $(".mine_post_topic").hide();
     $(".mine_participation_topic").hide();
     $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
 });
 
 $("#nav_post_topic").click(function (e) {
@@ -65,6 +73,8 @@ $("#nav_post_topic").click(function (e) {
     $(".mine_post_topic").showMineItem($("#nav_post_topic"));
     $(".mine_participation_topic").hide();
     $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
 });
 
 $("#nav_participation_topic").click(function (e) {
@@ -75,6 +85,8 @@ $("#nav_participation_topic").click(function (e) {
     $(".mine_post_topic").hide();
     $(".mine_participation_topic").showMineItem($("#nav_participation_topic"));
     $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
 });
 
 $("#nav_sent_topic").click(function (e) {
@@ -85,4 +97,30 @@ $("#nav_sent_topic").click(function (e) {
     $(".mine_post_topic").hide();
     $(".mine_participation_topic").hide();
     $(".mine_sent_topic").showMineItem($("#nav_sent_topic"));
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").hide();
+});
+
+$("#nav_post_activity").click(function (e) {
+    $(".mine_checking_data").hide();
+    $(".mine_modify_info").hide();
+    $(".mine_change_head").hide();
+    $(".mine_change_password").hide();
+    $(".mine_post_topic").hide();
+    $(".mine_participation_topic").hide();
+    $(".mine_sent_topic").hide();
+    $(".mine_post_activity").showMineItem($("#nav_post_activity"));
+    $(".mine_sent_activity").hide();
+});
+
+$("#nav_sent_activity").click(function (e) {
+    $(".mine_checking_data").hide();
+    $(".mine_modify_info").hide();
+    $(".mine_change_head").hide();
+    $(".mine_change_password").hide();
+    $(".mine_post_topic").hide();
+    $(".mine_participation_topic").hide();
+    $(".mine_sent_topic").hide();
+    $(".mine_post_activity").hide();
+    $(".mine_sent_activity").showMineItem($("#nav_sent_activity"));
 });

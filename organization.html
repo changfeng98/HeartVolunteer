@@ -5,7 +5,7 @@
     <title>心志愿-我的</title>
     <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
     <link rel="stylesheet" href="styles/common_styles.css" type="text/css"/>
-    <link rel="stylesheet" href="styles/mine_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/organization_styles.css" type="text/css"/>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/affects.js"></script>
     <script type="text/javascript">
@@ -34,8 +34,6 @@
                     <li id="nav_post_topic">发布话题</li>
                     <li id="nav_participation_topic">参与话题</li>
                     <li id="nav_sent_topic">已发话题</li>
-                    <li id="nav_post_activity">发布话题</li>
-                    <li id="nav_sent_activity">已发话题</li>
                 </ul>
             </div>
         </div>
@@ -182,85 +180,6 @@
                 </div>
             </div>
             <div class="mine_sent_topic" style="display: none;">
-                <div class="participation_topic_filter_content">
-                    <ul>
-                        <li>全部</li>
-                        <li>最近一周</li>
-                        <li>最近一月</li>
-                        <li>最近一年</li>
-                    </ul>
-                    <div class="participation_topic_search">
-                        <input class="input_square article_topic_search_input" type="text" placeholder="话题主题"/>
-                        <button class="secondary_button_default_square participation_search_title">搜索</button>
-                    </div>
-                </div>
-                <div class="participation_topic_body">
-                    <img class="participation_topic_pic" src="images/table/group_1.jpg" onclick=""/>
-                    <div class="participation_topic_item">
-                        <h3 class="participation_topic_item_topic">网络行动能改变世界吗？</h3>
-                        <span class="participation_topic_item_short">编者按：互联网时代，“行动”的门槛变得前所未有的低。点个赞，签个名，转发一项倡议，参与一项讨论，只要在网络上对某个公共话题付出些微的努力，都可以说是“行动”的一种。正因为它包罗万象，这一现象也出现了众多别名，比如“懒汉行动主义”“点击主义”“键盘侠”等等。种种别名虽各有侧重，却都难免带有嘲谑甚至谴责的意味。</span>
-                        <div class="participation_topic_item_bottom">
-                            <span class="participation_topic_tag">文化/艺术</span>
-                            <span class="participation_topic_comment">100&nbsp;评论</span>
-                            <span class="participation_topic_date">2018-10-25</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="participation_topic_body">
-                    <img class="participation_topic_pic" src="images/table/group_2.jpg" onclick=""/>
-                    <div class="participation_topic_item">
-                        <h3 class="participation_topic_item_topic">千万不要低估运动的威力</h3>
-                        <span class="participation_topic_item_short">多年来，我发现自己在“运动”这件事上，绝对是惰性大于毅力的。好在，由于自己对运动的益处实在是烂熟于心，深入骨髓，所以无论是经年累月的自我敲打，还是问鼎灵魂的严厉鞭笞，我都交替运用，不允许自己停下来。</span>
-                        <div class="participation_topic_item_bottom">
-                            <span class="participation_topic_tag">文化/艺术</span>
-                            <span class="participation_topic_comment">125&nbsp;评论</span>
-                            <span class="participation_topic_date">2019-07-28</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mine_post_activity" style="display: none;">
-                <div class="mine_body_item_content">
-                    <div class="post_topic_head">
-                        <img class="article_pic" src="images/ic_upload_pic.png"/>
-                        <div class="post_topic_title_content">
-                            <input class="article_title" type="text" placeholder="活动标题"/>
-                            <span class="article_tag_tip">&nbsp;选择标签</span>
-                            <div class="article_tag_content">
-                                <ul>
-                                    <li>生态保护</li>
-                                    <li>文化/艺术</li>
-                                    <li>动物保护</li>
-                                    <li>儿童关怀</li>
-                                    <li>支教助学</li>
-                                    <li>扶老助残</li>
-                                    <li>其它</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post_activity_input_line" style="border-bottom: #e9e9e9 solid 1px;">
-                        <input class="input_default" type="text" placeholder="活动地点" style="width: 400px;border-right: #e9e9e9 solid 1px;"/>
-                        <input class="input_default" type="text" placeholder="需招募人数" style="width: 400px"/>
-                    </div>
-                    <div class="post_activity_input_line" style="border-bottom: #e9e9e9 solid 1px;">
-                        <div class="post_activity_input_line_item_content" style="width: 400px;border-right: #e9e9e9 solid 1px;">
-                            <input class="input_default" type="text" placeholder="志愿时长" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 345px;"><span class="birthday_label" style="margin-right: 20px">小时</span>
-                        </div>
-                        <div class="post_activity_input_line_item_content" style="width: 400px">
-                            <span>截止时间</span>
-                            <div class="post_activity_date_input_body">
-                                <input class="input_default" type="text" placeholder="年份" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">年</span>
-                                <input class="input_default" type="text" placeholder="月" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">月</span>
-                                <input class="input_default" type="text" placeholder="日" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">日</span>
-                            </div>
-                        </div>
-                    </div>
-                    <textarea class="article_words" placeholder="在此处填写活动介绍..."></textarea>
-                </div>
-                <button class="main_button_default post_topic_btn">发布活动</button>
-            </div>
-            <div class="mine_sent_activity" style="display: none;">
                 <div class="participation_topic_filter_content">
                     <ul>
                         <li>全部</li>

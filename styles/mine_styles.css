@@ -61,7 +61,7 @@
     margin-top: 10px;
 }
 
-.mine_post_topic,.mine_participation_topic,.mine_sent_topic,.mine_checking_data,.mine_modify_info,.mine_change_password,.mine_change_head{
+.mine_post_topic,.mine_participation_topic,.mine_sent_topic,.mine_checking_data,.mine_modify_info,.mine_change_password,.mine_change_head,.mine_post_activity,.mine_sent_activity{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -335,4 +335,17 @@
 .modify_info_line input{
     width: 220px;
     margin-left: 10px;
+}
+
+.post_activity_input_line,.post_activity_input_line_item_content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.post_activity_input_line input{
+    border: 0;
+    border-radius: 0;
 }
