@@ -5,8 +5,8 @@
 	}
 	$host='127.0.0.1';
 	$user='root';
-	$pwd='';
-	$dbname='db_heart_volunteer';
+	$pwd='root';
+	$dbname='db_heart volunteer';
 	
 	$db=new mysqli($host, $user, $pwd, $dbname);
 	if($db -> connect_error <> 0){
