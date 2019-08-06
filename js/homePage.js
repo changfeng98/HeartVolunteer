@@ -4,6 +4,56 @@ function init() {
     initUser();
     $(".index_page").css({background: '#ff664b'});
     catWord_1_sleep();
+
+    //活动ajax
+    //prepared data: class
+    var data= {class:"全部",city:"日照"};
+    console.log("ActivityAjax: ");
+    console.log(data);
+    $.ajax({
+        url: "service/home_activity.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data: JSON.stringify(data),
+        type: "GET",
+        success: function (msg) {
+            console.log("ActivityAjax:success!");
+            console.log(msg);
+        },
+        error: function (msg) {
+            console.log("ActivityAjax:error!");
+            console.log(msg);
+            var parsedJson = JSON.stringify(msg);
+            console.log(parsedJson);
+            var jsonData = JSON.parse(parsedJson);
+            console.log(jsonData);
+            alert("请求失败，请重试");
+        }
+    });
+
+    //资讯ajax
+    //prepared data: advisory
+    var data= {advisory:"新闻"};
+    console.log("NewsAjax: ");
+    console.log(data);
+    $.ajax({
+        url: "service/advisory.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data: JSON.stringify(data),
+        type: "GET",
+        success: function (msg) {
+            console.log("NewsAjax:success!");
+            console.log(msg);
+        },
+        error: function (msg) {
+            console.log("NewsAjax:error!");
+            console.log(msg);
+            var parsedJson = JSON.stringify(msg);
+            console.log(parsedJson);
+            var jsonData = JSON.parse(parsedJson);
+            console.log(jsonData);
+            alert("请求失败，请重试");
+        }
+    });
 }
 
 function catWord_1_sleep() {
