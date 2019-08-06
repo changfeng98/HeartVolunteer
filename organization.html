@@ -17,209 +17,248 @@
 <body>
     <script type="text/javascript" src="js/header.js"></script>
 
-    <div class="mine_content">
-        <div class="mine_menu">
-            <div class="mine_menu_item">
-                <span class="mine_menu_title">个人中心</span>
-                <ul>
-                    <li id="nav_checking_data">查看资料</li>
-                    <li id="nav_modify_info">修改信息</li>
-                    <li id="nav_change_head">更换头像</li>
-                    <li id="nav_change_password">修改密码</li>
-                </ul>
+    <div class="organization_content">
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
             </div>
-            <div class="mine_menu_item">
-                <span class="mine_menu_title">状态功能</span>
-                <ul>
-                    <li id="nav_post_topic">发布话题</li>
-                    <li id="nav_participation_topic">参与话题</li>
-                    <li id="nav_sent_topic">已发话题</li>
-                </ul>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
             </div>
         </div>
-        <div class="mine_body">
-            <div class="mine_checking_data" style="position: relative; z-index: 2">
-                <div class="mine_info_top">
-                    <img class="mine_info_head" src="images/table/head_1.jpg"/>
-                    <div class="mine_info_top_right">
-                        <div class="mine_info_nickname_body">
-                            <span class="mine_info_nickname">长风</span>
-                            <img class="mine_info_gender_icon" src="images/ic_gender_female.png"/>
-                        </div>
-                        <div class="mine_info_top_bottom">
-                            <span class="mine_info_gender" style="margin-right: 50px;">女</span>
-                            <span class="mine_info_phone" style="margin-right: 50px;">18370589222</span>
-                            <span class="mine_info_address">山东省日照市</span>
-                        </div>
-                    </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
                 </div>
-                <div class="mine_info_bottom">
-                    <h3 style="width: 100%;text-align: left;margin: 60px 10px 10px 100px;">个人简介</h3>
-                    <span class="mine_info_introduce">我是一个小小的石头</span>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
                 </div>
             </div>
-            <div class="mine_modify_info" style="display: none;">
-                <div class="modify_info_line" style="margin-top: 30px">
-                    <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名</span>
-                    <input class="input_default" type="text" value="长风"/>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
                 </div>
-                <div class="modify_info_line">
-                    <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
-                    <div class="gender_line">
-                        <div class="gender_line_item">
-                            <input id="input_gender_male" name="input_gender" type="radio" value="男" oninput="onStepThreeBlur();" onfocus="onStepThreeBlur();"/>
-                            <label for="input_gender_male" style="margin: 0 50px 0 0">男</label>
-                        </div>
-                        <div class="gender_line_item">
-                            <input id="input_gender_female" name="input_gender" type="radio" value="女" oninput="onStepThreeBlur();" onfocus="onStepThreeBlur();"/>
-                            <label for="input_gender_female">女</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modify_info_line">
-                    <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span>
-                    <input class="input_default" type="text" value="18370589222"/>
-                </div>
-                <div class="modify_info_line">
-                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
-                    <input class="input_default" type="text" value="山东省日照市"/>
-                </div>
-                <div class="modify_info_line">
-                    <span>个人简介</span>
-                    <input class="input_default" type="text" value="我是一个小小的石头"/>
-                </div>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
-            </div>
-            <div class="mine_change_head" style="display: none;">
-                <img src="images/ic_head_default.png" onclick="$('#file_upload').click()" style="width: 100px;height: 100px;margin: 50px 0 20px 0;border-radius: 50%;"/>
-                <input id="file_upload" type="file" style="display: none;"/>
-                <span>点击图片上传</span>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
-            </div>
-            <div class="mine_change_password" style="display: none;">
-                <div class="modify_info_line">
-                    <span>原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input class="input_default" type="text" placeholder="请输入原密码"/>
-                </div>
-                <div class="modify_info_line">
-                    <span>新&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input class="input_default" type="text" placeholder="请输入新密码"/>
-                </div>
-                <div class="modify_info_line">
-                    <span>确认密码</span>
-                    <input class="input_default" type="text" placeholder="清确认密码"/>
-                </div>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
-            </div>
-            <div class="mine_post_topic" style="display: none;">
-                <div class="mine_body_item_content">
-                    <div class="post_topic_head">
-                        <img class="article_pic" src="images/ic_upload_pic.png"/>
-                        <div class="post_topic_title_content">
-                            <input class="article_title" type="text" placeholder="标题"/>
-                            <span class="article_tag_tip">&nbsp;选择标签</span>
-                            <div class="article_tag_content">
-                                <ul>
-                                    <li>生态保护</li>
-                                    <li>文化/艺术</li>
-                                    <li>动物保护</li>
-                                    <li>儿童关怀</li>
-                                    <li>支教助学</li>
-                                    <li>扶老助残</li>
-                                    <li>其它</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <textarea class="article_words" placeholder="在此处开始您的创作..."></textarea>
-                </div>
-                <button class="main_button_default post_topic_btn">发布话题</button>
-            </div>
-            <div class="mine_participation_topic" style="display: none;">
-                <div class="participation_topic_filter_content">
-                    <ul>
-                        <li>全部</li>
-                        <li>最近一周</li>
-                        <li>最近一月</li>
-                        <li>最近一年</li>
-                    </ul>
-                    <div class="participation_topic_search">
-                        <input class="input_square article_topic_search_input" type="text" placeholder="话题主题"/>
-                        <button class="secondary_button_default_square participation_search_title">搜索</button>
-                    </div>
-                </div>
-                <div class="participation_topic_body">
-                    <img class="participation_topic_pic" src="images/table/group_1.jpg" onclick=""/>
-                    <div class="participation_topic_item">
-                        <div class="participation_topic_item_top">
-                            <h3 class="participation_topic_item_topic">网络行动能改变世界吗？</h3>
-                            <span class="participation_topic_publisher">发布人：张丰</span>
-                        </div>
-                        <span class="participation_topic_item_short">编者按：互联网时代，“行动”的门槛变得前所未有的低。点个赞，签个名，转发一项倡议，参与一项讨论，只要在网络上对某个公共话题付出些微的努力，都可以说是“行动”的一种。正因为它包罗万象，这一现象也出现了众多别名，比如“懒汉行动主义”“点击主义”“键盘侠”等等。种种别名虽各有侧重，却都难免带有嘲谑甚至谴责的意味。</span>
-                        <div class="participation_topic_item_bottom">
-                            <span class="participation_topic_tag">文化/艺术</span>
-                            <span class="participation_topic_comment">100&nbsp;评论</span>
-                            <span class="participation_topic_date">2018-10-25</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="participation_topic_body">
-                    <img class="participation_topic_pic" src="images/table/group_2.jpg" onclick=""/>
-                    <div class="participation_topic_item">
-                        <div class="participation_topic_item_top">
-                            <h3 class="participation_topic_item_topic">千万不要低估运动的威力</h3>
-                            <span class="participation_topic_publisher">发布人：张丰</span>
-                        </div>
-                        <span class="participation_topic_item_short">多年来，我发现自己在“运动”这件事上，绝对是惰性大于毅力的。好在，由于自己对运动的益处实在是烂熟于心，深入骨髓，所以无论是经年累月的自我敲打，还是问鼎灵魂的严厉鞭笞，我都交替运用，不允许自己停下来。</span>
-                        <div class="participation_topic_item_bottom">
-                            <span class="participation_topic_tag">文化/艺术</span>
-                            <span class="participation_topic_comment">125&nbsp;评论</span>
-                            <span class="participation_topic_date">2019-07-28</span>
-                        </div>
-                    </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
                 </div>
             </div>
-            <div class="mine_sent_topic" style="display: none;">
-                <div class="participation_topic_filter_content">
-                    <ul>
-                        <li>全部</li>
-                        <li>最近一周</li>
-                        <li>最近一月</li>
-                        <li>最近一年</li>
-                    </ul>
-                    <div class="participation_topic_search">
-                        <input class="input_square article_topic_search_input" type="text" placeholder="话题主题"/>
-                        <button class="secondary_button_default_square participation_search_title">搜索</button>
-                    </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
                 </div>
-                <div class="participation_topic_body">
-                    <img class="participation_topic_pic" src="images/table/group_1.jpg" onclick=""/>
-                    <div class="participation_topic_item">
-                        <h3 class="participation_topic_item_topic">网络行动能改变世界吗？</h3>
-                        <span class="participation_topic_item_short">编者按：互联网时代，“行动”的门槛变得前所未有的低。点个赞，签个名，转发一项倡议，参与一项讨论，只要在网络上对某个公共话题付出些微的努力，都可以说是“行动”的一种。正因为它包罗万象，这一现象也出现了众多别名，比如“懒汉行动主义”“点击主义”“键盘侠”等等。种种别名虽各有侧重，却都难免带有嘲谑甚至谴责的意味。</span>
-                        <div class="participation_topic_item_bottom">
-                            <span class="participation_topic_tag">文化/艺术</span>
-                            <span class="participation_topic_comment">100&nbsp;评论</span>
-                            <span class="participation_topic_date">2018-10-25</span>
-                        </div>
-                    </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
                 </div>
-                <div class="participation_topic_body">
-                    <img class="participation_topic_pic" src="images/table/group_2.jpg" onclick=""/>
-                    <div class="participation_topic_item">
-                        <h3 class="participation_topic_item_topic">千万不要低估运动的威力</h3>
-                        <span class="participation_topic_item_short">多年来，我发现自己在“运动”这件事上，绝对是惰性大于毅力的。好在，由于自己对运动的益处实在是烂熟于心，深入骨髓，所以无论是经年累月的自我敲打，还是问鼎灵魂的严厉鞭笞，我都交替运用，不允许自己停下来。</span>
-                        <div class="participation_topic_item_bottom">
-                            <span class="participation_topic_tag">文化/艺术</span>
-                            <span class="participation_topic_comment">125&nbsp;评论</span>
-                            <span class="participation_topic_date">2019-07-28</span>
-                        </div>
-                    </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
+                </div>
+            </div>
+        </div>
+        <div class="organization_line">
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_1.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">广州青年志愿者协会</h3>
+                    <p class="organization_item_place">广州市越秀区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">53个活动</p>
+                    <p class="organization_item_duration">已志愿4027天</p>
+                </div>
+            </div>
+            <div class="organization_item_content">
+                <img class="organization_item_pic" src="images/table/pic_2.jpg"/>
+                <div class="organization_item">
+                    <h3 class="organization_item_title">金沙街</h3>
+                    <p class="organization_item_place">广州市白云区</p>
+                </div>
+                <div class="organization_item">
+                    <p class="organization_item_activities">12个活动</p>
+                    <p class="organization_item_duration">已志愿1053天</p>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script type="text/javascript" src="js/footer.js"></script>
     <script type="text/javascript" src="js/minePage.js"></script>
