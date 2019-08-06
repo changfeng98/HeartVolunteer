@@ -17,19 +17,11 @@
 <body>
     <script type="text/javascript" src="js/header.js"></script>
     <div class="information">
-        <img class="shuffling" src="images/shuffling.jpg">
+<!--        <img class="shuffling" src="images/shuffling.jpg">-->
         <div class="content">
             <div class="content_tag">
-                <div class="video_news">
-                    <img src="images/video.png" class="video_news_icon">
-                    &nbsp;&nbsp;
-                    <span class="video_news_btn" onclick="open_video()">视频</span>
-                </div>
-                <div class="video_news">
-                    <img src="images/news.png" class="video_news_icon">
-                    &nbsp;&nbsp;
-                    <span class="video_news_btn" onclick="open_news()">新闻</span>
-                </div>
+                <span class="video_btn" onclick="open_video();">视频</span>
+                <span class="news_btn" onclick="open_news();">新闻</span>
             </div>
             <div id="video_content" class="video_content">
                 <table class="video">
@@ -176,12 +168,16 @@
             var news_content = document.getElementById('news_contents');
             video_content.style.display='block';
             news_content.style.display='none';
+            $('.video_btn').css({color:'#ff664b'});
+            $('.news_btn').css({color:'#000'});
         }
         function open_news() {
             var video_content =  document.getElementById('video_content');
             var news_content = document.getElementById('news_contents');
             video_content.style.display='none';
             news_content.style.display='block';
+            $('.news_btn').css({color:'#ff664b'});
+            $('.video_btn').css({color:'#000'});
         }
     </script>
     <script type="text/javascript" src="js/footer.js"></script>

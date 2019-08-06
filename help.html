@@ -17,31 +17,54 @@
 <body>
     <script type="text/javascript" src="js/header.js"></script>
     <div class="help">
-        <img class="shuffling" src="images/shuffling.jpg">
+<!--        <img class="shuffling" src="images/shuffling.jpg">-->
         <div class="help_content">
             <div class="help_tag">
                 <span class="question_index">常见问题索引</span>
                 <ul class="questions">
-                    <li>注册问题</li>
-                    <li>账号问题</li>
-                    <li>活动团体</li>
-                    <li>网站说明</li>
+                    <li id="help_menu_reg">注册问题</li>
+                    <li id="help_menu_acc">账号问题</li>
+                    <li id="help_menu_web">网站说明</li>
+                    <li id="help_menu_cus">联系我们</li>
                 </ul>
-                <span class="contact">联系我们</span>
             </div>
             <div class="help_tag_content">
                 <div class="search">
-                    <input type="text" class="search_input" >
-                    <button class="search_btn">搜索</button>
+                    <input type="text" class="input_default search_input" style="border: #e9e9e9 solid 1px;border-radius: 0;">
+                    <button class="main_button_default search_btn" style="width: 70px;border-radius: 0;">搜索</button>
                 </div>
                 <div class="account_question">
-
+                    <h3>Q: 港澳台用户如何注册志愿者账号？</h3>
+                    <p>A: 港澳台用户自行在平台申请注册志愿者账号即可。</p>
+                    <h3>Q: 注册后,在本系统登录账号显示密码错误，该如何找回密码？ </h3>
+                    <p>A: 步骤:“登录”—“忘记密码”—“找回密码”—“邮箱获取验证码” —“填写新密码”— “确认密码”— “密码已找回”。</p>
+                    <h3>Q: 同一个身份证注册了志愿者还能注册成为组织管理员吗?</h3>
+                    <p>A: 能。注册志愿者，也可以注册管理员。</p>
+                    <h3>Q: 归属组织选错了需要更改组织？</h3>
+                    <p>A: 进入用户中心-完善资料，选择正确的归属组织。</p>
+                    <h3>Q: 登录账号显示身份校验不通过？</h3>
+                    <p>A: 核实姓名或者身份证号是否正确，信息有误请修正重新校验信息。</p>
+                    <h3>Q: 关于注册时（或者是忘记密码），邮箱获取不了验证，如何解决？</h3>
+                    <p>A: （1）可查询邮箱设置是否开通拒收邮件功能或者进入垃圾邮件中查询。 （2）在拦截处查询不到验证码请与网站管理人员联系，并提供接收验证码信息的邮箱，或者身份证+姓名+邮箱 +问题发到客服邮箱。</p>
                 </div>
-                <div class="activity_organized">
-
+                <div class="activity_organized" style="display: none;">
+                    <h3>Q: 登录志愿者账号出现账号密码错误或者用户不存在情况，点击“忘记密码”，进行密码修改。</h3>
+                    <p>A: 请在第一步输入帐号时尽量输入登录账号（手机号/身份证号）作为账号，通过邮箱找回密码。如还不解决问题将个人身份证+姓名+邮箱+问题发送至心志愿客服邮箱处理。</p>
+                    <h3>Q: 登录组织/团体账号出现账号密码错误或者用户不存在情况，点击“忘记密码”，进行密码修改。</h3>
+                    <p>A: 请在第一步输入帐号时尽量输入登录账号（手机号/身份证号）作为账号，通过邮箱找回密码。如还不解决问题将组织名称+组织管理员身份证+姓名+邮箱+问题发送至心志愿客服邮箱处理。</p>
                 </div>
-                <div class="website_instructions">
-
+                <div class="website_instructions" style="display: none;">
+                    <div class="web_site_instructions_top" onclick="location.href='https://www.softqilu.com/'">
+                        <img src="images/ic_website_info.jpg" onclick="" style="width: 174px;height: 134px;"/>
+                        <div class="nav-ch">山东省大学生软件设计大赛</div>
+                        <br>
+                        <div class="nav-en">SHANDONG UNDERGRADUATE SOFTWARE DESIGN CONTEST</div>
+                    </div>
+                    <p style="margin-top: 50px;">山东省大学生软件设计大赛作品</p>
+                    <p style="margin-top: 0;">队伍名称：结束倒计时</p>
+                </div>
+                <div class="contact_us" style="display: none;">
+                    <img src="images/pic_contact_us.jpg" onclick="" style="margin: 10px 0; width: 300px; height: auto;"/>
                 </div>
             </div>
         </div>

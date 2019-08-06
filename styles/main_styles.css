@@ -108,6 +108,7 @@ button{
 }
 
 .change_city,.go_login,.go_register,.user_name{
+    cursor: default;
     padding: 10px;
     margin-right: 5px;
     color: #fff;
@@ -138,6 +139,7 @@ ol,ul{
 }
 
 li{
+    cursor: default;
     text-align: center;
     list-style: none;
 }
@@ -152,6 +154,7 @@ li{
 }
 
 .header_bottom_content li{
+    cursor: default;
     padding: 15px 0;
     width: 180px;
     text-align: center;
