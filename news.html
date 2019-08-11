@@ -24,7 +24,7 @@
                 <span class="news_btn" onclick="open_news();">新闻</span>
             </div>
             <div id="video_content" class="video_content">
-                <table class="video">
+                <table id="video_list" class="video">
                     <tr>
                         <td>
                             <div class="video_description">
@@ -116,54 +116,55 @@
                 </table>
             </div>
             <div style="display: none" id="news_contents" class="news_contents">
-                <div class="news">
-                    <img class="news_photo" src="images/news_protect_eye.jpg">
-                    <div class="news_content">
-                        <span class="news_content_title">福州眼科医院“暑期爱眼志愿者活动”圆满成功！</span>
-                        <p class="news_content_body">
-                            近年来青少年近视问题日益严峻，国家揪心，家长烦心，为了加强儿童青少年视力防护，同时丰富青少年暑期生活，帮助更多孩子了解爱眼护眼的常识，真正变成“防控近视”小能手，福州眼科医院于7月21日上午在我院2号楼2楼宣讲厅举办了一场主题为“预防近视，从我做起”的暑期爱眼志愿者活动...
-                        </p>
-                        <div class="news_content_form">
-                            <span class="news_content_from_content">福州眼科医院</span>
-<!--                            <span class="news_content_from">2019-07-29</span>-->
-                            <span class="news_content_num">浏览量：2600</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="news">
-                    <img class="news_photo" src="images/news_protect_eye.jpg">
-                    <div class="news_content">
-                        <span class="news_content_title">福州眼科医院“暑期爱眼志愿者活动”圆满成功！</span>
-                        <p class="news_content_body">
-                            近年来青少年近视问题日益严峻，国家揪心，家长烦心，为了加强儿童青少年视力防护，同时丰富青少年暑期生活，帮助更多孩子了解爱眼护眼的常识，真正变成“防控近视”小能手，福州眼科医院于7月21日上午在我院2号楼2楼宣讲厅举办了一场主题为“预防近视，从我做起”的暑期爱眼志愿者活动...
-                        </p>
-                        <div class="news_content_form">
-                            <span class="news_content_from_content">福州眼科医院</span>
-                            <!--                            <span class="news_content_from">2019-07-29</span>-->
-                            <span class="news_content_num">浏览量：2600</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="news">
-                    <img class="news_photo" src="images/news_protect_eye.jpg">
-                    <div class="news_content">
-                        <span class="news_content_title">福州眼科医院“暑期爱眼志愿者活动”圆满成功！</span>
-                        <p class="news_content_body">
-                            近年来青少年近视问题日益严峻，国家揪心，家长烦心，为了加强儿童青少年视力防护，同时丰富青少年暑期生活，帮助更多孩子了解爱眼护眼的常识，真正变成“防控近视”小能手，福州眼科医院于7月21日上午在我院2号楼2楼宣讲厅举办了一场主题为“预防近视，从我做起”的暑期爱眼志愿者活动...
-                        </p>
-                        <div class="news_content_form">
-                            <span class="news_content_from_content">福州眼科医院</span>
-                            <!--                            <span class="news_content_from">2019-07-29</span>-->
-                            <span class="news_content_num">浏览量：2600</span>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="news">-->
+<!--                    <img class="news_photo" src="images/news_protect_eye.jpg">-->
+<!--                    <div class="news_content">-->
+<!--                        <span class="news_content_title">福州眼科医院“暑期爱眼志愿者活动”圆满成功！</span>-->
+<!--                        <p class="news_content_body">-->
+<!--                            近年来青少年近视问题日益严峻，国家揪心，家长烦心，为了加强儿童青少年视力防护，同时丰富青少年暑期生活，帮助更多孩子了解爱眼护眼的常识，真正变成“防控近视”小能手，福州眼科医院于7月21日上午在我院2号楼2楼宣讲厅举办了一场主题为“预防近视，从我做起”的暑期爱眼志愿者活动...-->
+<!--                        </p>-->
+<!--                        <div class="news_content_form">-->
+<!--                            <span class="news_content_from_content">福州眼科医院</span>-->
+<!--&lt;!&ndash;                            <span class="news_content_from">2019-07-29</span>&ndash;&gt;-->
+<!--                            <span class="news_content_num">浏览量：2600</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="news">-->
+<!--                    <img class="news_photo" src="images/news_protect_eye.jpg">-->
+<!--                    <div class="news_content">-->
+<!--                        <span class="news_content_title">福州眼科医院“暑期爱眼志愿者活动”圆满成功！</span>-->
+<!--                        <p class="news_content_body">-->
+<!--                            近年来青少年近视问题日益严峻，国家揪心，家长烦心，为了加强儿童青少年视力防护，同时丰富青少年暑期生活，帮助更多孩子了解爱眼护眼的常识，真正变成“防控近视”小能手，福州眼科医院于7月21日上午在我院2号楼2楼宣讲厅举办了一场主题为“预防近视，从我做起”的暑期爱眼志愿者活动...-->
+<!--                        </p>-->
+<!--                        <div class="news_content_form">-->
+<!--                            <span class="news_content_from_content">福州眼科医院</span>-->
+<!--                            &lt;!&ndash;                            <span class="news_content_from">2019-07-29</span>&ndash;&gt;-->
+<!--                            <span class="news_content_num">浏览量：2600</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="news">-->
+<!--                    <img class="news_photo" src="images/news_protect_eye.jpg">-->
+<!--                    <div class="news_content">-->
+<!--                        <span class="news_content_title">福州眼科医院“暑期爱眼志愿者活动”圆满成功！</span>-->
+<!--                        <p class="news_content_body">-->
+<!--                            近年来青少年近视问题日益严峻，国家揪心，家长烦心，为了加强儿童青少年视力防护，同时丰富青少年暑期生活，帮助更多孩子了解爱眼护眼的常识，真正变成“防控近视”小能手，福州眼科医院于7月21日上午在我院2号楼2楼宣讲厅举办了一场主题为“预防近视，从我做起”的暑期爱眼志愿者活动...-->
+<!--                        </p>-->
+<!--                        <div class="news_content_form">-->
+<!--                            <span class="news_content_from_content">福州眼科医院</span>-->
+<!--                            &lt;!&ndash;                            <span class="news_content_from">2019-07-29</span>&ndash;&gt;-->
+<!--                            <span class="news_content_num">浏览量：2600</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
         function open_video() {
+            // requestVideos();
             var video_content =  document.getElementById('video_content');
             var news_content = document.getElementById('news_contents');
             video_content.style.display='block';
@@ -172,6 +173,7 @@
             $('.news_btn').css({color:'#000'});
         }
         function open_news() {
+            // requestNews();
             var video_content =  document.getElementById('video_content');
             var news_content = document.getElementById('news_contents');
             video_content.style.display='none';

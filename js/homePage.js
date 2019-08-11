@@ -38,7 +38,7 @@ function init() {
     //活动ajax
     //发出: class(类别), city(城市)
     //接收: members_all(志愿人数), activities_all(发起活动数)
-    var data= {class:"全部",city:"1"};
+    var data= {class:"全部",city:"日照"};
     console.log("ActivityAjax: ");
     console.log(data);
     $.ajax({
@@ -49,6 +49,7 @@ function init() {
         success: function (msg) {
             console.log("ActivityAjax:success!");
             console.log(msg);
+            initActivity(msg);
         },
         error: function (msg) {
             console.log("ActivityAjax:error!");
@@ -75,6 +76,7 @@ function init() {
         success: function (msg) {
             console.log("CommunityAjax:success!");
             console.log(msg);
+            initCommunity(msg);
         },
         error: function (msg) {
             console.log("CommunityAjax:error!");
@@ -101,6 +103,7 @@ function init() {
         success: function (msg) {
             console.log("NewsAjax:success!");
             console.log(msg);
+            initNews(msg);
         },
         error: function (msg) {
             console.log("NewsAjax:error!");
@@ -127,6 +130,7 @@ function init() {
         success: function (msg) {
             console.log("OrganizerAjax:success!");
             console.log(msg);
+            initOrganization(msg);
         },
         error: function (msg) {
             console.log("OrganizerAjax:error!");
@@ -138,6 +142,126 @@ function init() {
             alert("请求失败，请重试");
         }
     });
+}
+
+//渲染活动列表
+function initActivity(msg) {
+    for(var i in msg){
+        console.log(i%4);
+        if(i <= 7){
+            if(i == 0 || i == 4){
+                $(".home_activity_content").append('<tr class="home_activity_content_row'+i+'">\n' +
+                    '                <td>\n' +
+                    '                    <div class="activity_item_body">\n' +
+                    '                        <img class="activity_item_pic" src="'+msg[i].picture+'"/>\n' +
+                    '                        <h3 class="activity_item_title">'+msg[i].act_name+'</h3>\n' +
+                    '                        <p class="activity_item_spot">活动地点：'+msg[i].act_region+'</p>\n' +
+                    '                        <p class="activity_item_organized">活动发起：'+msg[i].Founder+'</p>\n' +
+                    '                        <p class="activity_item_end">报名截止：'+msg[i].Ending_time+'</p>\n' +
+                    '                        <div class="activity_item_bottom">\n' +
+                    '                            <img src="images/ic_people.png" onclick=""/>\n' +
+                    '                            <p class="activity_item_people">'+msg[i].Rec_ing+'</p>\n' +
+                    '                            <img src="images/ic_see.png" onclick=""/>\n' +
+                    '                            <p class="activity_item_see">'+msg[i].look+'</p>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                </td>\n' +
+                    '             </tr>');
+            }
+            if (i > 0 && i <= 3){
+                $(".home_activity_content_row0").append('<td>\n' +
+                    '                    <div class="activity_item_body">\n' +
+                    '                        <img class="activity_item_pic" src="'+msg[i].picture+'"/>\n' +
+                    '                        <h3 class="activity_item_title">'+msg[i].act_name+'</h3>\n' +
+                    '                        <p class="activity_item_spot">活动地点：'+msg[i].act_region+'</p>\n' +
+                    '                        <p class="activity_item_organized">活动发起：'+msg[i].Founder+'</p>\n' +
+                    '                        <p class="activity_item_end">报名截止：'+msg[i].Ending_time+'</p>\n' +
+                    '                        <div class="activity_item_bottom">\n' +
+                    '                            <img src="images/ic_people.png" onclick=""/>\n' +
+                    '                            <p class="activity_item_people">'+msg[i].Rec_ing+'</p>\n' +
+                    '                            <img src="images/ic_see.png" onclick=""/>\n' +
+                    '                            <p class="activity_item_see">'+msg[i].look+'</p>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                </td>');
+            }
+            if (i > 4 && i <= 8){
+                $(".home_activity_content_row4").append('<td>\n' +
+                    '                    <div class="activity_item_body">\n' +
+                    '                        <img class="activity_item_pic" src="'+msg[i].picture+'"/>\n' +
+                    '                        <h3 class="activity_item_title">'+msg[i].act_name+'</h3>\n' +
+                    '                        <p class="activity_item_spot">活动地点：'+msg[i].act_region+'</p>\n' +
+                    '                        <p class="activity_item_organized">活动发起：'+msg[i].Founder+'</p>\n' +
+                    '                        <p class="activity_item_end">报名截止：'+msg[i].Ending_time+'</p>\n' +
+                    '                        <div class="activity_item_bottom">\n' +
+                    '                            <img src="images/ic_people.png" onclick=""/>\n' +
+                    '                            <p class="activity_item_people">'+msg[i].Rec_ing+'</p>\n' +
+                    '                            <img src="images/ic_see.png" onclick=""/>\n' +
+                    '                            <p class="activity_item_see">'+msg[i].look+'</p>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                </td>');
+            }
+        }else {
+            break;
+        }
+    }
+}
+
+//渲染社区列表
+function initCommunity(msg) {
+    for(var i in msg){
+        console.log(i%4);
+        if(i <= 1){
+            $(".home_group_content_community").append('<div class="group_content">\n' +
+                '                <img class="group_item_pic" src="'+msg[i].topic_image+'"/>\n' +
+                '                <div class="group_item">\n' +
+                '                    <h3 class="group_item_title">'+msg[i].topic_name+'</h3>\n' +
+                '                    <p class="group_item_title">'+msg[i].topic_content+'</p>\n' +
+                '                </div>\n' +
+                '            </div>');
+        }else {
+            break;
+        }
+    }
+}
+
+//渲染资讯列表
+function initNews(msg) {
+    for(var i in msg){
+        console.log(msg);
+        if(i <= 2){
+            $(".home_news_content").append('<div class="news_content">\n' +
+                '                <img class="news_item_pic" src="'+msg[i].image+'"/>\n' +
+                '                <h3 class="news_item_title">'+msg[i].news_name+'</h3>\n' +
+                '                <p class="news_item_author">'+msg[i].source+'</p>\n' +
+                '            </div>');
+        }else {
+            break;
+        }
+    }
+}
+
+//渲染组织列表
+function initOrganization(msg) {
+    for(var i in msg){
+        console.log(msg);
+        if(i <= 1){
+            $(".home_organization_content").append('<div class="organization_content">\n' +
+                '                <img class="organization_item_pic" src="'+msg[i].org_avatar+'"/>\n' +
+                '                <div class="organization_item">\n' +
+                '                    <h3 class="organization_item_title">'+msg[i].org_name+'</h3>\n' +
+                '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
+                '                </div>\n' +
+                '                <div class="organization_item">\n' +
+                '                    <p class="organization_item_activities">53个活动</p>\n' +
+                '                    <p class="organization_item_duration">已志愿4027天</p>\n' +
+                '                </div>\n' +
+                '            </div>');
+        }else {
+            break;
+        }
+    }
 }
 
 function catWord_1_sleep() {

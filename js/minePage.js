@@ -3,6 +3,130 @@ var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_
 function init(){
     initUser();
     $("#nav_checking_data").addClass("mine_menu_item_hovered");
+
+    //我的
+    var data= {advisory:"新闻"};
+    console.log("OrganizerAjax: ");
+    console.log(data);
+    $.ajax({
+        url: "service/organizer.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data: JSON.stringify(data),
+        type: "GET",
+        success: function (msg) {
+            console.log("OrganizerAjax:success!");
+            console.log(msg);
+        },
+        error: function (msg) {
+            console.log("OrganizerAjax:error!");
+            console.log(msg);
+            var parsedJson = JSON.stringify(msg);
+            console.log(parsedJson);
+            var jsonData = JSON.parse(parsedJson);
+            console.log(jsonData);
+            alert("请求失败，请重试");
+        }
+    });
+}
+
+function onPostTopic(){
+    var topic_name = $.trim($('.article_title').val());
+    var topic_name = $.trim($('.article_title').val());
+    var topic_name = $.trim($('.article_title').val());
+    var topic_name = $.trim($('.article_title').val());
+    //PostTopic
+    var data= {topic_name:1};
+    console.log("OrganizerAjax: ");
+    console.log(data);
+    $.ajax({
+        url: "service/organizer.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data: JSON.stringify(data),
+        type: "GET",
+        success: function (msg) {
+            console.log("OrganizerAjax:success!");
+            console.log(msg);
+        },
+        error: function (msg) {
+            console.log("OrganizerAjax:error!");
+            console.log(msg);
+            var parsedJson = JSON.stringify(msg);
+            console.log(parsedJson);
+            var jsonData = JSON.parse(parsedJson);
+            console.log(jsonData);
+            alert("请求失败，请重试");
+        }
+    });
+}
+
+function onSelectType_1(){
+    $('#type_1').addClass("article_tag_selected");
+    $('#type_2').removeClass("article_tag_selected");
+    $('#type_3').removeClass("article_tag_selected");
+    $('#type_4').removeClass("article_tag_selected");
+    $('#type_5').removeClass("article_tag_selected");
+    $('#type_6').removeClass("article_tag_selected");
+    $('#type_7').removeClass("article_tag_selected");
+}
+
+function onSelectType_2(){
+    $('#type_1').removeClass("article_tag_selected");
+    $('#type_2').addClass("article_tag_selected");
+    $('#type_3').removeClass("article_tag_selected");
+    $('#type_4').removeClass("article_tag_selected");
+    $('#type_5').removeClass("article_tag_selected");
+    $('#type_6').removeClass("article_tag_selected");
+    $('#type_7').removeClass("article_tag_selected");
+}
+
+function onSelectType_3(){
+    $('#type_1').removeClass("article_tag_selected");
+    $('#type_2').removeClass("article_tag_selected");
+    $('#type_3').addClass("article_tag_selected");
+    $('#type_4').removeClass("article_tag_selected");
+    $('#type_5').removeClass("article_tag_selected");
+    $('#type_6').removeClass("article_tag_selected");
+    $('#type_7').removeClass("article_tag_selected");
+}
+
+function onSelectType_4(){
+    $('#type_1').removeClass("article_tag_selected");
+    $('#type_2').removeClass("article_tag_selected");
+    $('#type_3').removeClass("article_tag_selected");
+    $('#type_4').addClass("article_tag_selected");
+    $('#type_5').removeClass("article_tag_selected");
+    $('#type_6').removeClass("article_tag_selected");
+    $('#type_7').removeClass("article_tag_selected");
+}
+
+function onSelectType_5(){
+    $('#type_1').removeClass("article_tag_selected");
+    $('#type_2').removeClass("article_tag_selected");
+    $('#type_3').removeClass("article_tag_selected");
+    $('#type_4').removeClass("article_tag_selected");
+    $('#type_5').addClass("article_tag_selected");
+    $('#type_6').removeClass("article_tag_selected");
+    $('#type_7').removeClass("article_tag_selected");
+}
+
+function onSelectType_6(){
+    $('#type_1').removeClass("article_tag_selected");
+    $('#type_2').removeClass("article_tag_selected");
+    $('#type_3').removeClass("article_tag_selected");
+    $('#type_4').removeClass("article_tag_selected");
+    $('#type_5').removeClass("article_tag_selected");
+    $('#type_6').addClass("article_tag_selected");
+    $('#type_7').removeClass("article_tag_selected");
+}
+
+function onSelectType_7(){
+    $('#type_1').removeClass("article_tag_selected");
+    $('#type_2').removeClass("article_tag_selected");
+    $('#type_3').removeClass("article_tag_selected");
+    $('#type_4').removeClass("article_tag_selected");
+    $('#type_5').removeClass("article_tag_selected");
+    $('#type_6').removeClass("article_tag_selected");
+    $('#type_7').addClass("article_tag_selected");
 }
 
 $.fn.showMineItem = function (obj) {

@@ -147,7 +147,11 @@
 .article_tag_content li:hover,.participation_topic_filter_content li:hover{
     background: #ffede8;
     border: #ffe3d9 solid 1px;
+}
 
+.article_tag_selected{
+    background: #ffede8;
+    border: #ffe3d9 solid 1px;
 }
 
 .article_words{

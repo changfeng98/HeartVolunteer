@@ -129,7 +129,9 @@
 
 .news_content_body{
     text-indent: 2em;
-    height: 70px;
+    height: 66px;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 
 .news_content_form{
