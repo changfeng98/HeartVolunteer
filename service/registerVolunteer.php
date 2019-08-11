@@ -17,7 +17,8 @@
     $idCard=$arr["idCard"];
     $gender=$arr["gender"];
     $name=$arr["name"];
-
+    date_default_timezone_set('Asia/Shanghai');
+    $time=date('Y-m-d H:i:s',time());
     $sql="select * from user_user where nickname='$nickname'";
     $obj=mysqli_query($link,$sql);
     if($obj&&mysqli_affected_rows($link)){
@@ -25,7 +26,7 @@
         echo json_encode($jsonstr);
     }
     else{
-        $sql="insert into user_user(user_mailbox,nickname,user_password,user_phone,user_id,sex,name) values ('$email','$nickname','$password','$phoneNumber','$idCard','$gender','$name')";
+        $sql="insert into user_user(user_mailbox,nickname,user_password,user_phone,user_id,sex,name,time) values ('$email','$nickname','$password','$phoneNumber','$idCard','$gender','$name','$time')";
         //保证昵称小于32位，手机号11位身份证18位，密码（自己限定）
         $obj=mysqli_query($link,$sql);
         $jsonstr=array('a' => 1);

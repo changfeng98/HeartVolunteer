@@ -21,7 +21,8 @@ $ad_mailbox=$arr["ad_mailbox"];
 $ad_name=$arr["ad_name"];
 $ad_phone=$arr["ad_phone"];
 $ad_id=$arr["ad_id"];
-
+date_default_timezone_set('Asia/Shanghai');
+$time=date('Y-m-d H:i:s',time());
 $sql="select * from organizer_user where org_name='$org_name'";
 $obj=mysqli_query($link,$sql);
 if($obj&&mysqli_affected_rows($link)){
@@ -30,7 +31,7 @@ if($obj&&mysqli_affected_rows($link)){
     //组织账号已存在
 }
 else{
-    $sql="insert into organizer_user(org_name,org_mailbox,org_phone,org_password,ad_mailbox,ad_name,ad_phone,ad_id) values ('$org_name','$org_mailbox','$org_phone','$org_password','$ad_mailbox','$ad_name','$ad_phone','$ad_id')";
+    $sql="insert into organizer_user(org_name,org_mailbox,org_phone,org_password,ad_mailbox,ad_name,ad_phone,ad_id,time) values ('$org_name','$org_mailbox','$org_phone','$org_password','$ad_mailbox','$ad_name','$ad_phone','$ad_id','$time')";
     $obj=mysqli_query($link,$sql);
     $jsonstr=array('a' => 1);
     echo json_encode($jsonstr);

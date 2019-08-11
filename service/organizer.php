@@ -7,10 +7,31 @@ include("dbconfig.php");
 
 $sql="select * from organizer_user";
 $obj=mysqli_query($link,$sql);
+date_default_timezone_set('Asia/Shanghai');
+$time=date('Y-m-d H:i:s',time());
 $array = array();
 while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
 {
-    $array[] = $rows;
+    $name=$rows["org_name"];
+    $ad_name=$rows["ad_name"];
+    $sqli="select * from acticity where regional_sponsors='$name'";
+    $obji=mysqli_query($link,$sqli);
+    $count=0;
+    if($obji&&mysqli_fetch_row()){
+        while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC)){
+            $count++;
+        }
+    }
+
+    $timep=strtotime($time)-strtotime($rows["time"]);
+    $timep=(int)$timep/3600;
+    $p = [
+        "name" => "$name",
+        "ad_name" => "$ad_name",
+        "count"=>"$count",
+        "time"=>"$timep",
+    ];
+    $array[] =$p;
 }
 // print_r($array);
 echo json_encode($array);

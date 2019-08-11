@@ -62,9 +62,9 @@ $(".register_body").on("click", ".register_next_btn_to_complete", function () {
                 //     location.href = "login.html";
                 // }, 5000);
             }else if(msg.a == "0"){
-                alert("该邮箱已被注册！");
+                showTip('该用户名已被注册！');
             }else{
-                alert("内部错误，请联系管理员！");
+                showTip('内部错误，请联系管理员！');
             }
         },
         error: function (msg) {

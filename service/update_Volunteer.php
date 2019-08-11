@@ -21,8 +21,9 @@ $phoneNumber=$arr["phoneNumber"];
 $idCard=$arr["idCard"];
 $gender=$arr["gender"];
 $name=$arr["name"];
+$introduce=$arr["introduce"];
 
-$sql="update user_user set email='$email',nickname='$nickname',phoneNumber='$phoneNumber',idCard='$idCard',gender='$gender',name='$name' where nickname='$old_nickname'";
+$sql="update user_user set email='$email',nickname='$nickname',phoneNumber='$phoneNumber',idCard='$idCard',gender='$gender',name='$name',introduce='$introduce' where nickname='$old_nickname'";
 $obj=mysqli_query($link,$sql);
 if($obj&&mysqli_affected_rows($link)){
     $jsonstr=array('a' => 1);

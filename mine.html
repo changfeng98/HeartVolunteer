@@ -61,7 +61,7 @@
             <div class="mine_modify_info" style="display: none;">
                 <div class="modify_info_line" style="margin-top: 30px">
                     <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名</span>
-                    <input class="input_default" type="text" value="长风"/>
+                    <input id="modify_username" class="input_default" type="text" value="长风" readonly="readonly"/>
                 </div>
                 <div class="modify_info_line">
                     <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
@@ -77,21 +77,29 @@
                     </div>
                 </div>
                 <div class="modify_info_line">
-                    <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span>
-                    <input class="input_default" type="text" value="18370589222"/>
+                    <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
+                    <input id="modify_email" class="input_default" type="email" value="18370589222@qq.com"/>
                 </div>
                 <div class="modify_info_line">
-                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
-                    <input class="input_default" type="text" value="山东省日照市"/>
+                    <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span>
+                    <input id="modify_phone" class="input_default" type="text" value="18370589222"/>
+                </div>
+                <div class="modify_info_line">
+                    <span>省&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份</span>
+                    <input id="modify_province" class="input_default" type="text" value="山东省"/>
+                </div>
+                <div class="modify_info_line">
+                    <span>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</span>
+                    <input id="modify_city" class="input_default" type="text" value="日照市"/>
                 </div>
                 <div class="modify_info_line">
                     <span>个人简介</span>
-                    <input class="input_default" type="text" value="我是一个小小的石头"/>
+                    <input id="modify_introduce" class="input_default" type="text" value="我是一个小小的石头"/>
                 </div>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
+                <button class="main_button_default" style="margin: 50px 0" onclick="onModifyInfo()">确认更改</button>
             </div>
             <div class="mine_change_head" style="display: none;">
-                <img src="images/ic_head_default.png" onclick="$('#file_upload').click()" style="width: 100px;height: 100px;margin: 50px 0 20px 0;border-radius: 50%;"/>
+                <img id="modify_avatar" src="images/ic_head_default.png" onclick="$('#file_upload').click()" style="width: 100px;height: 100px;margin: 50px 0 20px 0;border-radius: 50%;"/>
                 <input id="file_upload" type="file" style="display: none;"/>
                 <span>点击图片上传</span>
                 <button class="main_button_default" style="margin: 50px 0">确认更改</button>
@@ -220,7 +228,7 @@
         </div>
     </div>
 
-
+    <script type="text/javascript" src="js/dialog_tips.js"></script>
     <script type="text/javascript" src="js/footer.js"></script>
     <script type="text/javascript" src="js/minePage.js"></script>
 </body>

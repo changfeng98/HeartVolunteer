@@ -36,7 +36,7 @@ if($obj&&mysqli_affected_rows($link)){
             //   echo mysqli_error($link);
             $arr=mysqli_fetch_array($obj,MYSQLI_ASSOC);
         }
-        $jsonstr=array('a' => 1,'b'=>1,'user_mailbox'=>$arr['user_mailbox'],'nickname'=>$arr['nickname'],'user_avatar'=>$arr['user_avatar'],'user_password'=>$arr['user_password'],'user_phone'=>$arr['user_phone'],'user_id'=>$arr['user_id'],'sex'=>$arr['sex'],'province'=>$arr['province'],'city'=>$arr['city']);
+        $jsonstr=array('a' => 1,'b'=>1,'user_mailbox'=>$arr['user_mailbox'],'nickname'=>$arr['nickname'],'user_avatar'=>$arr['user_avatar'],'user_password'=>$arr['user_password'],'user_phone'=>$arr['user_phone'],'user_id'=>$arr['user_id'],'sex'=>$arr['sex'],'province'=>$arr['province'],'city'=>$arr['city'],'introduce'=>$arr['introduce']);
 
     }
     echo json_encode($jsonstr);

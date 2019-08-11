@@ -3,30 +3,117 @@ var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_
 function init(){
     initUser();
     $("#nav_checking_data").addClass("mine_menu_item_hovered");
+    initUserInfo();
+}
 
-    //我的
-    var data= {advisory:"新闻"};
-    console.log("OrganizerAjax: ");
-    console.log(data);
-    $.ajax({
-        url: "service/organizer.php?data= "+JSON.stringify(data), //后台请求数据
-        dataType: "json",
-        data: JSON.stringify(data),
-        type: "GET",
-        success: function (msg) {
-            console.log("OrganizerAjax:success!");
-            console.log(msg);
-        },
-        error: function (msg) {
-            console.log("OrganizerAjax:error!");
-            console.log(msg);
-            var parsedJson = JSON.stringify(msg);
-            console.log(parsedJson);
-            var jsonData = JSON.parse(parsedJson);
-            console.log(jsonData);
-            alert("请求失败，请重试");
+function initUserInfo(){
+    $('.mine_info_head').attr('src', user_info.user_avatar);
+    $('#modify_avatar').attr('src', user_info.user_avatar);
+    $('.mine_info_nickname').text(user_info.nickname);
+    $('.mine_info_gender').text(user_info.sex);
+    if(user_info.sex == '男'){
+        $('.mine_info_gender_icon').attr('src', 'images/ic_gender_male.png');
+    }else{
+        $('.mine_info_gender_icon').attr('src', 'images/ic_gender_female.png');
+    }
+    $('.mine_info_phone').text(user_info.user_phone);
+    $('.mine_info_address').text(user_info.province + user_info.city);
+    $('.mine_info_introduce').text(user_info.introduce);
+
+    $('#modify_username').val(user_info.nickname);
+    if(user_info.sex == '男'){
+        $('#input_gender_male').attr('checked','checked');
+        $('#input_gender_female').removeAttr('checked');
+    }else{
+        $('#input_gender_male').removeAttr('checked');
+        $('#input_gender_female').attr('checked','checked');
+    }
+    $('#modify_phone').val(user_info.user_phone);
+    $('#modify_province').val(user_info.province);
+    $('#modify_city').val(user_info.city);
+    $('#modify_introduce').val(user_info.introduce);
+    $('#modify_email').val(user_info.user_mailbox);
+}
+
+function updateSession(data) {
+    user_info.nickname = data.nickname;
+    user_info.sex = data.gender;
+    user_info.user_phone = data.phoneNumber;
+    user_info.province = data.company;
+    user_info.address = data.address;
+    sessionStorage.setItem("user_info", JSON.stringify(user_info));
+    location.reload();
+    showTip("信息修改成功！");
+}
+
+function onModifyInfo(){
+    var modify_email = $.trim($('#modify_email').val());
+    var modify_gender = $.trim($(".gender_line input[name=\"input_gender\"]:checked").val());
+    var modify_phone = $.trim($('#modify_phone').val());
+    var modify_province = $.trim($('#modify_province').val());
+    var modify_city = $.trim($('#modify_city').val());
+    var modify_introduce = $.trim($('#modify_introduce').val());
+    if(modify_email != '' && modify_email != null){
+        $('#modify_email').css({'border-color': 'rgba(203,54,56,0)'});
+        if(modify_gender != '' && modify_gender != null){
+            $('#modify_gender').css({'border-color': 'rgba(203,54,56,0)'});
+            if(modify_phone != '' && modify_phone != null){
+                $('#modify_phone').css({'border-color': 'rgba(203,54,56,0)'});
+                if(modify_province != '' && modify_province != null){
+                    $('#modify_province').css({'border-color': 'rgba(203,54,56,0)'});
+                    if(modify_city != '' && modify_city != null){
+                        $('#modify_city').css({'border-color': 'rgba(203,54,56,0)'});
+                        if(modify_introduce != '' && modify_introduce != null){
+                            $('#modify_introduce').css({'border-color': 'rgba(203,54,56,0)'});
+                            //修改信息ajax
+                            var data= {name:user_info.nickname,email:modify_email,nickname:modify_gender,phoneNumber:modify_phone,idCard:modify_province,gender:modify_city,introduce:modify_introduce};
+                            console.log(data);
+                            console.log("ModifyVolunteerInfoAjax");
+                            $.ajax({
+                                url: "/IBDS/update_Volunteer.php?data="+JSON.stringify(data), //后台请求数据
+                                dataType: "json",
+                                type: "get",
+                                success: function (msg) {
+                                    console.log("ModifyVolunteerInfoAjax:Success!");
+                                    console.log(msg);
+                                    if(msg.a == '1'){
+                                        updateSession(data);
+                                    }else {
+                                        showTip("信息修改失败！");
+                                    }
+                                },
+                                error: function (msg) {
+                                    console.log("ModifyVolunteerInfoAjax:Error!");
+                                    console.log(msg);
+                                    alert("请求失败，请重试");
+                                    showTip("信息修改失败！");
+                                }
+                            });
+                        }else {
+                            $('#modify_introduce').css({'border-color': '#cb3638'});
+                            $('#modify_introduce').shake(2, 10, 400);
+                        }
+                    }else {
+                        $('#modify_city').css({'border-color': '#cb3638'});
+                        $('#modify_city').shake(2, 10, 400);
+                    }
+                }else {
+                    $('#modify_province').css({'border-color': '#cb3638'});
+                    $('#modify_province').shake(2, 10, 400);
+                }
+            }else {
+                $('#modify_phone').css({'border-color': '#cb3638'});
+                $('#modify_phone').shake(2, 10, 400);
+            }
+        }else {
+            $('#modify_gender').css({'border-color': '#cb3638'});
+            $('#modify_gender').shake(2, 10, 400);
         }
-    });
+    }else {
+        $('#modify_email').css({'border-color': '#cb3638'});
+        $('#modify_email').shake(2, 10, 400);
+    }
+
 }
 
 function onPostTopic(){
