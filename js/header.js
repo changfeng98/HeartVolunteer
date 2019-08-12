@@ -148,6 +148,7 @@ function initUser() {
             $(".user_body").show();
             $(".user_head").attr("src", user_info.user_avatar);
             $(".user_name").text(user_info.nickname);
+            $(".change_city").text(user_info.city);
         }else {
             $(".no_login_body").hide();
             $(".user_body").show();
