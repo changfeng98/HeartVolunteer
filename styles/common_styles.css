@@ -5,6 +5,7 @@
     position: fixed;
     bottom: 185px;
     right: 90px;
+    z-index: 50;
 }
 
 #cat_dialog{

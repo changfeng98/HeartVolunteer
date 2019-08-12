@@ -9,6 +9,7 @@ function init() {
     initUser();
     $(".index_page").css({background: '#ff664b'});
     catWord_1_sleep();
+    showMap_2();
 
     //志愿人数、发起活动数ajax
     //发出:
@@ -317,4 +318,40 @@ function catWord_5() {
     $("#cat_word").html("喵喵喵~~");
     fadeAndZommIn(catDialog, catWord);
     setTimeout(catWord_1_sleep, 5000);
+}
+
+function showMap_1() {
+    setTimeout(function () {
+        $('#map_1').fadeIn(500);
+        $('#map_2').hide();
+        $('#map_3').hide();
+        $('#map_nav_1').css({'background':'rgba(238, 70, 57, 1)'});
+        $('#map_nav_2').css({'background':'rgba(255, 255, 255, 0.3)'});
+        $('#map_nav_3').css({'background':'rgba(255, 255, 255, 0.3)'});
+        showMap_2();
+    }, 5000);
+}
+
+function showMap_2() {
+    setTimeout(function () {
+        $('#map_1').hide();
+        $('#map_2').fadeIn(500);
+        $('#map_3').hide();
+        $('#map_nav_1').css({'background':'rgba(255, 255, 255, 0.3)'});
+        $('#map_nav_2').css({'background':'rgba(238, 70, 57, 1)'});
+        $('#map_nav_3').css({'background':'rgba(255, 255, 255, 0.3)'});
+        showMap_3();
+    }, 5000);
+}
+
+function showMap_3() {
+    setTimeout(function () {
+        $('#map_1').hide();
+        $('#map_2').hide();
+        $('#map_3').fadeIn(500);
+        $('#map_nav_1').css({'background':'rgba(255, 255, 255, 0.3)'});
+        $('#map_nav_2').css({'background':'rgba(255, 255, 255, 0.3)'});
+        $('#map_nav_3').css({'background':'rgba(238, 70, 57, 1)'});
+        showMap_1();
+    }, 5000);
 }
