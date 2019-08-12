@@ -26,6 +26,7 @@
                     <li id="nav_modify_info">修改信息</li>
                     <li id="nav_change_head">更换头像</li>
                     <li id="nav_change_password">修改密码</li>
+                    <li id="nav_logout" onclick="onLogout()">退出登录</li>
                 </ul>
             </div>
             <div class="mine_menu_item">
@@ -34,8 +35,8 @@
                     <li id="nav_post_topic">发布话题</li>
                     <li id="nav_participation_topic">参与话题</li>
                     <li id="nav_sent_topic">已发话题</li>
-                    <li id="nav_post_activity">发布话题</li>
-                    <li id="nav_sent_activity">已发话题</li>
+                    <li id="nav_post_activity">发布活动</li>
+                    <li id="nav_sent_activity">已发活动</li>
                 </ul>
             </div>
         </div>
@@ -46,51 +47,60 @@
                     <div class="mine_info_top_right">
                         <div class="mine_info_nickname_body">
                             <span class="mine_info_nickname">长风</span>
-                            <img class="mine_info_gender_icon" src="images/ic_gender_female.png"/>
                         </div>
                         <div class="mine_info_top_bottom">
-                            <span class="mine_info_gender" style="margin-right: 50px;">女</span>
                             <span class="mine_info_phone" style="margin-right: 50px;">18370589222</span>
                             <span class="mine_info_address">山东省日照市</span>
                         </div>
                     </div>
                 </div>
                 <div class="mine_info_bottom">
-                    <h3 style="width: 100%;text-align: left;margin: 60px 10px 10px 100px;">个人简介</h3>
+                    <h3 style="width: 100%;text-align: left;margin: 60px 10px 10px 100px;">组织简介</h3>
                     <span class="mine_info_introduce">我是一个小小的石头</span>
                 </div>
             </div>
             <div class="mine_modify_info" style="display: none;">
                 <div class="modify_info_line" style="margin-top: 30px">
-                    <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名</span>
-                    <input class="input_default" type="text" value="长风"/>
+                    <span>用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名</span>
+                    <input id="modify_org_username" class="input_default" type="text" value="长风" readonly="readonly"/>
                 </div>
                 <div class="modify_info_line">
-                    <span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
-                    <div class="gender_line">
-                        <div class="gender_line_item">
-                            <input id="input_gender_male" name="input_gender" type="radio" value="男" oninput="onStepThreeBlur();" onfocus="onStepThreeBlur();"/>
-                            <label for="input_gender_male" style="margin: 0 50px 0 0">男</label>
-                        </div>
-                        <div class="gender_line_item">
-                            <input id="input_gender_female" name="input_gender" type="radio" value="女" oninput="onStepThreeBlur();" onfocus="onStepThreeBlur();"/>
-                            <label for="input_gender_female">女</label>
-                        </div>
-                    </div>
+                    <span>组&nbsp;织&nbsp;电&nbsp;话</span>
+                    <input id="modify_org_phone" class="input_default" type="text" value="18370589222"/>
                 </div>
                 <div class="modify_info_line">
-                    <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span>
-                    <input class="input_default" type="text" value="18370589222"/>
+                    <span>组&nbsp;织&nbsp;省&nbsp;份</span>
+                    <input id="modify_org_province" class="input_default" type="text" value="山东省日照市"/>
                 </div>
                 <div class="modify_info_line">
-                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span>
-                    <input class="input_default" type="text" value="山东省日照市"/>
+                    <span>组&nbsp;织&nbsp;城&nbsp;市</span>
+                    <input id="modify_org_city" class="input_default" type="text" value="山东省日照市"/>
                 </div>
                 <div class="modify_info_line">
-                    <span>个人简介</span>
-                    <input class="input_default" type="text" value="我是一个小小的石头"/>
+                    <span>组&nbsp;织&nbsp;简&nbsp;介</span>
+                    <input id="modify_org_introduce" class="input_default" type="text" value="请输入组织简介"/>
                 </div>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
+                <div class="modify_info_line">
+                    <span>组&nbsp;织&nbsp;邮&nbsp;箱</span>
+                    <input id="modify_org_email" class="input_default" type="text" value="请输入组织简介"/>
+                </div>
+                <div class="modify_info_line">
+                    <span>管理员电话</span>
+                    <input id="modify_ad_phone" class="input_default" type="text" value="18370589222"/>
+                </div>
+                <div class="modify_info_line">
+                    <span>管理员身份证</span>
+                    <input id="modify_ad_id" class="input_default" type="text" value="18370589222"/>
+                </div>
+                <div class="modify_info_line">
+                    <span>管理员邮箱</span>
+                    <input id="modify_ad_email" class="input_default" type="text" value="18370589222"/>
+                </div>
+                <div class="modify_info_line">
+                    <span>管理员名称</span>
+                    <input id="modify_ad_username" class="input_default" type="text" value="18370589222"/>
+                </div>
+                <button class="main_button_default" style="margin: 50px 0" onclick="onModifyInfoManager()">确认更改</button>
             </div>
             <div class="mine_change_head" style="display: none;">
                 <img src="images/ic_head_default.png" onclick="$('#file_upload').click()" style="width: 100px;height: 100px;margin: 50px 0 20px 0;border-radius: 50%;"/>
@@ -101,41 +111,41 @@
             <div class="mine_change_password" style="display: none;">
                 <div class="modify_info_line">
                     <span>原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input class="input_default" type="text" placeholder="请输入原密码"/>
+                    <input id="origin_pwd" class="input_default" type="text" placeholder="请输入原密码"/>
                 </div>
                 <div class="modify_info_line">
                     <span>新&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input class="input_default" type="text" placeholder="请输入新密码"/>
+                    <input id="new_pwd" class="input_default" type="text" placeholder="请输入新密码"/>
                 </div>
                 <div class="modify_info_line">
                     <span>确认密码</span>
-                    <input class="input_default" type="text" placeholder="清确认密码"/>
+                    <input id="verify_pwd" class="input_default" type="text" placeholder="清确认密码"/>
                 </div>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
+                <button class="main_button_default" style="margin: 50px 0" onclick="onChangePWD()">确认更改</button>
             </div>
             <div class="mine_post_topic" style="display: none;">
                 <div class="mine_body_item_content">
                     <div class="post_topic_head">
                         <img class="article_pic" src="images/ic_upload_pic.png"/>
                         <div class="post_topic_title_content">
-                            <input class="article_title" type="text" placeholder="标题"/>
+                            <input id="article_title" class="article_title" type="text" placeholder="标题"/>
                             <span class="article_tag_tip">&nbsp;选择标签</span>
                             <div class="article_tag_content">
                                 <ul>
-                                    <li>生态保护</li>
-                                    <li>文化/艺术</li>
-                                    <li>动物保护</li>
-                                    <li>儿童关怀</li>
-                                    <li>支教助学</li>
-                                    <li>扶老助残</li>
-                                    <li>其它</li>
+                                    <li class="type_1" onclick="onSelectType_1()">生态保护</li>
+                                    <li class="type_2" onclick="onSelectType_2()">文化/艺术</li>
+                                    <li class="type_3" onclick="onSelectType_3()">动物保护</li>
+                                    <li class="type_4" onclick="onSelectType_4()">儿童关怀</li>
+                                    <li class="type_5" onclick="onSelectType_5()">支教助学</li>
+                                    <li class="type_6" onclick="onSelectType_6()">扶老助残</li>
+                                    <li class="type_7" onclick="onSelectType_7()">其它</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <textarea class="article_words" placeholder="在此处开始您的创作..."></textarea>
+                    <textarea id="article_words" class="article_words" placeholder="在此处开始您的创作..."></textarea>
                 </div>
-                <button class="main_button_default post_topic_btn">发布话题</button>
+                <button class="main_button_default post_topic_btn" onclick="onPostTopicManager()">发布话题</button>
             </div>
             <div class="mine_participation_topic" style="display: none;">
                 <div class="participation_topic_filter_content">
@@ -222,43 +232,43 @@
             <div class="mine_post_activity" style="display: none;">
                 <div class="mine_body_item_content">
                     <div class="post_topic_head">
-                        <img class="article_pic" src="images/ic_upload_pic.png"/>
+                        <img id="act_pic" class="article_pic" src="images/ic_upload_pic.png"/>
                         <div class="post_topic_title_content">
-                            <input class="article_title" type="text" placeholder="活动标题"/>
+                            <input id="act_name" class="article_title" type="text" placeholder="活动标题"/>
                             <span class="article_tag_tip">&nbsp;选择标签</span>
                             <div class="article_tag_content">
                                 <ul>
-                                    <li>生态保护</li>
-                                    <li>文化/艺术</li>
-                                    <li>动物保护</li>
-                                    <li>儿童关怀</li>
-                                    <li>支教助学</li>
-                                    <li>扶老助残</li>
-                                    <li>其它</li>
+                                    <li class="type_1" onclick="onSelectType_1()">生态保护</li>
+                                    <li class="type_2" onclick="onSelectType_2()">文化/艺术</li>
+                                    <li class="type_3" onclick="onSelectType_3()">动物保护</li>
+                                    <li class="type_4" onclick="onSelectType_4()">儿童关怀</li>
+                                    <li class="type_5" onclick="onSelectType_5()">支教助学</li>
+                                    <li class="type_6" onclick="onSelectType_6()">扶老助残</li>
+                                    <li class="type_7" onclick="onSelectType_7()">其它</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="post_activity_input_line" style="border-bottom: #e9e9e9 solid 1px;">
-                        <input class="input_default" type="text" placeholder="活动地点" style="width: 400px;border-right: #e9e9e9 solid 1px;"/>
-                        <input class="input_default" type="text" placeholder="需招募人数" style="width: 400px"/>
+                        <input id="act_region" class="input_default" type="text" placeholder="活动地点" style="width: 400px;border-right: #e9e9e9 solid 1px;"/>
+                        <input id="regional_sponsors" class="input_default" type="text" placeholder="需招募人数" oninput="value=value.replace(/[^\d]/g,'')" style="width: 400px"/>
                     </div>
                     <div class="post_activity_input_line" style="border-bottom: #e9e9e9 solid 1px;">
                         <div class="post_activity_input_line_item_content" style="width: 400px;border-right: #e9e9e9 solid 1px;">
-                            <input class="input_default" type="text" placeholder="志愿时长" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 345px;"><span class="birthday_label" style="margin-right: 20px">小时</span>
+                            <input id="initiation_time" class="input_default" type="text" placeholder="志愿时长" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 345px;"><span class="birthday_label" style="margin-right: 20px">小时</span>
                         </div>
                         <div class="post_activity_input_line_item_content" style="width: 400px">
                             <span>截止时间</span>
                             <div class="post_activity_date_input_body">
-                                <input class="input_default" type="text" placeholder="年份" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">年</span>
-                                <input class="input_default" type="text" placeholder="月" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">月</span>
-                                <input class="input_default" type="text" placeholder="日" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">日</span>
+                                <input id="deadline_year" class="input_default" type="text" placeholder="年份" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">年</span>
+                                <input id="deadline_month" class="input_default" type="text" placeholder="月" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">月</span>
+                                <input id="deadline_day" class="input_default" type="text" placeholder="日" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">日</span>
                             </div>
                         </div>
                     </div>
-                    <textarea class="article_words" placeholder="在此处填写活动介绍..."></textarea>
+                    <textarea id="recruitment" class="article_words" placeholder="在此处填写活动介绍..."></textarea>
                 </div>
-                <button class="main_button_default post_topic_btn">发布活动</button>
+                <button class="main_button_default post_topic_btn" onclick="onPostActivityManager()">发布活动</button>
             </div>
             <div class="mine_sent_activity" style="display: none;">
                 <div class="participation_topic_filter_content">
@@ -302,6 +312,7 @@
     </div>
 
 
+    <script type="text/javascript" src="js/dialog_tips.js"></script>
     <script type="text/javascript" src="js/footer.js"></script>
     <script type="text/javascript" src="js/minePage.js"></script>
 </body>

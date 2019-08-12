@@ -1,4 +1,5 @@
 var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_head"), $("#nav_change_password"), $("#nav_post_topic"), $("#nav_participation_topic"), $("#nav_sent_topic"), $("#nav_post_activity"), $("#nav_sent_activity")];
+var selectedTag = '';
 
 function init(){
     initUser();
@@ -7,42 +8,84 @@ function init(){
 }
 
 function initUserInfo(){
-    $('.mine_info_head').attr('src', user_info.user_avatar);
-    $('#modify_avatar').attr('src', user_info.user_avatar);
-    $('.mine_info_nickname').text(user_info.nickname);
-    $('.mine_info_gender').text(user_info.sex);
-    if(user_info.sex == '男'){
-        $('.mine_info_gender_icon').attr('src', 'images/ic_gender_male.png');
-    }else{
-        $('.mine_info_gender_icon').attr('src', 'images/ic_gender_female.png');
-    }
-    $('.mine_info_phone').text(user_info.user_phone);
-    $('.mine_info_address').text(user_info.province + user_info.city);
-    $('.mine_info_introduce').text(user_info.introduce);
+    if(user_info.b == '1'){
+        $('.mine_info_head').attr('src', user_info.user_avatar);
+        $('#modify_avatar').attr('src', user_info.user_avatar);
+        $('.mine_info_nickname').text(user_info.nickname);
+        $('.mine_info_gender').text(user_info.sex);
+        if(user_info.sex == '男'){
+            $('.mine_info_gender_icon').attr('src', 'images/ic_gender_male.png');
+        }else{
+            $('.mine_info_gender_icon').attr('src', 'images/ic_gender_female.png');
+        }
+        $('.mine_info_phone').text(user_info.user_phone);
+        $('.mine_info_address').text(user_info.province + user_info.city);
+        if(user_info.introduce != '' && user_info.introduce != null){
+            $('.mine_info_introduce').text(user_info.introduce);
+        }else {
+            $('.mine_info_introduce').text('无');
+        }
 
-    $('#modify_username').val(user_info.nickname);
-    if(user_info.sex == '男'){
-        $('#input_gender_male').attr('checked','checked');
-        $('#input_gender_female').removeAttr('checked');
-    }else{
-        $('#input_gender_male').removeAttr('checked');
-        $('#input_gender_female').attr('checked','checked');
+        $('#modify_username').val(user_info.nickname);
+        if(user_info.sex == '男'){
+            $('#input_gender_male').attr('checked','checked');
+            $('#input_gender_female').removeAttr('checked');
+        }else{
+            $('#input_gender_male').removeAttr('checked');
+            $('#input_gender_female').attr('checked','checked');
+        }
+        $('#modify_phone').val(user_info.user_phone);
+        $('#modify_province').val(user_info.province);
+        $('#modify_city').val(user_info.city);
+        $('#modify_introduce').val(user_info.introduce);
+        $('#modify_email').val(user_info.user_mailbox);
+    }else {
+        $('.mine_info_head').attr('src', user_info.org_avatar);
+        $('#modify_avatar').attr('src', user_info.org_avatar);
+        $('.mine_info_nickname').text(user_info.org_name);
+        $('.mine_info_phone').text(user_info.org_phone);
+        $('.mine_info_address').text(user_info.province + user_info.city);
+        if(user_info.introduce != '' && user_info.introduce != null){
+            $('.mine_info_introduce').text(user_info.introduce);
+        }else {
+            $('.mine_info_introduce').text('无');
+        }
+
+        $('#modify_org_username').val(user_info.org_name);
+        $('#modify_org_phone').val(user_info.org_phone);
+        $('#modify_org_province').val(user_info.province);
+        $('#modify_org_city').val(user_info.city);
+        $('#modify_org_introduce').val(user_info.introduce);
+        $('#modify_org_email').val(user_info.org_mailbox);
+        $('#modify_ad_phone').val(user_info.ad_phone);
+        $('#modify_ad_id').val(user_info.ad_id);
+        $('#modify_ad_email').val(user_info.ad_mailbox);
+        $('#modify_ad_username').val(user_info.ad_name);
     }
-    $('#modify_phone').val(user_info.user_phone);
-    $('#modify_province').val(user_info.province);
-    $('#modify_city').val(user_info.city);
-    $('#modify_introduce').val(user_info.introduce);
-    $('#modify_email').val(user_info.user_mailbox);
+
 }
 
 function updateSession(data) {
-    user_info.nickname = data.nickname;
-    user_info.sex = data.gender;
-    user_info.user_phone = data.phoneNumber;
-    user_info.province = data.company;
-    user_info.address = data.address;
-    sessionStorage.setItem("user_info", JSON.stringify(user_info));
-    location.reload();
+    if(user_info.b == '1'){
+        user_info.nickname = data.nickname;
+        user_info.sex = data.gender;
+        user_info.user_phone = data.phoneNumber;
+        user_info.province = data.company;
+        user_info.address = data.address;
+        sessionStorage.setItem("user_info", JSON.stringify(user_info));
+    }else {
+        user_info.ad_id = data.ad_id;
+        user_info.ad_mailbox = data.ad_mailbox;
+        user_info.ad_name = data.ad_name;
+        user_info.ad_phone = data.ad_phone;
+        user_info.org_avatar = data.org_avatar;
+        user_info.org_mailbox = data.org_mailbox;
+        user_info.org_name = data.org_name;
+        user_info.org_password = data.org_password;
+        user_info.org_phone = data.org_phone;
+        sessionStorage.setItem("user_info", JSON.stringify(user_info));
+    }
+    initUserInfo();
     showTip("信息修改成功！");
 }
 
@@ -63,36 +106,30 @@ function onModifyInfo(){
                     $('#modify_province').css({'border-color': 'rgba(203,54,56,0)'});
                     if(modify_city != '' && modify_city != null){
                         $('#modify_city').css({'border-color': 'rgba(203,54,56,0)'});
-                        if(modify_introduce != '' && modify_introduce != null){
-                            $('#modify_introduce').css({'border-color': 'rgba(203,54,56,0)'});
-                            //修改信息ajax
-                            var data= {name:user_info.nickname,email:modify_email,nickname:modify_gender,phoneNumber:modify_phone,idCard:modify_province,gender:modify_city,introduce:modify_introduce};
-                            console.log(data);
-                            console.log("ModifyVolunteerInfoAjax");
-                            $.ajax({
-                                url: "/IBDS/update_Volunteer.php?data="+JSON.stringify(data), //后台请求数据
-                                dataType: "json",
-                                type: "get",
-                                success: function (msg) {
-                                    console.log("ModifyVolunteerInfoAjax:Success!");
-                                    console.log(msg);
-                                    if(msg.a == '1'){
-                                        updateSession(data);
-                                    }else {
-                                        showTip("信息修改失败！");
-                                    }
-                                },
-                                error: function (msg) {
-                                    console.log("ModifyVolunteerInfoAjax:Error!");
-                                    console.log(msg);
-                                    alert("请求失败，请重试");
+                        //修改信息ajax
+                        var data= {name:user_info.nickname,email:modify_email,nickname:modify_gender,phoneNumber:modify_phone,idCard:modify_province,gender:modify_city,introduce:modify_introduce};
+                        console.log(data);
+                        console.log("ModifyVolunteerInfoAjax");
+                        $.ajax({
+                            url: "/IBDS/update_Volunteer.php?data="+JSON.stringify(data), //后台请求数据
+                            dataType: "json",
+                            type: "get",
+                            success: function (msg) {
+                                console.log("ModifyVolunteerInfoAjax:Success!");
+                                console.log(msg);
+                                if(msg.a == '1'){
+                                    updateSession(data);
+                                }else {
                                     showTip("信息修改失败！");
                                 }
-                            });
-                        }else {
-                            $('#modify_introduce').css({'border-color': '#cb3638'});
-                            $('#modify_introduce').shake(2, 10, 400);
-                        }
+                            },
+                            error: function (msg) {
+                                console.log("ModifyVolunteerInfoAjax:Error!");
+                                console.log(msg);
+                                alert("请求失败，请重试");
+                                showTip("信息修改失败！");
+                            }
+                        });
                     }else {
                         $('#modify_city').css({'border-color': '#cb3638'});
                         $('#modify_city').shake(2, 10, 400);
@@ -116,104 +153,225 @@ function onModifyInfo(){
 
 }
 
-function onPostTopic(){
-    var topic_name = $.trim($('.article_title').val());
-    var topic_name = $.trim($('.article_title').val());
-    var topic_name = $.trim($('.article_title').val());
-    var topic_name = $.trim($('.article_title').val());
-    //PostTopic
-    var data= {topic_name:1};
-    console.log("OrganizerAjax: ");
-    console.log(data);
-    $.ajax({
-        url: "service/organizer.php?data= "+JSON.stringify(data), //后台请求数据
-        dataType: "json",
-        data: JSON.stringify(data),
-        type: "GET",
-        success: function (msg) {
-            console.log("OrganizerAjax:success!");
-            console.log(msg);
-        },
-        error: function (msg) {
-            console.log("OrganizerAjax:error!");
-            console.log(msg);
-            var parsedJson = JSON.stringify(msg);
-            console.log(parsedJson);
-            var jsonData = JSON.parse(parsedJson);
-            console.log(jsonData);
-            alert("请求失败，请重试");
+function onChangePWD(){
+    var origin_pwd = $.trim($('#origin_pwd').val());
+    var new_pwd = $.trim($('#new_pwd').val());
+    var verify_pwd = $.trim($('#verify_pwd').val());
+    if(origin_pwd.length >= 6 && origin_pwd.length <= 16){
+        $('#origin_pwd').css({'border-color': 'rgba(203,54,56,0)'});
+        if(new_pwd.length >= 6 && new_pwd.length <= 16){
+            $('#new_pwd').css({'border-color': 'rgba(203,54,56,0)'});
+            if(verify_pwd === new_pwd){
+                $('#verify_pwd').css({'border-color': 'rgba(203,54,56,0)'});
+                //修改密码ajax_changePWD_POST
+                //发出(data)：用户名username, 原密码origin_pwd, 新密码new_pwd
+                //接收(json)：ifsuccess:0(失败),1(成功)
+                var data= {name:user_info.nickname,old_password:origin_pwd,password:verify_pwd};
+                console.log(data);
+                console.log("ChangePWDAjax");
+                $.ajax({
+                    url: "service/update_pass.php?data= "+JSON.stringify(data), //后台请求数据
+                    dataType: "json",
+                    data:JSON.stringify(data),
+                    type: "post",
+                    success: function (msg) {
+                        console.log("ChangePWDAjax:Success!");
+                        console.log(msg);
+                        if(msg.a == '1'){
+                            showTip("密码修改成功！");
+                        }else {
+                            showTip("原密码错误，密码修改失败！");
+                        }
+                    },
+                    error: function (msg) {
+                        console.log("ChangePWDAjax:Error!");
+                        console.log(msg);
+                        alert("请求失败，请重试");
+                        if(msg.ifsuccess == '1'){
+                            showTip("密码修改成功！");
+                        }else {
+                            showTip("密码修改失败！");
+                        }
+                    }
+                });
+            }else {
+                $('#verify_pwd').css({'border-color': '#cb3638'});
+                $('#verify_pwd').shake(2, 10, 400);
+            }
+        }else {
+            $('#new_pwd').css({'border-color': '#cb3638'});
+            $('#new_pwd').shake(2, 10, 400);
         }
-    });
+    }else {
+        $('#origin_pwd').css({'border-color': '#cb3638'});
+        $('#origin_pwd').shake(2, 10, 400);
+    }
+}
+
+function onPostTopic(){
+    var article_pic;
+    var article_title = $.trim($('#article_title').val());
+    var article_words = $.trim($('#article_words').val());
+    // if (article_pic != null){
+        if(article_title != '' && article_title != null){
+            $('#article_title').css({'border-color': 'rgba(203,54,56,0)'});
+            if(selectedTag != '' && selectedTag != null && selectedTag != undefined){
+                $('.article_tag_content').css({'border-color': 'rgba(203,54,56,0)'});
+                if(article_words != '' && article_words != null){
+                    $('#article_words').css({'border-color': 'rgba(203,54,56,0)'});
+                    //PostTopic
+                    var data= {topic_name:article_title,topic_class:selectedTag,user_name:user_info.nickname,topic_content:article_words,topic_image:article_pic};
+                    console.log("OrganizerAjax: ");
+                    console.log(data);
+                    $.ajax({
+                        url: "service/send_topic.php?data= "+JSON.stringify(data), //后台请求数据
+                        dataType: "json",
+                        data: JSON.stringify(data),
+                        type: "GET",
+                        success: function (msg) {
+                            console.log("OrganizerAjax:success!");
+                            console.log(msg);
+                            if(msg.a == '1'){
+                                showTip('发布话题成功!');
+                            }else {
+                                showTip('发布话题失败!');
+                            }
+                        },
+                        error: function (msg) {
+                            console.log("OrganizerAjax:error!");
+                            console.log(msg);
+                            alert("请求失败，请重试");
+                        }
+                    });
+                }else {
+                    $('#article_words').css({'border-color': '#cb3638'});
+                }
+            }else {
+                $('.article_tag_content').css({'border-color': '#cb3638'});
+            }
+        }else {
+            $('#article_title').css({'border-color': '#cb3638'});
+        }
+    // }
+}
+
+function renderingTopicHead(jqNode) {
+    jqNode.html('');
+    jqNode.append('<div class="participation_topic_filter_content">\n' +
+        '                    <ul>\n' +
+        '                        <li>全部</li>\n' +
+        '                        <li>最近一周</li>\n' +
+        '                        <li>最近一月</li>\n' +
+        '                        <li>最近一年</li>\n' +
+        '                    </ul>\n' +
+        '                    <div class="participation_topic_search">\n' +
+        '                        <input class="input_square article_topic_search_input" type="text" placeholder="话题主题"/>\n' +
+        '                        <button class="secondary_button_default_square participation_search_title">搜索</button>\n' +
+        '                    </div>\n' +
+        '                </div>');
+}
+
+function renderingTopic(jqNode, msg) {
+    for(var i in msg){
+        jqNode.append('<div class="participation_topic_body">\n' +
+            '                    <img class="participation_topic_pic" src="images/table/group_1.jpg" onclick=""/>\n' +
+            '                    <div class="participation_topic_item">\n' +
+            '                        <div class="participation_topic_item_top">\n' +
+            '                            <h3 class="participation_topic_item_topic">网络行动能改变世界吗？</h3>\n' +
+            '                            <span class="participation_topic_publisher">发布人：张丰</span>\n' +
+            '                        </div>\n' +
+            '                        <span class="participation_topic_item_short">编者按：互联网时代，“行动”的门槛变得前所未有的低。点个赞，签个名，转发一项倡议，参与一项讨论，只要在网络上对某个公共话题付出些微的努力，都可以说是“行动”的一种。正因为它包罗万象，这一现象也出现了众多别名，比如“懒汉行动主义”“点击主义”“键盘侠”等等。种种别名虽各有侧重，却都难免带有嘲谑甚至谴责的意味。</span>\n' +
+            '                        <div class="participation_topic_item_bottom">\n' +
+            '                            <span class="participation_topic_tag">文化/艺术</span>\n' +
+            '                            <span class="participation_topic_comment">100&nbsp;评论</span>\n' +
+            '                            <span class="participation_topic_date">2018-10-25</span>\n' +
+            '                        </div>\n' +
+            '                    </div>\n' +
+            '                </div>');
+    }
+
+}
+
+function onLogout() {
+    sessionStorage.removeItem("user_info");
+    location.href = 'home.html';
 }
 
 function onSelectType_1(){
-    $('#type_1').addClass("article_tag_selected");
-    $('#type_2').removeClass("article_tag_selected");
-    $('#type_3').removeClass("article_tag_selected");
-    $('#type_4').removeClass("article_tag_selected");
-    $('#type_5').removeClass("article_tag_selected");
-    $('#type_6').removeClass("article_tag_selected");
-    $('#type_7').removeClass("article_tag_selected");
+    selectedTag = '生态保护';
+    $('.type_1').addClass("article_tag_selected");
+    $('.type_2').removeClass("article_tag_selected");
+    $('.type_3').removeClass("article_tag_selected");
+    $('.type_4').removeClass("article_tag_selected");
+    $('.type_5').removeClass("article_tag_selected");
+    $('.type_6').removeClass("article_tag_selected");
+    $('.type_7').removeClass("article_tag_selected");
 }
 
 function onSelectType_2(){
-    $('#type_1').removeClass("article_tag_selected");
-    $('#type_2').addClass("article_tag_selected");
-    $('#type_3').removeClass("article_tag_selected");
-    $('#type_4').removeClass("article_tag_selected");
-    $('#type_5').removeClass("article_tag_selected");
-    $('#type_6').removeClass("article_tag_selected");
-    $('#type_7').removeClass("article_tag_selected");
+    selectedTag = '文化/艺术';
+    $('.type_1').removeClass("article_tag_selected");
+    $('.type_2').addClass("article_tag_selected");
+    $('.type_3').removeClass("article_tag_selected");
+    $('.type_4').removeClass("article_tag_selected");
+    $('.type_5').removeClass("article_tag_selected");
+    $('.type_6').removeClass("article_tag_selected");
+    $('.type_7').removeClass("article_tag_selected");
 }
 
 function onSelectType_3(){
-    $('#type_1').removeClass("article_tag_selected");
-    $('#type_2').removeClass("article_tag_selected");
-    $('#type_3').addClass("article_tag_selected");
-    $('#type_4').removeClass("article_tag_selected");
-    $('#type_5').removeClass("article_tag_selected");
-    $('#type_6').removeClass("article_tag_selected");
-    $('#type_7').removeClass("article_tag_selected");
+    selectedTag = '动物保护';
+    $('.type_1').removeClass("article_tag_selected");
+    $('.type_2').removeClass("article_tag_selected");
+    $('.type_3').addClass("article_tag_selected");
+    $('.type_4').removeClass("article_tag_selected");
+    $('.type_5').removeClass("article_tag_selected");
+    $('.type_6').removeClass("article_tag_selected");
+    $('.type_7').removeClass("article_tag_selected");
 }
 
 function onSelectType_4(){
-    $('#type_1').removeClass("article_tag_selected");
-    $('#type_2').removeClass("article_tag_selected");
-    $('#type_3').removeClass("article_tag_selected");
-    $('#type_4').addClass("article_tag_selected");
-    $('#type_5').removeClass("article_tag_selected");
-    $('#type_6').removeClass("article_tag_selected");
-    $('#type_7').removeClass("article_tag_selected");
+    selectedTag = '儿童关怀';
+    $('.type_1').removeClass("article_tag_selected");
+    $('.type_2').removeClass("article_tag_selected");
+    $('.type_3').removeClass("article_tag_selected");
+    $('.type_4').addClass("article_tag_selected");
+    $('.type_5').removeClass("article_tag_selected");
+    $('.type_6').removeClass("article_tag_selected");
+    $('.type_7').removeClass("article_tag_selected");
 }
 
 function onSelectType_5(){
-    $('#type_1').removeClass("article_tag_selected");
-    $('#type_2').removeClass("article_tag_selected");
-    $('#type_3').removeClass("article_tag_selected");
-    $('#type_4').removeClass("article_tag_selected");
-    $('#type_5').addClass("article_tag_selected");
-    $('#type_6').removeClass("article_tag_selected");
-    $('#type_7').removeClass("article_tag_selected");
+    selectedTag = '支教助学';
+    $('.type_1').removeClass("article_tag_selected");
+    $('.type_2').removeClass("article_tag_selected");
+    $('.type_3').removeClass("article_tag_selected");
+    $('.type_4').removeClass("article_tag_selected");
+    $('.type_5').addClass("article_tag_selected");
+    $('.type_6').removeClass("article_tag_selected");
+    $('.type_7').removeClass("article_tag_selected");
 }
 
 function onSelectType_6(){
-    $('#type_1').removeClass("article_tag_selected");
-    $('#type_2').removeClass("article_tag_selected");
-    $('#type_3').removeClass("article_tag_selected");
-    $('#type_4').removeClass("article_tag_selected");
-    $('#type_5').removeClass("article_tag_selected");
-    $('#type_6').addClass("article_tag_selected");
-    $('#type_7').removeClass("article_tag_selected");
+    selectedTag = '扶老助残';
+    $('.type_1').removeClass("article_tag_selected");
+    $('.type_2').removeClass("article_tag_selected");
+    $('.type_3').removeClass("article_tag_selected");
+    $('.type_4').removeClass("article_tag_selected");
+    $('.type_5').removeClass("article_tag_selected");
+    $('.type_6').addClass("article_tag_selected");
+    $('.type_7').removeClass("article_tag_selected");
 }
 
 function onSelectType_7(){
-    $('#type_1').removeClass("article_tag_selected");
-    $('#type_2').removeClass("article_tag_selected");
-    $('#type_3').removeClass("article_tag_selected");
-    $('#type_4').removeClass("article_tag_selected");
-    $('#type_5').removeClass("article_tag_selected");
-    $('#type_6').removeClass("article_tag_selected");
-    $('#type_7').addClass("article_tag_selected");
+    selectedTag = '其它';
+    $('.type_1').removeClass("article_tag_selected");
+    $('.type_2').removeClass("article_tag_selected");
+    $('.type_3').removeClass("article_tag_selected");
+    $('.type_4').removeClass("article_tag_selected");
+    $('.type_5').removeClass("article_tag_selected");
+    $('.type_6').removeClass("article_tag_selected");
+    $('.type_7').addClass("article_tag_selected");
 }
 
 $.fn.showMineItem = function (obj) {
@@ -277,6 +435,7 @@ $("#nav_change_password").click(function (e) {
 });
 
 $("#nav_post_topic").click(function (e) {
+    selectedTag = '';
     $(".mine_checking_data").hide();
     $(".mine_modify_info").hide();
     $(".mine_change_head").hide();
@@ -298,6 +457,28 @@ $("#nav_participation_topic").click(function (e) {
     $(".mine_sent_topic").hide();
     $(".mine_post_activity").hide();
     $(".mine_sent_activity").hide();
+
+    //参与的话题
+    var data= {name:user_info.nickname};
+    console.log(data);
+    console.log("ParticipationTopicAjax");
+    $.ajax({
+        url: "service/partake_post.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("ParticipationTopicAjax:Success!");
+            console.log(msg);
+            renderingTopicHead($('.mine_participation_topic'));
+            renderingTopic($('.mine_participation_topic'), msg);
+        },
+        error: function (msg) {
+            console.log("ParticipationTopicAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
 });
 
 $("#nav_sent_topic").click(function (e) {
@@ -310,9 +491,32 @@ $("#nav_sent_topic").click(function (e) {
     $(".mine_sent_topic").showMineItem($("#nav_sent_topic"));
     $(".mine_post_activity").hide();
     $(".mine_sent_activity").hide();
+
+    //发布的话题
+    var data= {name:user_info.nickname};
+    console.log(data);
+    console.log("already_postAjax");
+    $.ajax({
+        url: "service/already_post.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("already_postAjax:Success!");
+            console.log(msg);
+            renderingTopicHead($('.mine_sent_topic'));
+            renderingTopic($('.mine_sent_topic'), msg);
+        },
+        error: function (msg) {
+            console.log("already_postAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
 });
 
 $("#nav_post_activity").click(function (e) {
+    selectedTag = '';
     $(".mine_checking_data").hide();
     $(".mine_modify_info").hide();
     $(".mine_change_head").hide();
@@ -334,4 +538,223 @@ $("#nav_sent_activity").click(function (e) {
     $(".mine_sent_topic").hide();
     $(".mine_post_activity").hide();
     $(".mine_sent_activity").showMineItem($("#nav_sent_activity"));
+
+    //发布的活动
+    var data= {name:user_info.org_name};
+    console.log(data);
+    console.log("already_postAjax");
+    $.ajax({
+        url: "service/already_activity.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("already_postAjax:Success!");
+            console.log(msg);
+            renderingTopicHead($('.mine_sent_activity'));
+            renderingTopic($('.mine_sent_activity'), msg);
+        },
+        error: function (msg) {
+            console.log("already_postAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
 });
+
+function onModifyInfoManager(){
+    var modify_org_username = $.trim($('#modify_org_username').val());
+    var modify_org_phone = $.trim($('#modify_org_phone').val());
+    var modify_org_province = $.trim($('#modify_org_province').val());
+    var modify_org_city = $.trim($('#modify_org_city').val());
+    var modify_org_introduce = $.trim($('#modify_org_introduce').val());
+    var modify_org_email = $.trim($('#modify_org_email').val());
+    var modify_ad_phone = $.trim($('#modify_ad_phone').val());
+    var modify_ad_id = $.trim($('#modify_ad_id').val());
+    var modify_ad_email = $.trim($('#modify_ad_email').val());
+    var modify_ad_username = $.trim($('#modify_ad_username').val());
+    if(modify_org_phone != '' && modify_org_phone != null){
+        $('#modify_org_phone').css({'border-color': 'rgba(203,54,56,0)'});
+        if(modify_org_email != '' && modify_org_email != null){
+            $('#modify_org_email').css({'border-color': 'rgba(203,54,56,0)'});
+            if(modify_ad_phone != '' && modify_ad_phone != null){
+                $('#modify_ad_phone').css({'border-color': 'rgba(203,54,56,0)'});
+                if(modify_ad_id != '' && modify_ad_id != null){
+                    $('#modify_ad_id').css({'border-color': 'rgba(203,54,56,0)'});
+                    if(modify_ad_email != '' && modify_ad_email != null){
+                        $('#modify_ad_email').css({'border-color': 'rgba(203,54,56,0)'});
+                        if(modify_ad_username != '' && modify_ad_username != null){
+                            $('#modify_ad_username').css({'border-color': 'rgba(203,54,56,0)'});
+                            //修改信息ajax
+                            var data= {org_name:modify_org_username,org_mailbox:modify_org_email,org_phone:modify_org_phone,ad_mailbox:modify_ad_email,ad_name:modify_ad_username,ad_phone:modify_ad_phone,ad_id:modify_ad_id};
+                            console.log(data);
+                            console.log("ModifyVolunteerInfoAjax");
+                            $.ajax({
+                                url: "/IBDS/update_organizer.php?data="+JSON.stringify(data), //后台请求数据
+                                dataType: "json",
+                                type: "get",
+                                success: function (msg) {
+                                    console.log("ModifyVolunteerInfoAjax:Success!");
+                                    console.log(msg);
+                                    if(msg.a == '1'){
+                                        updateSession(data);
+                                    }else {
+                                        showTip("信息修改失败！");
+                                    }
+                                },
+                                error: function (msg) {
+                                    console.log("ModifyVolunteerInfoAjax:Error!");
+                                    console.log(msg);
+                                    alert("请求失败，请重试");
+                                    showTip("信息修改失败！");
+                                }
+                            });
+                        }else {
+                            $('#modify_ad_username').css({'border-color': '#cb3638'});
+                            $('#modify_ad_username').shake(2, 10, 400);
+                        }
+                    }else {
+                        $('#modify_ad_email').css({'border-color': '#cb3638'});
+                        $('#modify_ad_email').shake(2, 10, 400);
+                    }
+                }else {
+                    $('#modify_ad_id').css({'border-color': '#cb3638'});
+                    $('#modify_ad_id').shake(2, 10, 400);
+                }
+            }else {
+                $('#modify_ad_phone').css({'border-color': '#cb3638'});
+                $('#modify_ad_phone').shake(2, 10, 400);
+            }
+        }else {
+            $('#modify_org_email').css({'border-color': '#cb3638'});
+            $('#modify_org_email').shake(2, 10, 400);
+        }
+    }else {
+        $('#modify_org_phone').css({'border-color': '#cb3638'});
+        $('#modify_org_phone').shake(2, 10, 400);
+    }
+}
+
+function onPostTopicManager(){
+    var article_pic;
+    var article_title = $.trim($('#article_title').val());
+    var article_words = $.trim($('#article_words').val());
+    // if (article_pic != null){
+    if(article_title != '' && article_title != null){
+        $('#article_title').css({'border-color': 'rgba(203,54,56,0)'});
+        if(selectedTag != '' && selectedTag != null && selectedTag != undefined){
+            $('.article_tag_content').css({'border-color': 'rgba(203,54,56,0)'});
+            if(article_words != '' && article_words != null){
+                $('#article_words').css({'border-color': 'rgba(203,54,56,0)'});
+                //PostTopic
+                var data= {topic_name:article_title,topic_class:selectedTag,user_name:user_info.org_name,topic_content:article_words,topic_image:article_pic};
+                console.log("OrganizerAjax: ");
+                console.log(data);
+                $.ajax({
+                    url: "service/send_topic.php?data= "+JSON.stringify(data), //后台请求数据
+                    dataType: "json",
+                    data: JSON.stringify(data),
+                    type: "GET",
+                    success: function (msg) {
+                        console.log("OrganizerAjax:success!");
+                        console.log(msg);
+                        if(msg.a == '1'){
+                            showTip('发布话题成功!');
+                        }else {
+                            showTip('发布话题失败!');
+                        }
+                    },
+                    error: function (msg) {
+                        console.log("OrganizerAjax:error!");
+                        console.log(msg);
+                        alert("请求失败，请重试");
+                    }
+                });
+            }else {
+                $('#article_words').css({'border-color': '#cb3638'});
+            }
+        }else {
+            $('.article_tag_content').css({'border-color': '#cb3638'});
+        }
+    }else {
+        $('#article_title').css({'border-color': '#cb3638'});
+    }
+    // }
+}
+
+function onPostActivityManager(){
+    var act_pic;
+    var act_name = $.trim($('#act_name').val());
+    var act_region = $.trim($('#act_region').val());
+    var regional_sponsors = $.trim($('#regional_sponsors').val());
+    var initiation_time = $.trim($('#initiation_time').val());
+    var deadline_year = $.trim($('#deadline_year').val());
+    var deadline_month = $.trim($('#deadline_month').val());
+    var deadline_day = $.trim($('#deadline_day').val());
+    var recruitment = $.trim($('#recruitment').val());
+    // if (article_pic != null){
+    if(act_name != '' && act_name != null){
+        $('#act_name').css({'border-color': 'rgba(203,54,56,0)'});
+        if(selectedTag != '' && selectedTag != null && selectedTag != undefined){
+            $('.article_tag_content').css({'border-color': 'rgba(203,54,56,0)'});
+            if(act_region != '' && act_region != null){
+                $('#act_region').css({'color': '#000'});
+                if(regional_sponsors != '' && regional_sponsors != null){
+                    $('#regional_sponsors').css({'color': '#000'});
+                    if(initiation_time != '' && initiation_time != null){
+                        $('#initiation_time').css({'color': '#000'});
+                        if((deadline_year != '' && deadline_year != null) && (deadline_month != '' && deadline_month != null) && (deadline_day != '' && deadline_day != null)){
+                            $('#deadline_year').css({'color': '#000'});
+                            $('#deadline_month').css({'color': '#000'});
+                            $('#deadline_day').css({'color': '#000'});
+                            if(recruitment != '' && recruitment != null){
+                                $('#recruitment').css({'border-color': 'rgba(203,54,56,0)'});
+                                //PostTopic
+                                var data= {act_name:act_name,act_region:act_region,regional_sponsors:regional_sponsors,initiation_time:initiation_time,deadline:deadline_year+'-'+deadline_month+'-'+deadline_day,recruitment:recruitment};
+                                console.log("OrganizerAjax: ");
+                                console.log(data);
+                                $.ajax({
+                                    url: "service/send_activity.php?data= "+JSON.stringify(data), //后台请求数据
+                                    dataType: "json",
+                                    data: JSON.stringify(data),
+                                    type: "GET",
+                                    success: function (msg) {
+                                        console.log("OrganizerAjax:success!");
+                                        console.log(msg);
+                                        if(msg.a == '1'){
+                                            showTip('发布话题成功!');
+                                        }else {
+                                            showTip('发布话题失败!');
+                                        }
+                                    },
+                                    error: function (msg) {
+                                        console.log("OrganizerAjax:error!");
+                                        console.log(msg);
+                                        alert("请求失败，请重试");
+                                    }
+                                });
+                            }else {
+                                $('#recruitment').css({'border-color': '#cb3638'});
+                            }
+                        }else {
+                            $('#deadline_year').css({'color': '#cb3638'});
+                            $('#deadline_month').css({'color': '#cb3638'});
+                            $('#deadline_day').css({'color': '#cb3638'});
+                        }
+                    }else {
+                        $('#initiation_time').css({'color': '#cb3638'});
+                    }
+                }else {
+                    $('#regional_sponsors').css({'color': '#cb3638'});
+                }
+            }else {
+                $('#act_region').css({'color': '#cb3638'});
+            }
+        }else {
+            $('.article_tag_content').css({'border-color': '#cb3638'});
+        }
+    }else {
+        $('#act_name').css({'border-color': '#cb3638'});
+    }
+    // }
+}

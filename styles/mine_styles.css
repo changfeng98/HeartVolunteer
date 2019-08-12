@@ -108,15 +108,15 @@
     font-size: 18px;
     font-weight: bold;
     text-align: left;
-    border: 0;
+    border: rgba(255, 255, 255, 0) solid 1px;
 }
 
 .article_title:hover{
-    border: 0;
+    border: rgba(255, 255, 255, 0) solid 1px;
 }
 
 .article_title:focus{
-    border: 0;
+    border: rgba(255, 255, 255, 0) solid 1px;
 }
 
 .article_tag_tip{
@@ -128,6 +128,7 @@
 
 .article_tag_content{
     width: 100%;
+    border: rgba(255, 255, 255, 0) solid 1px;
 }
 
 .article_tag_content ul{
@@ -162,6 +163,7 @@
     text-indent: 2em;
     resize:none;
     font-size: 16px;
+    border: rgba(255, 255, 255, 0) solid 1px;
 }
 
 .post_topic_btn{

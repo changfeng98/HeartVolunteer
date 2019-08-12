@@ -26,6 +26,7 @@
                     <li id="nav_modify_info">修改信息</li>
                     <li id="nav_change_head">更换头像</li>
                     <li id="nav_change_password">修改密码</li>
+                    <li id="nav_logout" onclick="onLogout()">退出登录</li>
                 </ul>
             </div>
             <div class="mine_menu_item">
@@ -94,7 +95,7 @@
                 </div>
                 <div class="modify_info_line">
                     <span>个人简介</span>
-                    <input id="modify_introduce" class="input_default" type="text" value="我是一个小小的石头"/>
+                    <input id="modify_introduce" class="input_default" type="text" value="" placeholder="请输入个人简介"/>
                 </div>
                 <button class="main_button_default" style="margin: 50px 0" onclick="onModifyInfo()">确认更改</button>
             </div>
@@ -107,41 +108,41 @@
             <div class="mine_change_password" style="display: none;">
                 <div class="modify_info_line">
                     <span>原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input class="input_default" type="text" placeholder="请输入原密码"/>
+                    <input id="origin_pwd" class="input_default" type="password" minlength="6" maxlength="16" placeholder="请输入原密码"/>
                 </div>
                 <div class="modify_info_line">
                     <span>新&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input class="input_default" type="text" placeholder="请输入新密码"/>
+                    <input id="new_pwd" class="input_default" type="password" minlength="6" maxlength="16" placeholder="请输入6~16位新密码"/>
                 </div>
                 <div class="modify_info_line">
                     <span>确认密码</span>
-                    <input class="input_default" type="text" placeholder="清确认密码"/>
+                    <input id="verify_pwd" class="input_default" type="password" minlength="6" maxlength="16" placeholder="清确认密码"/>
                 </div>
-                <button class="main_button_default" style="margin: 50px 0">确认更改</button>
+                <button class="main_button_default" style="margin: 50px 0" onclick="onChangePWD()">确认更改</button>
             </div>
             <div class="mine_post_topic" style="display: none;">
                 <div class="mine_body_item_content">
                     <div class="post_topic_head">
-                        <img class="article_pic" src="images/ic_upload_pic.png"/>
+                        <img id="article_pic" class="article_pic" src="images/ic_upload_pic.png"/>
                         <div class="post_topic_title_content">
-                            <input class="article_title" type="text" placeholder="标题"/>
+                            <input id="article_title" class="article_title" type="text" placeholder="标题"/>
                             <span class="article_tag_tip">&nbsp;选择标签</span>
                             <div class="article_tag_content">
                                 <ul>
-                                    <li id="type_1" onclick="onSelectType_1()">生态保护</li>
-                                    <li id="type_2" onclick="onSelectType_2()">文化/艺术</li>
-                                    <li id="type_3" onclick="onSelectType_3()">动物保护</li>
-                                    <li id="type_4" onclick="onSelectType_4()">儿童关怀</li>
-                                    <li id="type_5" onclick="onSelectType_5()">支教助学</li>
-                                    <li id="type_6" onclick="onSelectType_6()">扶老助残</li>
-                                    <li id="type_7" onclick="onSelectType_7()">其它</li>
+                                    <li class="type_1" onclick="onSelectType_1()">生态保护</li>
+                                    <li class="type_2" onclick="onSelectType_2()">文化/艺术</li>
+                                    <li class="type_3" onclick="onSelectType_3()">动物保护</li>
+                                    <li class="type_4" onclick="onSelectType_4()">儿童关怀</li>
+                                    <li class="type_5" onclick="onSelectType_5()">支教助学</li>
+                                    <li class="type_6" onclick="onSelectType_6()">扶老助残</li>
+                                    <li class="type_7" onclick="onSelectType_7()">其它</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <textarea class="article_words" placeholder="在此处开始您的创作..."></textarea>
+                    <textarea id="article_words" class="article_words" placeholder="在此处开始您的创作..."></textarea>
                 </div>
-                <button class="main_button_default post_topic_btn">发布话题</button>
+                <button class="main_button_default post_topic_btn" onclick="onPostTopic()">发布话题</button>
             </div>
             <div class="mine_participation_topic" style="display: none;">
                 <div class="participation_topic_filter_content">

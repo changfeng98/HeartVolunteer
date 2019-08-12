@@ -81,7 +81,7 @@ function initVideos(msg) {
                 '                                </video>\n' +
                 '                                <span class="video_title">'+msg[i].video_name+'</span>\n' +
                 '                                <div class="video_from_time">\n' +
-                '                                    <span class="video_from_time_content">上传者：小世界的动物</span>\n' +
+                '                                    <span class="video_from_time_content">来源：小世界的动物</span>\n' +
                 '                                    <span class="video_from_time_content">上传时间：2018-09-03</span>\n' +
                 '                                </div>\n' +
                 '                            </div>\n' +
@@ -97,7 +97,7 @@ function initVideos(msg) {
                 '                                </video>\n' +
                 '                                <span class="video_title">'+msg[i].video_name+'</span>\n' +
                 '                                <div class="video_from_time">\n' +
-                '                                    <span class="video_from_time_content">上传者：小世界的动物</span>\n' +
+                '                                    <span class="video_from_time_content">来源：小世界的动物</span>\n' +
                 '                                    <span class="video_from_time_content">上传时间：2018-09-03</span>\n' +
                 '                                </div>\n' +
                 '                            </div>\n' +
@@ -105,7 +105,6 @@ function initVideos(msg) {
         }
     }
 }
-
 
 //渲染新闻列表
 function initNews(msg) {

@@ -20,8 +20,8 @@ document.writeln("<div class=\"header_main\">\n" +
     "                    <span class=\"go_login\" onclick=\"location.href='login.html'\">登录</span>\n" +
     "                    <span class=\"go_register\" onclick=\"location.href='register.html'\">注册</span>\n" +
     "                </div>\n" +
-    "                <div class=\"user_body\" style=\"display: none;\" onclick=\"location.href='mine.html'\">\n" +
-    "                    <img class=\"user_head\" src=\"images/initial.jpg\" style=\"width: 30px;height: 30px;\"/>\n" +
+    "                <div class=\"user_body\" style=\"display: none;\">\n" +
+    "                    <img class=\"user_head\" src=\"images/ic_head_default.png\" style=\"width: 30px;height: 30px;\"/>\n" +
     "                    <span class=\"user_name\">心志愿</span>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -29,7 +29,7 @@ document.writeln("<div class=\"header_main\">\n" +
     "        <div class=\"header_bottom_content\" style=\"position: relative\">\n" +
     "            <ol>\n" +
     "                <li class=\"index_page\" onclick=\"location.href='home.html'\">首页</li>\n" +
-    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.php'\">活动</li>\n" +
+    "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.html'\">活动</li>\n" +
     "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\" onclick=\"location.href='group.html'\">社区</li>\n" +
     "                <li class=\"news_page\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\" onclick=\"location.href='news.html'\">资讯</li>\n" +
     "                <li class=\"organization_page\" onclick=\"location.href='organization.html'\">组织团体</li>\n" +
@@ -143,9 +143,24 @@ function initUser() {
         $(".no_login_body").show();
         $(".user_body").hide();
     }else{
-        $(".no_login_body").hide();
-        $(".user_body").show();
-        $(".user_head").attr("src", user_info.user_avatar);
-        $(".user_name").text(user_info.nickname);
+        if(user_info.b == '1'){
+            $(".no_login_body").hide();
+            $(".user_body").show();
+            $(".user_head").attr("src", user_info.user_avatar);
+            $(".user_name").text(user_info.nickname);
+        }else {
+            $(".no_login_body").hide();
+            $(".user_body").show();
+            $(".user_head").attr("src", user_info.org_avatar);
+            $(".user_name").text(user_info.org_name);
+        }
     }
 }
+
+$(".user_body").click(function (e) {
+    if(user_info.b == '1'){
+        location.href = 'mine.html';
+    }else {
+        location.href = 'mine_organization.html';
+    }
+});
