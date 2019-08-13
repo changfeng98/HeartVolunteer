@@ -1,12 +1,13 @@
 <?php
-include("./php/dbconfig.php");
+include("./service/dbconfig.php");
     $act_id=$_GET['act_id'];
     $sql="SELECT * FROM activity where act_id = $act_id";
     //接收返回值
-    $mysqli_result=$db->query($sql);
+    $mysqli_result=$link->query($sql);
     if($mysqli_result == false){
         echo "SQL错误";
         exit;
+
     }
     //因为只有一条数据，用变量储存信息,$mysqli_result->fetch_array(MYSQL_ASSOC)重复调用自动显示下一条数据，直至没有返回null,且该函数调用不可逆，只能用一次
     $rows;

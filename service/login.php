@@ -5,6 +5,7 @@ $arr=json_decode($_GET['data'],true);
 $name=$arr["name"];
 $password=md5($arr["password"]);
 
+
 $sql="select * from sign_in where name='$name' and password='$password'";
 $obj=mysqli_query($link,$sql);
 if($obj&&mysqli_affected_rows($link)){
