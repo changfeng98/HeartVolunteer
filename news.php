@@ -39,12 +39,11 @@ include("service/dbconfig.php");
                 <span class="news_btn" onclick="open_news();">新闻</span>
             </div>
             <div id="video_content" class="video_content">
-                <table id="video_list" class="video">
+                <table id="" class="video">
                 <?php
                     $i=0;
                     foreach ($rows as $row){
                         if($i==0) echo "<tr>";
-                        echo $i;
                 ?>
                     <td>
                         <div class="video_description">
@@ -55,8 +54,8 @@ include("service/dbconfig.php");
                             </video>
                             <span class="video_title"><?php echo $row['video_name']; ?></span>
                             <div class="video_from_time">
-                                <span class="video_from_time_content">来源：小世界的动物</span>
-                                <span class="video_from_time_content">上传时间：2018-09-03</span>
+                                <span class="video_from_time_content"><?php echo $row['video_source']?></span>
+                                <span class="video_from_time_content"><?php echo $row['time']?></span>
                             </div>
                         </div>
                     </td>
@@ -118,24 +117,24 @@ include("service/dbconfig.php");
     </div>
 
     <script type="text/javascript">
-        // function open_video() {
-        //     // requestVideos();
-        //     var video_content =  document.getElementById('video_content');
-        //     var news_content = document.getElementById('news_contents');
-        //     video_content.style.display='block';
-        //     news_content.style.display='none';
-        //     $('.video_btn').css({color:'#ff664b'});
-        //     $('.news_btn').css({color:'#000'});
-        // }
-        // function open_news() {
-        //     // requestNews();
-        //     var video_content =  document.getElementById('video_content');
-        //     var news_content = document.getElementById('news_contents');
-        //     video_content.style.display='none';
-        //     news_content.style.display='block';
-        //     $('.news_btn').css({color:'#ff664b'});
-        //     $('.video_btn').css({color:'#000'});
-        // }
+        function open_video() {
+            // requestVideos();
+            var video_content =  document.getElementById('video_content');
+            var news_content = document.getElementById('news_contents');
+            video_content.style.display='block';
+            news_content.style.display='none';
+            $('.video_btn').css({color:'#ff664b'});
+            $('.news_btn').css({color:'#000'});
+        }
+        function open_news() {
+            // requestNews();
+            var video_content =  document.getElementById('video_content');
+            var news_content = document.getElementById('news_contents');
+            video_content.style.display='none';
+            news_content.style.display='block';
+            $('.news_btn').css({color:'#ff664b'});
+            $('.video_btn').css({color:'#000'});
+        }
     </script>
     <script type="text/javascript" src="js/footer.js"></script>
     <script type="application/javascript" src="js/newsPage.js"></script>
