@@ -1,9 +1,47 @@
+var $_GET = (function(){
+    var url = window.document.location.href.toString();
+    var u = url.split("?");
+    if(typeof(u[1]) == "string"){
+        u = u[1].split("&");
+        var get = {};
+        for(var i in u){
+            var j = u[i].split("=");
+            get[j[0]] = j[1];
+        }
+        return get;
+    } else {
+        return {};
+    }
+})();
+
 function init() {
+    var type = $_GET['type'];
     initUser();
     $(".group_page").css({background: '#ff664b'});
+    console.log(type)
+    if(type === '%E7%94%9F%E6%80%81%E4%BF%9D%E6%8A%A4'){
+        $('#type_1').css({color:'#ee4639'});
+    }else if(type === '%E6%96%87%E5%8C%96/%E8%89%BA%E6%9C%AF'){
+        $('#type_2').css({color:'#ee4639'});
+    }else if(type === '%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4'){
+        $('#type_3').css({color:'#ee4639'});
+    }else if(type === '%E5%84%BF%E7%AB%A5%E5%85%B3%E6%80%80'){
+        $('#type_4').css({color:'#ee4639'});
+    }else if(type === '%E6%94%AF%E6%95%99%E5%8A%A9%E5%AD%A6'){
+        $('#type_5').css({color:'#ee4639'});
+    }else if(type === '%E6%89%B6%E8%80%81%E5%8A%A9%E6%AE%8B'){
+        $('#type_6').css({color:'#ee4639'});
+    }else if(type === '%E5%85%B6%E5%AE%83'){
+        $('#type_7').css({color:'#ee4639'});
+    }else {
+        $('#type_all').css({color:'#ee4639'});
+    }
 
-    $('#type_all').css({color:'#ee4639'});
-    requestGroup('全部');
+    if(type != '' && type != null && type != undefined){
+        requestGroup(type);
+    }else {
+        requestGroup('全部');
+    }
 }
 
 function requestGroup(type) {
@@ -49,7 +87,10 @@ function initCommunity(msg) {
             '                                <span class="topic_from">发表时间：'+msg[i].release_date.substring(0, 10)+'</span>\n' +
             '                            </div>\n' +
             '                        </div>\n' +
-            '                    </div>')
+            '                    </div>');
+        if(i < 4){
+            initFeatured(msg[i]);
+        }
     }
 }
 
@@ -59,7 +100,7 @@ function initFeatured(msg){
         '                        <img style="height: 80px;width: 80px" src="'+msg.topic_image+'">\n' +
         '                        <div class="topic_selected_right">\n' +
         '                            <span class="topic_selected_title">'+msg.topic_name+'</span>\n' +
-        '                            <span class="post_time">发表时间：'+msg[i].release_date.substring(0, 10)+'</span>\n' +
+        '                            <span class="post_time">发表时间：'+msg.release_date.substring(0, 10)+'</span>\n' +
         '                        </div>\n' +
         '                    </div>');
 }

@@ -48,13 +48,13 @@ document.writeln("<div class=\"header_main\">\n" +
     "            </div>\n" +
     "            <div class=\"header_nav_group\" style=\"display: none;\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\">\n" +
     "                <ul>\n" +
-    "                    <li id=\"header_2_1\">生态保护</li>\n" +
-    "                    <li id=\"header_2_2\">文化/艺术</li>\n" +
-    "                    <li id=\"header_2_3\">动物保护</li>\n" +
-    "                    <li id=\"header_2_4\">儿童关怀</li>\n" +
-    "                    <li id=\"header_2_5\">支教助学</li>\n" +
-    "                    <li id=\"header_2_6\">扶老助残</li>\n" +
-    "                    <li id=\"header_2_7\">其它</li>\n" +
+    "                    <li id=\"header_2_1\" onclick=\"location.href='group.html?type=生态保护'\">生态保护</li>\n" +
+    "                    <li id=\"header_2_2\" onclick=\"location.href='group.html?type=文化/艺术'\">文化/艺术</li>\n" +
+    "                    <li id=\"header_2_3\" onclick=\"location.href='group.html?type=动物保护'\">动物保护</li>\n" +
+    "                    <li id=\"header_2_4\" onclick=\"location.href='group.html?type=儿童关怀'\">儿童关怀</li>\n" +
+    "                    <li id=\"header_2_5\" onclick=\"location.href='group.html?type=支教助学'\">支教助学</li>\n" +
+    "                    <li id=\"header_2_6\" onclick=\"location.href='group.html?type=扶老助残'\">扶老助残</li>\n" +
+    "                    <li id=\"header_2_7\" onclick=\"location.href='group.html?type=其它'\">其它</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "            <div class=\"header_nav_news\" style=\"display: none;\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\">\n" +
@@ -164,4 +164,8 @@ $(".user_body").click(function (e) {
     }else {
         location.href = 'mine_organization.html';
     }
+});
+
+$("#header_2_1").click(function (e) {
+
 });
