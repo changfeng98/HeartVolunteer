@@ -154,7 +154,7 @@ function initActivity(msg) {
                 $(".home_activity_content").append('<tr class="home_activity_content_row'+i+'">\n' +
                     '                <td>\n' +
                     '                    <div class="activity_item_body">\n' +
-                    '                        <img class="activity_item_pic" src="'+msg[i].picture+'"/>\n' +
+                    '                        <img class="activity_item_pic" src="'+'images/activity_images/'+msg[i].picture+'"/>\n' +
                     '                        <h3 class="activity_item_title">'+msg[i].act_name+'</h3>\n' +
                     '                        <p class="activity_item_spot">活动地点：'+msg[i].act_region+'</p>\n' +
                     '                        <p class="activity_item_organized">活动发起：'+msg[i].Founder+'</p>\n' +
@@ -172,7 +172,7 @@ function initActivity(msg) {
             if (i > 0 && i <= 3){
                 $(".home_activity_content_row0").append('<td>\n' +
                     '                    <div class="activity_item_body">\n' +
-                    '                        <img class="activity_item_pic" src="'+msg[i].picture+'"/>\n' +
+                    '                        <img class="activity_item_pic" src="'+'images/activity_images/'+msg[i].picture+'"/>\n' +
                     '                        <h3 class="activity_item_title">'+msg[i].act_name+'</h3>\n' +
                     '                        <p class="activity_item_spot">活动地点：'+msg[i].act_region+'</p>\n' +
                     '                        <p class="activity_item_organized">活动发起：'+msg[i].Founder+'</p>\n' +
@@ -189,7 +189,7 @@ function initActivity(msg) {
             if (i > 4 && i <= 8){
                 $(".home_activity_content_row4").append('<td>\n' +
                     '                    <div class="activity_item_body">\n' +
-                    '                        <img class="activity_item_pic" src="'+msg[i].picture+'"/>\n' +
+                    '                        <img class="activity_item_pic" src="'+'images/activity_images/'+msg[i].picture+'"/>\n' +
                     '                        <h3 class="activity_item_title">'+msg[i].act_name+'</h3>\n' +
                     '                        <p class="activity_item_spot">活动地点：'+msg[i].act_region+'</p>\n' +
                     '                        <p class="activity_item_organized">活动发起：'+msg[i].Founder+'</p>\n' +

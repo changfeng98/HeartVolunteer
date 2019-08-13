@@ -1,8 +1,8 @@
 <?php
-include("./php/dbconfig.php");
+include("./service/dbconfig.php");
     $sql="SELECT * FROM activity";
     //接收返回值
-    $mysqli_result=$db->query($sql);
+    $mysqli_result=$link->query($sql);
     if($mysqli_result == false){
         echo "SQL错误";
         exit;
@@ -28,6 +28,7 @@ include("./php/dbconfig.php");
     <script type="text/javascript">
         window.onload = (function () {
             init();
+
         });
     </script>
 </head>
@@ -94,6 +95,7 @@ include("./php/dbconfig.php");
                     <div class="project-item">
                         <a href="activity_details.php?act_id='<?php echo $row['act_id'] ?>'" title="<?php echo $row['act_region']; ?>">
                             <img src="./images/activity_images/<?php echo $row['picture']?>" width="240" height="160">
+
                         </a>
                         <div class="project-item-right">
                             <span class="activity-title"><?php echo $row['act_name']; ?></span>

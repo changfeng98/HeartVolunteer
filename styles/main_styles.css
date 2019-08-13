@@ -164,54 +164,6 @@ li{
     background: #ff664b;
 }
 
-.gender_line{
-    width: 240px;
-    height: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-input[type="radio"]{
-    position: absolute;
-    opacity: 0;
-}
-
-.gender_line input[type="radio"] + label:before {
-    content: '';
-    background: rgba(244, 244, 244, 0);
-    border-radius: 100%;
-    border: 1px solid #ff664b;
-    display: inline-block;
-    width: 13px;
-    height: 13px;
-    position: relative;
-    top: 4px;
-    margin-right: 10px;
-    vertical-align: top;
-    cursor: pointer;
-    text-align: center;
-    -webkit-transition: all 250ms ease;
-    transition: all 250ms ease;
-}
-.gender_line input[type="radio"]:checked + label:before {
-    background-color: #ff664b;
-    box-shadow: inset 0 0 0 3px #f4f4f4;
-}
-.gender_line input[type="radio"]:focus + label:before {
-    outline: none;
-    border-color: #ff664b;
-}
-.gender_line input[type="radio"]:disabled + label:before {
-    box-shadow: inset 0 0 0 3px #f4f4f4;
-    border-color: #b4b4b4;
-    background: #b4b4b4;
-}
-.gender_line input[type="radio"] + label:empty:before {
-    margin-right: 0;
-}
-
 /*浮动窗口*/
 .header_change_city_float{
     width: 87px;

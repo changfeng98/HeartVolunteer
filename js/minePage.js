@@ -8,6 +8,7 @@ function init(){
 }
 
 function initUserInfo(){
+
     if(user_info.b == '1'){
         $('.mine_info_head').attr('src', user_info.user_avatar);
         $('#modify_avatar').attr('src', user_info.user_avatar);
