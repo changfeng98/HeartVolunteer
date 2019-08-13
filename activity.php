@@ -28,6 +28,7 @@ include("./service/dbconfig.php");
     <script type="text/javascript">
         window.onload = (function () {
             init();
+
         });
     </script>
 </head>
