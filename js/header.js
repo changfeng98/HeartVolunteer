@@ -146,13 +146,13 @@ function initUser() {
         if(user_info.b == '1'){
             $(".no_login_body").hide();
             $(".user_body").show();
-            $(".user_head").attr("src", user_info.user_avatar);
+            $(".user_head").attr("src", 'picture/'+user_info.user_avatar);
             $(".user_name").text(user_info.nickname);
             $(".change_city").text(user_info.city);
         }else {
             $(".no_login_body").hide();
             $(".user_body").show();
-            $(".user_head").attr("src", user_info.org_avatar);
+            $(".user_head").attr("src", 'picture/'+user_info.org_avatar);
             $(".user_name").text(user_info.org_name);
         }
     }
