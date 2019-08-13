@@ -12,7 +12,7 @@ $obj=mysqli_query($link,$sql);
 $arr=mysqli_fetch_array($obj,MYSQLI_ASSOC);
 $like=$arr['like'];
 
-$sql="update community set like=$like+1 where and topic_name='$name'";
+$sql="update community set $like = $like+1 where topic_name='$name'";
 $obj=mysqli_query($link,$sql);
 
 $sql="select  * from community where topic_name='$name'";
@@ -21,14 +21,5 @@ $obj=mysqli_query($link,$sql);
 $arr=mysqli_fetch_array($obj,MYSQLI_ASSOC);
 echo json_encode($arr);
 
-$sql="select  * from topic_post where post_name='$name'";
-$obj=mysqli_query($link,$sql);
-//var_dump($obj);
-$array = array();
-while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
-{
-    $array[] = $rows;
-}
-// print_r($array);
-echo json_encode($array);
+
 //127.0.0.1/HeartVolunteer/service/community_one.php?data={"name":"11"}
