@@ -27,6 +27,10 @@
     width: 714px;
 }
 
+.community_top_ul li:hover{
+    color: #ee4639;
+}
+
 .search_box{
     border: #ed4639 solid 1px;
 }

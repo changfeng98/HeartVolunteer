@@ -7,7 +7,7 @@
 //Recruitment:活动需要招募人数，Rec_ing：活动已招募的人数，content：活动内容，Founder：活动发起组织，look：活动浏览量，picture：图片
 include("dbconfig.php");
 $arr=json_decode($_GET['data'],true);
- $class=$arr['class'];
+$class=$arr['class'];
  $city=$arr['city'];
 if($class=="全部"){
     $sql="select * from activity where act_city='$city'";
