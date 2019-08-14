@@ -10,7 +10,7 @@
   while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
   {
      // $topic_name=$rows["post_name"];
-      $sql="select * from community where topic_name='$word'";
+      $sql="select * from community where topic_name='%$word%'";
       $obj=mysqli_query($link,$sql);
       $arr=mysqli_fetch_array($obj);
       $array[] = $arr;
