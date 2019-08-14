@@ -219,12 +219,13 @@
 }
 
 .participation_topic_body{
+    width: 100%;
     border: #e9e9e9 solid 1px;
     margin: 5px 0;
 }
 
 .participation_topic_item,.mine_sent_topic_item_right{
-    width: 100%;
+    width: 650px;
     height: 100%;
     display: flex;
     flex-direction: column;

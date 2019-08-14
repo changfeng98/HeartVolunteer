@@ -21,7 +21,7 @@ document.writeln("<div class=\"header_main\">\n" +
     "                    <span class=\"go_register\" onclick=\"location.href='register.html'\">注册</span>\n" +
     "                </div>\n" +
     "                <div class=\"user_body\" style=\"display: none;\">\n" +
-    "                    <img class=\"user_head\" src=\"images/ic_head_default.png\" style=\"width: 30px;height: 30px;\"/>\n" +
+    "                    <img class=\"user_head\" src=\"images/ic_head_default.png\" style=\"border-radius: 50%;width: 30px;height: 30px;\"/>\n" +
     "                    <span class=\"user_name\">心志愿</span>\n" +
     "                </div>\n" +
     "            </div>\n" +

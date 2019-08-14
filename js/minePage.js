@@ -275,17 +275,17 @@ function renderingTopicHead(jqNode) {
 function renderingTopic(jqNode, msg) {
     for(var i in msg){
         jqNode.append('<div class="participation_topic_body">\n' +
-            '                    <img class="participation_topic_pic" src="images/table/group_1.jpg" onclick=""/>\n' +
+            '                    <img class="participation_topic_pic" src="'+'images/community_images/'+msg[i].topic_image+'" onclick=""/>\n' +
             '                    <div class="participation_topic_item">\n' +
             '                        <div class="participation_topic_item_top">\n' +
-            '                            <h3 class="participation_topic_item_topic">网络行动能改变世界吗？</h3>\n' +
-            '                            <span class="participation_topic_publisher">发布人：张丰</span>\n' +
+            '                            <h3 class="participation_topic_item_topic">'+msg[i].topic_name+'</h3>\n' +
+            '                            <span class="participation_topic_publisher">发布人：'+msg[i].user_name+'</span>\n' +
             '                        </div>\n' +
-            '                        <span class="participation_topic_item_short">编者按：互联网时代，“行动”的门槛变得前所未有的低。点个赞，签个名，转发一项倡议，参与一项讨论，只要在网络上对某个公共话题付出些微的努力，都可以说是“行动”的一种。正因为它包罗万象，这一现象也出现了众多别名，比如“懒汉行动主义”“点击主义”“键盘侠”等等。种种别名虽各有侧重，却都难免带有嘲谑甚至谴责的意味。</span>\n' +
+            '                        <span class="participation_topic_item_short">'+msg[i].topic_content+'</span>\n' +
             '                        <div class="participation_topic_item_bottom">\n' +
-            '                            <span class="participation_topic_tag">文化/艺术</span>\n' +
-            '                            <span class="participation_topic_comment">100&nbsp;评论</span>\n' +
-            '                            <span class="participation_topic_date">2018-10-25</span>\n' +
+            '                            <span class="participation_topic_tag">'+msg[i].topic_class+'</span>\n' +
+            '                            <span class="participation_topic_comment">'+msg[i].like+'&nbsp;评论</span>\n' +
+            '                            <span class="participation_topic_date">'+msg[i].release_date.substring(0,10)+'</span>\n' +
             '                        </div>\n' +
             '                    </div>\n' +
             '                </div>');
@@ -459,6 +459,11 @@ $("#nav_participation_topic").click(function (e) {
     $(".mine_post_activity").hide();
     $(".mine_sent_activity").hide();
 
+    $('#pa_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#pa_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+
     //参与的话题
     var data;
     if(user_info.b == '1'){
@@ -476,8 +481,7 @@ $("#nav_participation_topic").click(function (e) {
         success: function (msg) {
             console.log("ParticipationTopicAjax:Success!");
             console.log(msg);
-            renderingTopicHead($('.mine_participation_topic'));
-            renderingTopic($('.mine_participation_topic'), msg);
+            renderingTopic($('.mine_participation_topic_body'), msg);
         },
         error: function (msg) {
             console.log("ParticipationTopicAjax:Error!");
@@ -768,4 +772,65 @@ function onPostActivityManager(){
         $('#act_name').css({'border-color': '#cb3638'});
     }
     // }
+}
+
+$('#pa_all').click(function (e) {
+    $('#pa_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#pa_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onPaFilter('全部');
+});
+
+$('#pa_week').click(function (e) {
+    $('#pa_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_week').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#pa_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onPaFilter('周');
+});
+
+$('#pa_month').click(function (e) {
+    $('#pa_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_month').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#pa_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onPaFilter('月');
+});
+
+$('#pa_year').click(function (e) {
+    $('#pa_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#pa_year').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    onPaFilter('年');
+});
+
+function onPaFilter(type) {
+    //参与的话题
+    var data;
+    if(user_info.b == '1'){
+        data={class:type,name:user_info.nickname};
+    }else {
+        data={class:type,name:user_info.org_name};
+    }
+    console.log(data);
+    console.log("ParticipationTopicAjax");
+    $.ajax({
+        url: "service/already_potic_time.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("ParticipationTopicAjax:Success!");
+            console.log(msg);
+            renderingTopicHead($('.mine_participation_topic'));
+            renderingTopic($('.mine_participation_topic'), msg);
+        },
+        error: function (msg) {
+            console.log("ParticipationTopicAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
 }

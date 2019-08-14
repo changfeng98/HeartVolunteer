@@ -72,6 +72,30 @@ function requestGroup(type) {
     });
 }
 
+function requestGroupSearch(keyWords) {
+    //社区ajax
+    var data= {name:keyWords};
+    console.log("CommunitySearchAjax: ");
+    console.log(data);
+    $.ajax({
+        url: "service/topic_search.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data: JSON.stringify(data),
+        type: "GET",
+        success: function (msg) {
+            console.log("CommunitySearchAjax:success!");
+            console.log(msg);
+            $('.community_left').html('');
+            initCommunity(msg);
+        },
+        error: function (msg) {
+            console.log("CommunitySearchAjax:error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
+}
+
 //渲染社区列表
 function initCommunity(msg) {
     for(var i in msg){
@@ -97,7 +121,7 @@ function initCommunity(msg) {
 //渲染精选
 function initFeatured(msg){
     $('.topic_select').append('<div class="topic_selected">\n' +
-        '                        <img style="height: 80px;width: 80px" src="'+msg.topic_image+'">\n' +
+        '                        <img style="height: 80px;width: 80px" src="'+'images/community_images/'+msg.topic_image+'">\n' +
         '                        <div class="topic_selected_right">\n' +
         '                            <span class="topic_selected_title">'+msg.topic_name+'</span>\n' +
         '                            <span class="post_time">发表时间：'+msg.release_date.substring(0, 10)+'</span>\n' +
@@ -199,4 +223,8 @@ $('#type_7').click(function (e) {
     $('#type_6').css({color:'#000'});
     $('#type_7').css({color:'#ee4639'});
     requestGroup('其他');
+});
+
+$('.search_btn').click(function (e) {
+    requestGroupSearch($.trim($('.search_box').val()));
 });
