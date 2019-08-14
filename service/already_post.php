@@ -4,6 +4,7 @@ include("dbconfig.php");
 //已发话题
 $arr=json_decode($_GET['data'],true);
 $name=$arr['name'];
+
 $sql="select * from community where user_name='$name'";
 $obj=mysqli_query($link,$sql);
 $array = array();
