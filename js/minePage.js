@@ -293,8 +293,29 @@ function renderingTopic(jqNode, msg) {
 
 }
 
+function renderingActivity(jqNode, msg) {
+    for(var i in msg){
+        jqNode.append('<div class="participation_topic_body">\n' +
+            '                    <img class="participation_topic_pic" src="'+'images/activity_images/'+msg[i].picture+'" onclick=""/>\n' +
+            '                    <div class="participation_topic_item">\n' +
+            '                        <div class="participation_topic_item_top">\n' +
+            '                            <h3 class="participation_topic_item_topic">'+msg[i].act_name+'</h3>\n' +
+            '                            <span class="participation_topic_publisher">主办方：'+msg[i].Founder+'</span>\n' +
+            '                        </div>\n' +
+            '                        <span class="participation_topic_item_short">'+msg[i].content+'</span>\n' +
+            '                        <div class="participation_topic_item_bottom">\n' +
+            '                            <span class="participation_topic_tag">'+msg[i].act_category+'</span>\n' +
+            '                            <span class="participation_topic_comment">'+msg[i].Rec_ing+'&nbsp;人参与</span>\n' +
+            '                            <span class="participation_topic_date">'+msg[i].Initiation_time.substring(0,10)+'</span>\n' +
+            '                        </div>\n' +
+            '                    </div>\n' +
+            '                </div>');
+    }
+
+}
+
 function onLogout() {
-    sessionStorage.removeItem("user_info");
+    localStorage.removeItem("user_info");
     location.href = 'home.html';
 }
 
@@ -481,6 +502,7 @@ $("#nav_participation_topic").click(function (e) {
         success: function (msg) {
             console.log("ParticipationTopicAjax:Success!");
             console.log(msg);
+            $('.mine_participation_topic_body').html('');
             renderingTopic($('.mine_participation_topic_body'), msg);
         },
         error: function (msg) {
@@ -502,6 +524,11 @@ $("#nav_sent_topic").click(function (e) {
     $(".mine_post_activity").hide();
     $(".mine_sent_activity").hide();
 
+    $('#se_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#se_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+
     //发布的话题
     var data;
     if(user_info.b == '1'){
@@ -519,8 +546,8 @@ $("#nav_sent_topic").click(function (e) {
         success: function (msg) {
             console.log("already_postAjax:Success!");
             console.log(msg);
-            renderingTopicHead($('.mine_sent_topic'));
-            renderingTopic($('.mine_sent_topic'), msg);
+            $('.mine_sent_topic_body').html('');
+            renderingTopic($('.mine_sent_topic_body'), msg);
         },
         error: function (msg) {
             console.log("already_postAjax:Error!");
@@ -554,6 +581,11 @@ $("#nav_sent_activity").click(function (e) {
     $(".mine_post_activity").hide();
     $(".mine_sent_activity").showMineItem($("#nav_sent_activity"));
 
+    $('#at_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#at_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+
     //发布的活动
     var data= {name:user_info.org_name};
     console.log(data);
@@ -566,8 +598,8 @@ $("#nav_sent_activity").click(function (e) {
         success: function (msg) {
             console.log("already_postAjax:Success!");
             console.log(msg);
-            renderingTopicHead($('.mine_sent_activity'));
-            renderingTopic($('.mine_sent_activity'), msg);
+            $('.mine_sent_activity_body').html('');
+            renderingActivity($('.mine_sent_activity_body'), msg);
         },
         error: function (msg) {
             console.log("already_postAjax:Error!");
@@ -806,7 +838,100 @@ $('#pa_year').click(function (e) {
     onPaFilter('年');
 });
 
+$('#se_all').click(function (e) {
+    $('#se_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#se_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onSeFilter('全部');
+});
+
+$('#se_week').click(function (e) {
+    $('#se_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_week').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#se_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onSeFilter('周');
+});
+
+$('#se_month').click(function (e) {
+    $('#se_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_month').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#se_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onSeFilter('月');
+});
+
+$('#se_year').click(function (e) {
+    $('#se_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#se_year').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    onSeFilter('年');
+});
+
+$('#at_all').click(function (e) {
+    $('#at_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#at_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onAtFilter('全部');
+});
+
+$('#at_week').click(function (e) {
+    $('#at_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_week').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#at_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onAtFilter('周');
+});
+
+$('#at_month').click(function (e) {
+    $('#at_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_month').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    $('#at_year').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    onAtFilter('月');
+});
+
+$('#at_year').click(function (e) {
+    $('#at_all').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_week').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_month').css({'background':'#fff', 'border':'#e9e9e9 solid 1px'});
+    $('#at_year').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});
+    onAtFilter('年');
+});
+
 function onPaFilter(type) {
+    //参与的话题
+    var data;
+    if(user_info.b == '1'){
+        data={class:type,name:user_info.nickname};
+    }else {
+        data={class:type,name:user_info.org_name};
+    }
+    console.log(data);
+    console.log("ParticipationTopicAjax");
+    $.ajax({
+        url: "service/partake_post_time.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("ParticipationTopicAjax:Success!");
+            console.log(msg);
+            $('.mine_participation_topic_body').html('');
+            renderingTopic($('.mine_participation_topic_body'), msg);
+        },
+        error: function (msg) {
+            console.log("ParticipationTopicAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
+}
+
+function onSeFilter(type) {
     //参与的话题
     var data;
     if(user_info.b == '1'){
@@ -824,8 +949,8 @@ function onPaFilter(type) {
         success: function (msg) {
             console.log("ParticipationTopicAjax:Success!");
             console.log(msg);
-            renderingTopicHead($('.mine_participation_topic'));
-            renderingTopic($('.mine_participation_topic'), msg);
+            $('.mine_sent_topic_body').html('');
+            renderingTopic($('.mine_sent_topic_body'), msg);
         },
         error: function (msg) {
             console.log("ParticipationTopicAjax:Error!");
@@ -834,3 +959,109 @@ function onPaFilter(type) {
         }
     });
 }
+
+function onAtFilter(type) {
+    //发布的活动
+    var data= {class:type,name:user_info.org_name};
+    console.log(data);
+    console.log("already_postAjax");
+    $.ajax({
+        url: "service/already_activity_time.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("already_postAjax:Success!");
+            console.log(msg);
+            $('.mine_sent_activity_body').html('');
+            renderingActivity($('.mine_sent_activity_body'), msg);
+        },
+        error: function (msg) {
+            console.log("already_postAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
+}
+
+$('#pa_search').click(function (e) {
+    var pa_keywords = $.trim($('#pa_keywords').val());
+    var data;
+    if(user_info.b == '1'){
+        data={word:pa_keywords,name:user_info.nickname};
+    }else {
+        data={word:pa_keywords,name:user_info.org_name};
+    }
+    console.log(data);
+    console.log("ParticipationTopicAjax");
+    $.ajax({
+        url: "service/partake_post_word.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("ParticipationTopicAjax:Success!");
+            console.log(msg);
+            $('.mine_participation_topic_body').html('');
+            renderingTopic($('.mine_participation_topic_body'), msg);
+        },
+        error: function (msg) {
+            console.log("ParticipationTopicAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
+});
+
+$('#se_search').click(function (e) {
+    var pa_keywords = $.trim($('#se_keywords').val());
+    var data;
+    if(user_info.b == '1'){
+        data={word:pa_keywords,name:user_info.nickname};
+    }else {
+        data={word:pa_keywords,name:user_info.org_name};
+    }
+    console.log(data);
+    console.log("ParticipationTopicAjax");
+    $.ajax({
+        url: "service/already_potic_word.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("ParticipationTopicAjax:Success!");
+            console.log(msg);
+            $('.mine_sent_topic_body').html('');
+            renderingTopic($('.mine_sent_topic_body'), msg);
+        },
+        error: function (msg) {
+            console.log("ParticipationTopicAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
+});
+
+$('#at_search').click(function (e) {
+    var pa_keywords = $.trim($('#at_keywords').val());
+    var data = {word:pa_keywords,name:user_info.org_name};
+    console.log(data);
+    console.log("ParticipationTopicAjax");
+    $.ajax({
+        url: "service/already_activity_word.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data:JSON.stringify(data),
+        type: "post",
+        success: function (msg) {
+            console.log("ParticipationTopicAjax:Success!");
+            console.log(msg);
+            $('.mine_sent_activity_body').html('');
+            renderingActivity($('.mine_sent_activity_body'), msg);
+        },
+        error: function (msg) {
+            console.log("ParticipationTopicAjax:Error!");
+            console.log(msg);
+            alert("请求失败，请重试");
+        }
+    });
+});
