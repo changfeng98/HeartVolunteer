@@ -7,7 +7,7 @@
 
   if($class=="全部"){
 
-      $sql="select * from topic_post where user_name='$name'";
+      $sql="select * from community where user_name='$name'";
       $obj=mysqli_query($link,$sql);
       $array = array();
 
@@ -22,7 +22,7 @@
       date_default_timezone_set('Asia/Shanghai');
       $be_time=date('Y-m-d H:i:s',strtotime('-30 days'));//用时间戳获取
 
-      $sql="select * from topic_post where user_name='$name'and release_date> '$be_time' ";
+      $sql="select * from community where user_name='$name'and release_date> '$be_time' ";
       $obj=mysqli_query($link,$sql);
       //var_dump($obj);
       $array = array();
