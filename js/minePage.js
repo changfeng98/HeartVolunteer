@@ -8,10 +8,10 @@ function init(){
 }
 
 function initUserInfo(){
-
+    $('#session_info').val(user_info.nickname);
     if(user_info.b == '1'){
-        $('.mine_info_head').attr('src', user_info.user_avatar);
-        $('#modify_avatar').attr('src', user_info.user_avatar);
+        $('.mine_info_head').attr('src', 'picture/'+user_info.user_avatar);
+        $('#modify_avatar').attr('src', 'picture/'+user_info.user_avatar);
         $('.mine_info_nickname').text(user_info.nickname);
         $('.mine_info_gender').text(user_info.sex);
         if(user_info.sex == '男'){

@@ -110,7 +110,7 @@ function initVideos(msg) {
 function initNews(msg) {
     for(var i in msg){
         $("#news_contents").append('<div class="news">\n' +
-            '                    <img class="news_photo" src="'+msg[i].image+'">\n' +
+            '                    <img class="news_photo" src="'+'images/news_images/'+msg[i].image+'">\n' +
             '                    <div class="news_content">\n' +
             '                        <span class="news_content_title">'+msg[i].news_name+'</span>\n' +
             '                        <p class="news_content_body">\n' +
@@ -119,7 +119,7 @@ function initNews(msg) {
             '                        <div class="news_content_form">\n' +
             '                            <span class="news_content_from_content">'+msg[i].source+'</span>\n' +
             '<!--                            <span class="news_content_from">2019-07-29</span>-->\n' +
-            '                            <span class="news_content_num">'+msg[i].time+'</span>\n' +
+            '                            <span class="news_content_num">'+msg[i].time.substring(0, 19)+'</span>\n' +
             '                        </div>\n' +
             '                    </div>\n' +
             '                </div>');

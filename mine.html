@@ -102,8 +102,8 @@
             <div class="mine_change_head" style="display: none;">
                 <img id="modify_avatar" src="images/ic_head_default.png" onclick="$('#file_upload').click()" style="width: 100px;height: 100px;margin: 50px 0 20px 0;border-radius: 50%;"/>
                 <form action="service/change_avatar.php" method="post" enctype="multipart/form-data">
-                    <input id="file_upload" type="file" style="display: none;" onchange="xmTanUploadImg1(this)"/>
-                    <input type="text" id="">
+                    <input id="file_upload" name="file" type="file" style="display: none;" onchange="xmTanUploadImg1(this)"/>
+                    <input name="session_info" type="text" id="session_info" style="display: none;" value="">
                     <script>
                         function xmTanUploadImg1(obj) {
                             var file = obj.files[0];
