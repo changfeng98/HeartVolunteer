@@ -5,14 +5,14 @@ document.writeln("<div class=\"header_main\">\n" +
     "\n" +
     "                <div class=\"header_right_location\" onmouseover=\"showChangeCityDialog();\" onmouseleave=\"hideChangeCityDialog();\">\n" +
     "                    <img src=\"images/ic_location.png\" onclick=\"\" style=\"width: 20px;height: 20px;margin-left: 10px;\"/>\n" +
-    "                    <span class=\"change_city\">日照</span>\n" +
+    "                    <span class=\"change_city\">日照市</span>\n" +
     "                    <div class=\"header_change_city_float\" style=\"display: none;\">\n" +
     "                        <ul>\n" +
-    "                            <li id=\"jinan\">济南</li>\n" +
-    "                            <li id=\"rizhao\">日照</li>\n" +
-    "                            <li id=\"qingdao\">青岛</li>\n" +
-    "                            <li id=\"weihai\">威海</li>\n" +
-    "                            <li id=\"liaocheng\">聊城</li>\n" +
+    "                            <li id=\"jinan\" onclick=\"onLocationClicked(this)\">济南市</li>\n" +
+    "                            <li id=\"rizhao\" onclick=\"onLocationClicked(this)\">日照市</li>\n" +
+    "                            <li id=\"qingdao\" onclick=\"onLocationClicked(this)\">青岛市</li>\n" +
+    "                            <li id=\"weihai\" onclick=\"onLocationClicked(this)\">威海市</li>\n" +
+    "                            <li id=\"liaocheng\" onclick=\"onLocationClicked(this)\">聊城市</li>\n" +
     "                        </ul>\n" +
     "                    </div>\n" +
     "                </div>\n" +
@@ -31,19 +31,19 @@ document.writeln("<div class=\"header_main\">\n" +
     "                <li class=\"index_page\" onclick=\"location.href='home.html'\">首页</li>\n" +
     "                <li class=\"activity_page\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\" onclick=\"location.href='activity.php'\">活动</li>\n" +
     "                <li class=\"group_page\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\" onclick=\"location.href='group.html'\">社区</li>\n" +
-    "                <li class=\"news_page\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\" onclick=\"location.href='news.php'\">资讯</li>\n" +
+    "                <li class=\"news_page\" onmouseover=\"showNavNewsDialog();\" onmouseleave=\"hideNavNewsDialog();\" onclick=\"location.href='news.html'\">资讯</li>\n" +
     "                <li class=\"organization_page\" onclick=\"location.href='organization.html'\">组织团体</li>\n" +
     "                <li class=\"help_page\" onclick=\"location.href='help.html'\">帮助中心</li>\n" +
     "            </ol>\n" +
     "            <div class=\"header_nav_activity\" style=\"display: none;\" onmouseover=\"showNavActivityDialog();\" onmouseleave=\"hideNavActivityDialog();\">\n" +
     "                <ul>\n" +
-    "                    <li id=\"header_1_1\">生态保护</li>\n" +
-    "                    <li id=\"header_1_2\">文化/艺术</li>\n" +
-    "                    <li id=\"header_1_3\">动物保护</li>\n" +
-    "                    <li id=\"header_1_4\">儿童关怀</li>\n" +
-    "                    <li id=\"header_1_5\">支教助学</li>\n" +
-    "                    <li id=\"header_1_6\">扶老助残</li>\n" +
-    "                    <li id=\"header_1_7\">其它</li>\n" +
+    "                    <li id=\"header_1_1\" onclick=\"location.href='activity.php?type=生态保护'\">生态保护</li>\n" +
+    "                    <li id=\"header_1_2\" onclick=\"location.href='activity.php?type=文化/艺术'\">文化/艺术</li>\n" +
+    "                    <li id=\"header_1_3\" onclick=\"location.href='activity.php?type=动物保护'\">动物保护</li>\n" +
+    "                    <li id=\"header_1_4\" onclick=\"location.href='activity.php?type=儿童关怀'\">儿童关怀</li>\n" +
+    "                    <li id=\"header_1_5\" onclick=\"location.href='activity.php?type=支教助学'\">支教助学</li>\n" +
+    "                    <li id=\"header_1_6\" onclick=\"location.href='activity.php?type=扶老助残'\">扶老助残</li>\n" +
+    "                    <li id=\"header_1_7\" onclick=\"location.href='activity.php?type=其它'\">其它</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "            <div class=\"header_nav_group\" style=\"display: none;\" onmouseover=\"showNavGroupDialog();\" onmouseleave=\"hideNavGroupDialog();\">\n" +
@@ -166,6 +166,10 @@ $(".user_body").click(function (e) {
     }
 });
 
-$("#header_2_1").click(function (e) {
-
-});
+var currentLocation = '济南';
+function onLocationClicked(obj) {
+    $('.change_city').text($(obj).html());
+    currentLocation = $(obj).html().substring(0,2);
+    $(".header_change_city_float").hide();
+    getActivity(currentLocation);
+}

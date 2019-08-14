@@ -36,32 +36,8 @@ function init() {
             alert("请求失败，请重试");
         }
     });
-    //活动ajax
-    //发出: class(类别), city(城市)
-    //接收: members_all(志愿人数), activities_all(发起活动数)
-    var data= {class:"全部",city:"日照"};
-    console.log("ActivityAjax: ");
-    console.log(data);
-    $.ajax({
-        url: "service/activity.php?data= "+JSON.stringify(data), //后台请求数据
-        dataType: "json",
-        data: JSON.stringify(data),
-        type: "GET",
-        success: function (msg) {
-            console.log("ActivityAjax:success!");
-            console.log(msg);
-            initActivity(msg);
-        },
-        error: function (msg) {
-            console.log("ActivityAjax:error!");
-            console.log(msg);
-            var parsedJson = JSON.stringify(msg);
-            console.log(parsedJson);
-            var jsonData = JSON.parse(parsedJson);
-            console.log(jsonData);
-            alert("请求失败，请重试");
-        }
-    });
+
+    getActivity(user_info.city.substring(0,2));
 
     //社区ajax
     //发出:
@@ -135,6 +111,36 @@ function init() {
         },
         error: function (msg) {
             console.log("OrganizerAjax:error!");
+            console.log(msg);
+            var parsedJson = JSON.stringify(msg);
+            console.log(parsedJson);
+            var jsonData = JSON.parse(parsedJson);
+            console.log(jsonData);
+            alert("请求失败，请重试");
+        }
+    });
+}
+
+function getActivity(city) {
+    //活动ajax
+    //发出: class(类别), city(城市)
+    //接收: members_all(志愿人数), activities_all(发起活动数)
+    var data= {class:"全部",city:city};
+    console.log("ActivityAjax: ");
+    console.log(data);
+    $.ajax({
+        url: "service/activity.php?data= "+JSON.stringify(data), //后台请求数据
+        dataType: "json",
+        data: JSON.stringify(data),
+        type: "GET",
+        success: function (msg) {
+            console.log("ActivityAjax:success!");
+            console.log(msg);
+            $(".home_activity_content").html("");
+            initActivity(msg);
+        },
+        error: function (msg) {
+            console.log("ActivityAjax:error!");
             console.log(msg);
             var parsedJson = JSON.stringify(msg);
             console.log(parsedJson);
