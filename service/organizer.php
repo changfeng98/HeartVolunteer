@@ -14,6 +14,7 @@ while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
 {
     $name=$rows["org_name"];
     $ad_name=$rows["ad_name"];
+    $org_avatar=$rows["org_avatar"];
     $sqli="select * from acticity where regional_sponsors='$name'";
     $obji=mysqli_query($link,$sqli);
     $count=0;
@@ -30,6 +31,7 @@ while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
         "ad_name" => "$ad_name",
         "count"=>"$count",
         "time"=>"$timep",
+        "org_avatar"=>"$org_avatar",
     ];
     $array[] =$p;
 }

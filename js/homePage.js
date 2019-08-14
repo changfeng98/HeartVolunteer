@@ -215,7 +215,7 @@ function initCommunity(msg) {
         console.log(i%4);
         if(i <= 1){
             $(".home_group_content_community").append('<div class="group_content">\n' +
-                '                <img class="group_item_pic" src="'+msg[i].topic_image+'"/>\n' +
+                '                <img class="group_item_pic" src="'+'images/community_images/'+msg[i].topic_image+'"/>\n' +
                 '                <div class="group_item">\n' +
                 '                    <h3 class="group_item_title">'+msg[i].topic_name+'</h3>\n' +
                 '                    <p class="group_item_title">'+msg[i].topic_content+'</p>\n' +
@@ -233,7 +233,7 @@ function initNews(msg) {
         console.log(msg);
         if(i <= 2){
             $(".home_news_content").append('<div class="news_content">\n' +
-                '                <img class="news_item_pic" src="'+msg[i].image+'"/>\n' +
+                '                <img class="news_item_pic" src="'+'images/news_images/'+msg[i].image+'"/>\n' +
                 '                <h3 class="news_item_title">'+msg[i].news_name+'</h3>\n' +
                 '                <p class="news_item_author">'+msg[i].source+'</p>\n' +
                 '            </div>');
@@ -249,9 +249,9 @@ function initOrganization(msg) {
         console.log(msg);
         if(i <= 1){
             $(".home_organization_content").append('<div class="organization_content">\n' +
-                '                <img class="organization_item_pic" src="'+msg[i].org_avatar+'"/>\n' +
+                '                <img class="organization_item_pic" src="'+'picture/organization_logos/'+msg[i].org_avatar+'"/>\n' +
                 '                <div class="organization_item">\n' +
-                '                    <h3 class="organization_item_title">'+msg[i].org_name+'</h3>\n' +
+                '                    <h3 class="organization_item_title">'+msg[i].name+'</h3>\n' +
                 '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
                 '                </div>\n' +
                 '                <div class="organization_item">\n' +
