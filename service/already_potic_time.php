@@ -10,16 +10,14 @@
       $sql="select * from topic_post where user_name='$name'";
       $obj=mysqli_query($link,$sql);
       $array = array();
+      $array = array();
       while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
       {
-          $pp=$rows["post_name"];
-          $sql="select * from community where topic_name='$pp'";
-          $obj=mysqli_query($link,$sql);
-          $qq=mysqli_fetch_array($obj);
-          $array[] = $qq;
+          $array[] = $rows;
       }
-// print_r($array);
       echo json_encode($array);
+// print_r($array);
+
 }elseif ($class=="月"){
       date_default_timezone_set('Asia/Shanghai');
       $be_time=date('Y-m-d H:i:s',strtotime('-30 days'));//用时间戳获取
