@@ -33,7 +33,7 @@ $(".login_btn").click(function () {
                 console.log(msg);
                 if(msg.a == "1"){
                     //success
-                    sessionStorage.setItem("user_info", JSON.stringify(msg));
+                    localStorage.setItem("user_info", JSON.stringify(msg));
                     location.href = "home.html";
                 }else if(msg.a == "0"){
                     changeBorderColor(jqelet_acc, "#ff0700");

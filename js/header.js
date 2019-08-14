@@ -137,7 +137,7 @@ function hideNavNewsDialog() {
 
 var user_info;
 function initUser() {
-    user_info = JSON.parse(sessionStorage.getItem("user_info"));
+    user_info = JSON.parse(localStorage.getItem("user_info"));
     console.log(user_info);
     if(user_info == null || user_info.a != "1"){
         $(".no_login_body").show();
