@@ -39,9 +39,9 @@ function initOrganization(msg) {
             row++;
             $(".organization_item_content_body").append('<div class="organization_line organization_list_row_'+row+'">\n' +
                 '            <div class="organization_item_content">\n' +
-                '                <img class="organization_item_pic" src="'+msg[i].org_avatar+'"/>\n' +
+                '                <img class="organization_item_pic" src="'+'picture/organization_logos/'+msg[i].org_avatar+'"/>\n' +
                 '                <div class="organization_item">\n' +
-                '                    <h3 class="organization_item_title">'+msg[i].org_name+'</h3>\n' +
+                '                    <h3 class="organization_item_title">'+msg[i].name+'</h3>\n' +
                 '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
                 '                </div>\n' +
                 '                <div class="organization_item">\n' +
@@ -52,9 +52,9 @@ function initOrganization(msg) {
                 '        </div>');
         }else {
             $(".organization_list_row_"+row).append('<div class="organization_item_content">\n' +
-                '                <img class="organization_item_pic" src="'+msg[i].org_avatar+'"/>\n' +
+                '                <img class="organization_item_pic" src="'+'picture/organization_logos/'+msg[i].org_avatar+'"/>\n' +
                 '                <div class="organization_item">\n' +
-                '                    <h3 class="organization_item_title">'+msg[i].org_name+'</h3>\n' +
+                '                    <h3 class="organization_item_title">'+msg[i].name+'</h3>\n' +
                 '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
                 '                </div>\n' +
                 '                <div class="organization_item">\n' +

@@ -48,14 +48,14 @@ include("service/dbconfig.php");
                     <td>
                         <div class="video_description">
                             <video width="353px" height="200px" controls>
-                                <source src="video/<?php echo $row['video']?>" type="video/mp4/qsv">
-                                <source src="video/<?php echo $row['video']?>" type="video/ogg/qsv">
+                                <source src="video/<?php echo $row['video']?>" type="video/mp4">
+                                <source src="video/<?php echo $row['video']?>" type="video/ogg">
                                 您的浏览器不支持 video 标签。
                             </video>
                             <span class="video_title"><?php echo $row['video_name']; ?></span>
                             <div class="video_from_time">
                                 <span class="video_from_time_content"><?php echo $row['video_source']?></span>
-                                <span class="video_from_time_content"><?php echo $row['time']?></span>
+                                <span class="video_from_time_content"><?php echo substr($row['time'],0,19)?></span>
                             </div>
                         </div>
                     </td>

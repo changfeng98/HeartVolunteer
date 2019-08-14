@@ -119,7 +119,7 @@ function initNews(msg) {
             '                        <div class="news_content_form">\n' +
             '                            <span class="news_content_from_content">'+msg[i].source+'</span>\n' +
             '<!--                            <span class="news_content_from">2019-07-29</span>-->\n' +
-            '                            <span class="news_content_num">'+msg[i].time+'</span>\n' +
+            '                            <span class="news_content_num">'+msg[i].time.substring(0, 19)+'</span>\n' +
             '                        </div>\n' +
             '                    </div>\n' +
             '                </div>');

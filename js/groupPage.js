@@ -38,7 +38,7 @@ function requestGroup(type) {
 function initCommunity(msg) {
     for(var i in msg){
         $('.community_left').append('<div class="topic_content">\n' +
-            '                        <img class="topic_img" src="'+msg[i].topic_image+'" onclick="">\n' +
+            '                        <img class="topic_img" src="'+'images/community_images/'+msg[i].topic_image+'" onclick="">\n' +
             '                        <div class="topic_content_right">\n' +
             '                            <span class="topic_title">'+msg[i].topic_name+'</span>\n' +
             '                            <p class="topic_content_content">\n' +
