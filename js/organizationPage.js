@@ -6,26 +6,18 @@ function init() {
     //组织团体ajax
     //发出:
     //接收: members_all(志愿人数), activities_all(发起活动数)
-    var data= {advisory:"新闻"};
     console.log("OrganizerAjax: ");
-    console.log(data);
     $.ajax({
-        url: "service/organizer.php?data= "+JSON.stringify(data), //后台请求数据
-        dataType: "json",
-        data: JSON.stringify(data),
+        url: "service/organizer.php", //后台请求数据
         type: "GET",
         success: function (msg) {
             console.log("OrganizerAjax:success!");
-            console.log(msg);
-            initOrganization(msg);
+            console.log(JSON.parse(msg));
+            initOrganization(JSON.parse(msg));
         },
         error: function (msg) {
             console.log("OrganizerAjax:error!");
             console.log(msg);
-            var parsedJson = JSON.stringify(msg);
-            console.log(parsedJson);
-            var jsonData = JSON.parse(parsedJson);
-            console.log(jsonData);
             alert("请求失败，请重试");
         }
     });
@@ -45,8 +37,8 @@ function initOrganization(msg) {
                 '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
                 '                </div>\n' +
                 '                <div class="organization_item">\n' +
-                '                    <p class="organization_item_activities">53个活动</p>\n' +
-                '                    <p class="organization_item_duration">已志愿4027天</p>\n' +
+                '                    <p class="organization_item_activities">'+msg[i].count+'个活动</p>\n' +
+                '                    <p class="organization_item_duration">已志愿'+msg[i].time+'天</p>\n' +
                 '                </div>\n' +
                 '            </div>\n' +
                 '        </div>');
@@ -58,8 +50,8 @@ function initOrganization(msg) {
                 '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
                 '                </div>\n' +
                 '                <div class="organization_item">\n' +
-                '                    <p class="organization_item_activities">53个活动</p>\n' +
-                '                    <p class="organization_item_duration">已志愿4027天</p>\n' +
+                '                    <p class="organization_item_activities">'+msg[i].count+'个活动</p>\n' +
+                '                    <p class="organization_item_duration">已志愿'+msg[i].time+'天</p>\n' +
                 '                </div>\n' +
                 '            </div>');
         }
