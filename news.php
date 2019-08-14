@@ -1,3 +1,18 @@
+<?php
+include("service/dbconfig.php");
+    $sql="SELECT * FROM advisory_video";
+    //接收返回值
+    $mysqli_result=$link->query($sql);
+    if($mysqli_result == false){
+        echo "SQL错误";
+        exit;
+    }
+    //用数组储存信息,$mysqli_result->fetch_array(MYSQL_ASSOC)重复调用自动显示下一条数据，直至没有返回null,且该函数调用不可逆，只能用一次
+    $rows=[];
+    while($row=$mysqli_result->fetch_array(MYSQLI_ASSOC)){
+        $rows[]=$row;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,95 +39,34 @@
                 <span class="news_btn" onclick="open_news();">新闻</span>
             </div>
             <div id="video_content" class="video_content">
-                <table id="video_list" class="video">
-                    <tr>
-                        <td>
-                            <div class="video_description">
-                                <video width="353px" height="200px" controls>
-                                    <source src="video/video_animal.mp4" type="video/mp4">
-                                    <source src="video/video_animal.mp4" type="video/ogg">
-                                    您的浏览器不支持 video 标签。
-                                </video>
-                                <span class="video_title">动物世界</span>
-                                <div class="video_from_time">
-                                    <span class="video_from_time_content">来源：小世界的动物</span>
-                                    <span class="video_from_time_content">上传时间：2018-09-03</span>
-                                </div>
+                <table id="" class="video">
+                <?php
+                    $i=0;
+                    foreach ($rows as $row){
+                        if($i==0) echo "<tr>";
+                ?>
+                    <td>
+                        <div class="video_description">
+                            <video width="353px" height="200px" controls>
+                                <source src="video/<?php echo $row['video']?>" type="video/mp4/qsv">
+                                <source src="video/<?php echo $row['video']?>" type="video/ogg/qsv">
+                                您的浏览器不支持 video 标签。
+                            </video>
+                            <span class="video_title"><?php echo $row['video_name']; ?></span>
+                            <div class="video_from_time">
+                                <span class="video_from_time_content"><?php echo $row['video_source']?></span>
+                                <span class="video_from_time_content"><?php echo $row['time']?></span>
                             </div>
-                        </td>
-                        <td>
-                            <div class="video_description">
-                                <video width="353px" height="200px" controls>
-                                    <source src="video/video_volunteer.mp4" type="video/mp4">
-                                    <source src="video/video_volunteer.mp4" type="video/ogg">
-                                    您的浏览器不支持 video 标签。
-                                </video>
-                                <span class="video_title">国际志愿日</span>
-                                <div class="video_from_time">
-                                    <span class="video_from_time_content">来源：青微工作室</span>
-                                    <span class="video_from_time_content">上传时间：2016-12-04</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="video_description">
-                                <video width="353px" height="200px" controls>
-                                    <source src="video/video_animal.mp4" type="video/mp4">
-                                    <source src="video/video_animal.mp4" type="video/ogg">
-                                    您的浏览器不支持 video 标签。
-                                </video>
-                                <span class="video_title">动物世界</span>
-                                <div class="video_from_time">
-                                    <span class="video_from_time_content">来源：小世界的动物</span>
-                                    <span class="video_from_time_content">上传时间：2018-09-03</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="video_description">
-                                <video width="353px" height="200px" controls>
-                                    <source src="video/video_volunteer.mp4" type="video/mp4">
-                                    <source src="video/video_volunteer.mp4" type="video/ogg">
-                                    您的浏览器不支持 video 标签。
-                                </video>
-                                <span class="video_title">国际志愿日</span>
-                                <div class="video_from_time">
-                                    <span class="video_from_time_content">来源：青微工作室</span>
-                                    <span class="video_from_time_content">上传时间：2016-12-04</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="video_description">
-                                <video width="353px" height="200px" controls>
-                                    <source src="video/video_animal.mp4" type="video/mp4">
-                                    <source src="video/video_animal.mp4" type="video/ogg">
-                                    您的浏览器不支持 video 标签。
-                                </video>
-                                <span class="video_title">动物世界</span>
-                                <div class="video_from_time">
-                                    <span class="video_from_time_content">来源：小世界的动物</span>
-                                    <span class="video_from_time_content">上传时间：2018-09-03</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="video_description">
-                                <video width="353px" height="200px" controls>
-                                    <source src="video/video_volunteer.mp4" type="video/mp4">
-                                    <source src="video/video_volunteer.mp4" type="video/ogg">
-                                    您的浏览器不支持 video 标签。
-                                </video>
-                                <span class="video_title">国际志愿日</span>
-                                <div class="video_from_time">
-                                    <span class="video_from_time_content">来源：青微工作室</span>
-                                    <span class="video_from_time_content">上传时间：2016-12-04</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
+                <?php
+                     $i++;
+                    if($i==3){
+                        $i=0;
+                        echo "</tr>";
+                    }
+                    }
+                ?>
                 </table>
             </div>
             <div style="display: none" id="news_contents" class="news_contents">

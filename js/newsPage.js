@@ -110,7 +110,7 @@ function initVideos(msg) {
 function initNews(msg) {
     for(var i in msg){
         $("#news_contents").append('<div class="news">\n' +
-            '                    <img class="news_photo" src="'+msg[i].image+'">\n' +
+            '                    <img class="news_photo" src="'+'images/news_images/'+msg[i].image+'">\n' +
             '                    <div class="news_content">\n' +
             '                        <span class="news_content_title">'+msg[i].news_name+'</span>\n' +
             '                        <p class="news_content_body">\n' +

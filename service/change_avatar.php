@@ -1,6 +1,7 @@
 <?php
 header("charset=utf-8");
 include("dbconfig.php");
+    $session_info=$_POST['session_info'];
     $cpicture='';
     $allowedExts = array("gif", "jpeg", "jpg", "png");
     $temp = explode(".", $_FILES["file"]["name"]);
@@ -29,39 +30,38 @@ include("dbconfig.php");
             //iconv("GBK", "UTF-8", $content);
             $name = iconv("GBK", "UTF-8", $_FILES["file"]['name']);
             $cpicture = $name;
-            if (file_exists("picture/" . $_FILES["file"]["name"]))
+            if (file_exists("../picture/" . $_FILES["file"]["name"]))
             {
-                $sql="UPDATE userinfo set uiheadportrait = '$cpicture' where uiphone = '$uiphone'";
-                $res=$db->query($sql);
-                echo $sql;
+                $sql="UPDATE user_user set user_avatar = '$cpicture' where nickname = '$session_info'";
+                $res=$link->query($sql);
                 if($res){
-                    echo "<script>alert('更换头像成功！'); location.href='member_info.php';</script>";
+                    echo "<script>alert('更换头像成功，下次登录时更新！'); location.href='../mine.html';</script>";
                 }else{
-                    echo "<script>alert('更换头像失败！'); location.href='member_info.php';</script>";
+                    echo "<script>alert('更换头像失败！'); location.href='../mine.html';</script>";
                 }
             }
             else
             {
                 // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
-                move_uploaded_file($_FILES["file"]["tmp_name"], "images/headportrait/" . $_FILES["file"]["name"]);
+                move_uploaded_file($_FILES["file"]["tmp_name"], "../picture/" . $_FILES["file"]["name"]);
                 //echo "文件存储在: " . "images/computers/" . $_FILES["file"]["name"];
             }
         }
     }
     else
     {
-        echo "非法的文件格式";
+        echo "非法的文件格式,返回重新选择！";
     }
 
-    $sql="UPDATE userinfo set uiheadportrait = '$cpicture' where uiphone = '$uiphone'";
-    $res=$db->query($sql);
+$sql="UPDATE user_user set user_avatar = '$cpicture' where nickname = '$session_info'";
+    $res=$link->query($sql);
     //echo $sql;
     if($res){
-        echo "<script>alert('更换头像成功！'); location.href='member_info.php';</script>";
+        echo "<script>alert('更换头像成功，下次登录时更新！'); location.href='../mine.html';</script>";
         //echo "236";
     }else{
-        echo "<script>alert('更换头像失败！'); location.href='member_info.php';</script>";
+        echo "<script>alert('更换头像失败！'); location.href='../mine.html';</script>";
     }
 
-    mysqli_close($db);
+    mysqli_close($link);
 ?>
