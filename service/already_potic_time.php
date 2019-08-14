@@ -10,7 +10,7 @@
       $sql="select * from topic_post where user_name='$name'";
       $obj=mysqli_query($link,$sql);
       $array = array();
-      $array = array();
+
       while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
       {
           $array[] = $rows;
