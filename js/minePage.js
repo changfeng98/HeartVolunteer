@@ -460,7 +460,12 @@ $("#nav_participation_topic").click(function (e) {
     $(".mine_sent_activity").hide();
 
     //参与的话题
-    var data= {name:user_info.nickname};
+    var data;
+    if(user_info.b == '1'){
+        data= {name:user_info.nickname};
+    }else {
+        data= {name:user_info.org_name};
+    }
     console.log(data);
     console.log("ParticipationTopicAjax");
     $.ajax({
@@ -494,7 +499,12 @@ $("#nav_sent_topic").click(function (e) {
     $(".mine_sent_activity").hide();
 
     //发布的话题
-    var data= {name:user_info.nickname};
+    var data;
+    if(user_info.b == '1'){
+        data= {name:user_info.nickname};
+    }else {
+        data= {name:user_info.org_name};
+    }
     console.log(data);
     console.log("already_postAjax");
     $.ajax({
