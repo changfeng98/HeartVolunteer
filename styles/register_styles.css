@@ -12,6 +12,7 @@ body{
 }
 
 .logo_register{
+    cursor: pointer;
     height: 60px;
     margin: 80px;
 }

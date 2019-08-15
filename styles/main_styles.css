@@ -1,4 +1,5 @@
 body{
+    cursor: default;
     margin: 0;
     padding: 0;
     display: flex;
@@ -87,6 +88,7 @@ button{
 }
 
 .logo_main{
+    cursor: pointer;
     height: 60px;
     margin: 30px;
 }
