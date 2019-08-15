@@ -1,4 +1,3 @@
-
 function init() {
     initUser();
     $(".organization_page").css({background: '#ff664b'});
