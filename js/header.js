@@ -5,7 +5,7 @@ document.writeln("<div class=\"header_main\">\n" +
     "\n" +
     "                <div class=\"header_right_location\" onmouseover=\"showChangeCityDialog();\" onmouseleave=\"hideChangeCityDialog();\">\n" +
     "                    <img src=\"images/ic_location.png\" onclick=\"\" style=\"width: 20px;height: 20px;margin-left: 10px;\"/>\n" +
-    "                    <span class=\"change_city\">日照市</span>\n" +
+    "                    <span class=\"change_city\">济南市</span>\n" +
     "                    <div class=\"header_change_city_float\" style=\"display: none;\">\n" +
     "                        <ul>\n" +
     "                            <li id=\"jinan\" onclick=\"onLocationClicked(this)\">济南市</li>\n" +

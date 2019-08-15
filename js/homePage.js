@@ -37,7 +37,11 @@ function init() {
         }
     });
 
-    getActivity(user_info.city.substring(0,2));
+    if(user_info == null){
+        getActivity('济南');
+    }else {
+        getActivity(user_info.city.substring(0,2));
+    }
 
     //社区ajax
     //发出:

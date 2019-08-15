@@ -12,8 +12,8 @@ function init() {
         type: "GET",
         success: function (msg) {
             console.log("OrganizerAjax:success!");
-            console.log(JSON.parse(msg));
-            initOrganization(JSON.parse(msg));
+            console.log(msg);
+            initOrganization(msg);
         },
         error: function (msg) {
             console.log("OrganizerAjax:error!");
