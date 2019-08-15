@@ -12,7 +12,7 @@ $time=date('Y-m-d H:i:s',time());
 $array = array();
 while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
 {
-    $count=0;
+    $count=2;
     $name=$rows["org_name"];
     $ad_name=$rows["ad_name"];
     $org_avatar=$rows["org_avatar"];
@@ -24,10 +24,12 @@ while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
             $count++;
         }
     }
+
    // $count=count($arr);
 
     $timep=strtotime($time)-strtotime($rows["time"]);
     $timep=(int)$timep/3600;
+    $timep=round( $timep/10)*10;
     $p = [
         "name" => "$name",
         "ad_name" => "$ad_name",
