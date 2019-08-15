@@ -3,12 +3,11 @@
 //后端传org_name：组织名称，org_password：组织登录密码，org_mailbox：组织邮箱，org_phone：组织电话
 //org_avatar:组织头像，ad_name：组织负责人名称，ad_mailbox：负责人邮箱，ad_phone：负责人数据号，ad_id：负责人身份证号
 include("dbconfig.php");
-//$arr=json_decode($_GET['data'],true);
 
 $sql="select * from organizer_user";
 $obj=mysqli_query($link,$sql);
-date_default_timezone_set('Asia/Shanghai');
-$time=date('Y-m-d H:i:s',time());
+//date_default_timezone_set('Asia/Shanghai');
+//$time=date('Y-m-d H:i:s',time());
 $array = array();
 while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
 {
@@ -17,7 +16,7 @@ while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
     $org_avatar=$rows["org_avatar"];
     $sqli="select * from acticity where regional_sponsors='$name'";
     $obji=mysqli_query($link,$sqli);
-    $count=0;
+    $count=3;
     if($obji&&mysqli_fetch_row()){
         while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC)){
             $count++;
@@ -25,7 +24,8 @@ while($rows=mysqli_fetch_array($obj,MYSQLI_ASSOC))
     }
 
     $timep=strtotime($time)-strtotime($rows["time"]);
-    $timep=(int)$timep/3600;
+    $timep=$timep/3600;
+    $timep=round( $timep/10)*10;
     $p = [
         "name" => "$name",
         "ad_name" => "$ad_name",
