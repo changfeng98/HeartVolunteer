@@ -140,6 +140,7 @@
                         <div class="post_topic_head">
                             <img id="article_pic" class="article_pic" src="images/ic_upload_pic.png" onclick="$('#topic_file').click()"/>
                             <input name="file" type="file" id="topic_file" style="display: none;" onchange="xmTanUploadImg(this)">
+                            <input type="text" name="user_name" style="display: none;" id="session_nickname">
                             <script>
                                 function xmTanUploadImg(obj) {
                                     var file = obj.files[0];

@@ -9,6 +9,7 @@ function init(){
 
 function initUserInfo(){
     $('#session_info').val(user_info.nickname);
+    $('#session_nickname').val(user_info.nickname);
     if(user_info.b == '1'){
         $('.mine_info_head').attr('src', 'picture/'+user_info.user_avatar);
         $('#modify_avatar').attr('src', 'picture/'+user_info.user_avatar);
