@@ -102,12 +102,14 @@
                 </div>
                 <button class="main_button_default" style="margin: 50px 0" onclick="onModifyInfoManager()">确认更改</button>
             </div>
+
             <div class="mine_change_head" style="display: none;">
                 <img src="images/ic_head_default.png" onclick="$('#file_upload').click()" style="width: 100px;height: 100px;margin: 50px 0 20px 0;border-radius: 50%;"/>
                 <input id="file_upload" type="file" style="display: none;"/>
                 <span>点击图片上传</span>
                 <button class="main_button_default" style="margin: 50px 0">确认更改</button>
             </div>
+
             <div class="mine_change_password" style="display: none;">
                 <div class="modify_info_line">
                     <span>原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
@@ -123,30 +125,63 @@
                 </div>
                 <button class="main_button_default" style="margin: 50px 0" onclick="onChangePWD()">确认更改</button>
             </div>
+
             <div class="mine_post_topic" style="display: none;">
-                <div class="mine_body_item_content">
-                    <div class="post_topic_head">
-                        <img class="article_pic" src="images/ic_upload_pic.png"/>
-                        <div class="post_topic_title_content">
-                            <input id="article_title" class="article_title" type="text" placeholder="标题"/>
-                            <span class="article_tag_tip">&nbsp;选择标签</span>
-                            <div class="article_tag_content">
-                                <ul>
-                                    <li class="type_1" onclick="onSelectType_1()">生态保护</li>
-                                    <li class="type_2" onclick="onSelectType_2()">文化/艺术</li>
-                                    <li class="type_3" onclick="onSelectType_3()">动物保护</li>
-                                    <li class="type_4" onclick="onSelectType_4()">儿童关怀</li>
-                                    <li class="type_5" onclick="onSelectType_5()">支教助学</li>
-                                    <li class="type_6" onclick="onSelectType_6()">扶老助残</li>
-                                    <li class="type_7" onclick="onSelectType_7()">其它</li>
-                                </ul>
+                <form action="service/send_topic.php" method="post" enctype="multipart/form-data">
+                    <div class="mine_body_item_content">
+                        <div class="post_topic_head">
+                            <img id="article_pic" class="article_pic" src="images/ic_upload_pic.png" onclick="$('#topic_file').click()"/>
+                            <input name="file" type="file" id="topic_file" style="display: none;" onchange="xmTanUploadImg(this)">
+                            <input type="text" name="user_name" style="display: none;" id="session_nickname">
+                            <script>
+                                function xmTanUploadImg(obj) {
+                                    var file = obj.files[0];
+                                    var reader = new FileReader();
+                                    reader.readAsDataURL(file);
+                                    reader.onload=function (e){    //成功读取文件
+                                        var img = document.getElementById("article_pic");
+                                        img.src = e.target.result;   //或 img.src = this.result / e.target == this
+                                    };
+                                }
+                            </script>
+                            <div class="post_topic_title_content">
+                                <input name="article_title" id="article_title" class="article_title" type="text" placeholder="标题"/>
+                                <span class="article_tag_tip">&nbsp;选择标签</span>
+                                <div class="lable_div">
+                                    <input type="radio" checked="checked" id="uisex_生态" name="uisex" value="生态保护" />
+                                    <label for="uisex_生态">生态保护</label>
+                                    <input type="radio" checked="checked" id="uisex_文化" name="uisex" value="文化/艺术" />
+                                    <label for="uisex_文化">文化/艺术</label>
+                                    <input type="radio" checked="" id="uisex_动物保护" name="uisex" value="动物保护" />
+                                    <label for="uisex_文化">动物保护</label>
+                                    <input type="radio" checked="" id="uisex_儿童关怀" name="uisex" value="儿童关怀" />
+                                    <label for="uisex_文化">儿童关怀</label>
+                                    <input type="radio" checked="" id="uisex_支教助学" name="uisex" value="支教助学" />
+                                    <label for="uisex_文化">支教助学</label>
+                                    <input type="radio" checked="" id="uisex_扶老助残" name="uisex" value="扶老助残" />
+                                    <label for="uisex_文化">扶老助残</label>
+                                    <input type="radio" checked="" id="uisex_其它" name="uisex" value="其它" />
+                                    <label for="uisex_文化">其它</label>
+                                </div>
+                                <!--                                <div class="article_tag_content">-->
+                                <!--                                    <ul>-->
+                                <!--                                        <li class="type_1" onclick="onSelectType_1()">生态保护</li>-->
+                                <!--                                        <li class="type_2" onclick="onSelectType_2()">文化/艺术</li>-->
+                                <!--                                        <li class="type_3" onclick="onSelectType_3()">动物保护</li>-->
+                                <!--                                        <li class="type_4" onclick="onSelectType_4()">儿童关怀</li>-->
+                                <!--                                        <li class="type_5" onclick="onSelectType_5()">支教助学</li>-->
+                                <!--                                        <li class="type_6" onclick="onSelectType_6()">扶老助残</li>-->
+                                <!--                                        <li class="type_7" onclick="onSelectType_7()">其它</li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </div>-->
                             </div>
                         </div>
+                        <textarea name="article_words" id="article_words" class="article_words" placeholder="在此处开始您的创作..."></textarea>
                     </div>
-                    <textarea id="article_words" class="article_words" placeholder="在此处开始您的创作..."></textarea>
-                </div>
-                <button class="main_button_default post_topic_btn" onclick="onPostTopicManager()">发布话题</button>
+                    <input type="submit" class="main_button_default post_topic_btn" value="发布话题"></input>
+                </form>
             </div>
+
             <div class="mine_participation_topic" style="display: none;">
                 <div class="participation_topic_filter_content">
                     <ul>
@@ -193,6 +228,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="mine_sent_topic" style="display: none;">
                 <div class="participation_topic_filter_content">
                     <ul>
@@ -233,10 +269,25 @@
                     </div>
                 </div>
             </div>
+
             <div class="mine_post_activity" style="display: none;">
+                <form action="service/send_activity.php" method="post" enctype="multipart/form-data">
                 <div class="mine_body_item_content">
                     <div class="post_topic_head">
-                        <img id="act_pic" class="article_pic" src="images/ic_upload_pic.png"/>
+                        <img id="act_pic" class="article_pic" src="images/ic_upload_pic.png" onclick="$('#topic_file').click()"/>
+                        <input name="file" type="file" id="activity_file" style="display: none;" onchange="xmTanUploadImg(this)">
+                        <script>
+                            function xmTanUploadImg(obj) {
+                                var file = obj.files[0];
+                                var reader = new FileReader();
+                                reader.readAsDataURL(file);
+                                reader.onload=function (e){//成功读取文件
+                                    var img = document.getElementById("article_pic");
+                                    img.src = e.target.result;   //或 img.src = this.result / e.target == this
+                                    document.getElementById("result").appendChild(article_pic);
+                                };
+                            }
+                        </script>
                         <div class="post_topic_title_content">
                             <input id="act_name" class="article_title" type="text" placeholder="活动标题"/>
                             <span class="article_tag_tip">&nbsp;选择标签</span>
@@ -273,6 +324,7 @@
                     <textarea id="recruitment" class="article_words" placeholder="在此处填写活动介绍..."></textarea>
                 </div>
                 <button class="main_button_default post_topic_btn" onclick="onPostActivityManager()">发布活动</button>
+                </form>
             </div>
             <div class="mine_sent_activity" style="display: none;">
                 <div class="participation_topic_filter_content">
