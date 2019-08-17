@@ -8,6 +8,7 @@ $content=$arr["content"];//评论内容
 $user_avatar=$arr["user_avatar"];//评论用户头像
 date_default_timezone_set('Asia/Shanghai');
 $release_time=date('Y-m-d H:i:s',time());//评论发布时间
+
 $sql="select * from act_post";
 $obj=mysqli_query($link,$sql);
 if($obj){
