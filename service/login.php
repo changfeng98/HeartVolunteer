@@ -23,8 +23,8 @@ if($obj&&mysqli_affected_rows($link)){
             $arr=mysqli_fetch_array($obj,MYSQLI_ASSOC);
 
         }
-        $jsonstr=array('a' => 1,'b'=>0,'org_name'=>$arr['org_name'],'org_password'=>$arr['org_password'],'org_mailbox'=>$arr['org_mailbox'],'org_phone'=>$arr['org_phone'],'org_avatar'=>$arr['org_avatar'],'ad_name'=>$arr['ad_name'],'ad_mailbox'=>$arr['ad_mailbox'],'ad_phone'=>$arr['ad_phone'],'ad_id'=>$arr['ad_id']);
-
+        $jsonstr=array('a' => 1,'b'=>0,'org_name'=>$arr['org_name'],'org_password'=>$arr['org_password'],'org_mailbox'=>$arr['org_mailbox'],'org_province'=>$arr['org_province'],'introduce'=>$arr['introduce'],'org_phone'=>$arr['org_phone'],'org_city'=>$arr['org_city'],'org_avatar'=>$arr['org_avatar'],'ad_name'=>$arr['ad_name'],'ad_mailbox'=>$arr['ad_mailbox'],'ad_phone'=>$arr['ad_phone'],'ad_id'=>$arr['ad_id'],'time'=>$arr['time']);
+        //增加了org_province组织省份introduce组织介绍org_city组织城市time组织注册时间
         // $jsonstr=array('org_name'=>$arr['org_name'],'org_password'=>$arr['org_password'],'org_mailbox'=>$arr['org_mailbox'],'org_phone'=>$arr['org_phone'],'org_avatar'=>$arr['org_avatar'],'ad_name'=>$arr['ad_name'],'ad_mailbox'=>$arr['ad_mailbox'],'ad_phone'=>$arr['ad_phone'],'ad_id'=>$arr['ad_id']);
     }
     else{
