@@ -12,5 +12,6 @@ $act_name=$arr['act_name'];
         $array[] = $rows;
     }
     // print_r($array);
+
     echo json_encode($array);
 
