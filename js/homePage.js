@@ -39,8 +39,10 @@ function init() {
 
     if(user_info == null){
         getActivity('济南');
-    }else {
+    }else if(user_info.b == '1'){
         getActivity(user_info.city.substring(0,2));
+    }else {
+        getActivity(user_info.org_city.substring(0,2));
     }
 
     //社区ajax

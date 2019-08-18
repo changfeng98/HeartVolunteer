@@ -1,10 +1,30 @@
 var menuItems = [$("#nav_checking_data"), $("#nav_modify_info"), $("#nav_change_head"), $("#nav_change_password"), $("#nav_post_topic"), $("#nav_participation_topic"), $("#nav_sent_topic"), $("#nav_post_activity"), $("#nav_sent_activity")];
 var selectedTag = '';
+var $_GET = (function(){
+    var url = window.document.location.href.toString();
+    var u = url.split("?");
+    if(typeof(u[1]) == "string"){
+        u = u[1].split("&");
+        var get = {};
+        for(var i in u){
+            var j = u[i].split("=");
+            get[j[0]] = j[1];
+        }
+        return get;
+    } else {
+        return {};
+    }
+})();
 
 function init(){
+    var type = $_GET['type'];
     initUser();
     $("#nav_checking_data").addClass("mine_menu_item_hovered");
     initUserInfo();
+
+    if(type === '322858284'){
+        $('#nav_post_topic').click();
+    }
 }
 
 function initUserInfo(){
@@ -46,7 +66,7 @@ function initUserInfo(){
         $('#modify_avatar').attr('src', user_info.org_avatar);
         $('.mine_info_nickname').text(user_info.org_name);
         $('.mine_info_phone').text(user_info.org_phone);
-        $('.mine_info_address').text(user_info.province + user_info.city);
+        $('.mine_info_address').text(user_info.org_province + user_info.org_city);
         if(user_info.introduce != '' && user_info.introduce != null){
             $('.mine_info_introduce').text(user_info.introduce);
         }else {
@@ -55,8 +75,8 @@ function initUserInfo(){
 
         $('#modify_org_username').val(user_info.org_name);
         $('#modify_org_phone').val(user_info.org_phone);
-        $('#modify_org_province').val(user_info.province);
-        $('#modify_org_city').val(user_info.city);
+        $('#modify_org_province').val(user_info.org_province);
+        $('#modify_org_city').val(user_info.org_city);
         $('#modify_org_introduce').val(user_info.introduce);
         $('#modify_org_email').val(user_info.org_mailbox);
         $('#modify_ad_phone').val(user_info.ad_phone);
