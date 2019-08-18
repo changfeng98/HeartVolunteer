@@ -18,7 +18,7 @@ function init() {
     var type = $_GET['type'];
     initUser();
     $(".group_page").css({background: '#ff664b'});
-    console.log(type)
+    console.log(type);
     if(type === '%E7%94%9F%E6%80%81%E4%BF%9D%E6%8A%A4'){
         $('#type_1').css({color:'#ee4639'});
     }else if(type === '%E6%96%87%E5%8C%96/%E8%89%BA%E6%9C%AF'){
@@ -227,4 +227,14 @@ $('#type_7').click(function (e) {
 
 $('.search_btn').click(function (e) {
     requestGroupSearch($.trim($('.search_box').val()));
+});
+
+$('.post_topic_btn').click(function (e) {
+    if(user_info == null){
+        showTip("请先登录")
+    }else if(user_info.b == '1'){
+        location.href = 'mine.html?type=322858284';
+    }else {
+        location.href = 'mine_organization.html?type=322858284';
+    }
 });
