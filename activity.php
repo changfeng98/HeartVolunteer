@@ -14,6 +14,22 @@ include("./service/dbconfig.php");
     }
 
 ?>
+
+<?php
+@$act_id = $_POST['act_id'];
+@$Rec_ing = $_POST['Rec_ing'] + 1;
+@$Recruitment = $_POST['Recruitment'] + 1;
+
+if ($act_id && $Rec_ing) {
+    if ($Rec_ing == $Recruitment) {
+        echo "<script>alert(\"报名截止\");</script>";
+    } else {
+        $sql = "UPDATE activity SET Rec_ing='$Rec_ing' WHERE act_id=$act_id";
+        $link->query($sql);
+        echo "<script>alert(\"报名成功\");history.go(-2);location.reload();</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +76,7 @@ include("./service/dbconfig.php");
             ?>
                 <div class="project-item">
                     <a href="activity_details.php?act_id='<?php echo $row['act_id'] ?>'" title="<?php echo $row['act_region']; ?>">
+
                         <img src="./images/activity_images/<?php echo $row['picture']?>" width="240" height="160">
 
                     </a>
@@ -70,13 +87,28 @@ include("./service/dbconfig.php");
 <!--                                    活动没有详细地点？？？-->
                                 <span class="activity-introduction">活动地点：<?php echo $row['act_region']; ?></span>
                                 <span class="activity-introduction">活动发起：<?php echo $row['Founder']; ?></span>
-                                <span class="activity-introduction">报名截止：<?php echo $row['Deadline']; ?></span>
+                                <span class="activity-introduction">志愿时长：<?php echo $row['Deadline']; ?></span>
                             </div>
                             <div class="project-item-people">
                                 <span class="activity-people-number">已报名人数：<?php echo $row['Rec_ing']; ?>人</span>
                                 <span class="activity-people-number">总招募人数：<?php echo $row['Recruitment']; ?>人</span>
                             </div>
-                            <button class="activity_apply main_button_default" style="border-radius: 0;">马上报名</button>
+<!--                            --><?php //if($row['Rec_ing']==$row['Recruitment']){
+                                //echo "报名截止";
+                                //<input type="submit" value="点击按钮" >
+//                            <button class="activity_apply main_button_default" style="border-radius: 0;">报名截止</button>
+//                            }else{
+//                                echo "马上报名";
+//                            <button class="activity_apply main_button_default" style="border-radius: 0;">马上报名</button>
+//                            }?>
+
+                            <form method="post" action="">
+                                <input name="act_id" type="hidden" value="<?php echo $row['act_id']; ?>">
+                                <input name="Rec_ing" type="hidden" value="<?php echo $row['Rec_ing']; ?>">
+                                <input name="Recruitment" type="hidden" value="<?php echo $row['Recruitment']; ?>">
+                                <input class="activity_apply main_button_default" style="border-radius: 0;" type="submit" value="马上报名">
+                            </form>
+
                         </div>
                         <span class="activity-tag">活动类别：<?php echo $row['act_category']; ?></span>
                     </div>

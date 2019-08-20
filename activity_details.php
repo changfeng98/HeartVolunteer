@@ -1,7 +1,9 @@
 <?php
 include("./service/dbconfig.php");
     $act_id=$_GET['act_id'];
-    $sql="SELECT * FROM activity where act_id = $act_id";
+
+
+$sql="SELECT * FROM activity where act_id = $act_id";
     //接收返回值
     $mysqli_result=$link->query($sql);
     if($mysqli_result == false){
@@ -14,6 +16,10 @@ include("./service/dbconfig.php");
     while($row=$mysqli_result->fetch_array(MYSQLI_ASSOC)){
         $rows=$row;
 }
+//$act_name=$arr['act_name'];
+
+
+
 ?>
 
 <!DOCTYPE html>

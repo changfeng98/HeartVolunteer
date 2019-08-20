@@ -261,7 +261,7 @@ function initOrganization(msg) {
         console.log(msg);
         if(i <= 1){
             $(".home_organization_content").append('<div class="organization_content">\n' +
-                '                <img class="organization_item_pic" src="'+'picture/organization_logos/'+msg[i].org_avatar+'"/>\n' +
+                '                <img class="organization_item_pic" src="'+'picture/'+msg[i].org_avatar+'"/>\n' +
                 '                <div class="organization_item">\n' +
                 '                    <h3 class="organization_item_title">'+msg[i].name+'</h3>\n' +
                 '                    <p class="organization_item_place">'+msg[i].ad_name+'</p>\n' +
