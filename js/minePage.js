@@ -62,8 +62,8 @@ function initUserInfo(){
         $('#modify_introduce').val(user_info.introduce);
         $('#modify_email').val(user_info.user_mailbox);
     }else {
-        $('.mine_info_head').attr('src', user_info.org_avatar);
-        $('#modify_avatar').attr('src', user_info.org_avatar);
+        $('.mine_info_head').attr('src', 'picture/'+user_info.org_avatar);
+        $('#modify_avatar').attr('src', 'picture/'+user_info.org_avatar);
         $('.mine_info_nickname').text(user_info.org_name);
         $('.mine_info_phone').text(user_info.org_phone);
         $('.mine_info_address').text(user_info.org_province + user_info.org_city);

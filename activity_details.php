@@ -1,7 +1,7 @@
 <?php
 include("./service/dbconfig.php");
     $act_id=$_GET['act_id'];
-
+    $act_name=$_GET['act_name'];
 
 $sql="SELECT * FROM activity where act_id = $act_id";
     //接收返回值
@@ -15,8 +15,18 @@ $sql="SELECT * FROM activity where act_id = $act_id";
     $rows;
     while($row=$mysqli_result->fetch_array(MYSQLI_ASSOC)){
         $rows=$row;
+
 }
 //$act_name=$arr['act_name'];
+$sqli="select * from act_post where act_name='$act_name'";
+$obji=mysqli_query($link,$sqli);
+$array = array();
+while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC))
+{
+    $array[] = $rowsi;
+}
+// print_r($array);
+//ho json_encode($array);
 
 
 
@@ -100,7 +110,7 @@ $sql="SELECT * FROM activity where act_id = $act_id";
                             <img class="head_portrait" src="images/pic_home.jpeg">
                             <div class="comment_right">
                                 <div class="comment_right_top">
-                                    <span class="nickname">一叶子</span>
+                                    <span class="nickname"></span>
                                     <span class="time">2019-10-20</span>
                                 </div>
                                 <p class="comment_content">
