@@ -282,14 +282,14 @@
                                 var reader = new FileReader();
                                 reader.readAsDataURL(file);
                                 reader.onload=function (e){//成功读取文件
-                                    var img = document.getElementById("article_pic");
+                                    var img = document.getElementById("act_pic");
                                     img.src = e.target.result;   //或 img.src = this.result / e.target == this
-                                    document.getElementById("result").appendChild(article_pic);
+                                    //document.getElementById("result").appendChild(article_pic);
                                 };
                             }
                         </script>
                         <div class="post_topic_title_content">
-                            <input id="act_name" class="article_title" type="text" placeholder="活动标题"/>
+                            <input id="act_name" name="act_name" class="article_title" type="text" placeholder="活动标题"/>
                             <span class="article_tag_tip">&nbsp;选择标签</span>
                             <div class="article_tag_content">
                                 <ul>
@@ -305,8 +305,8 @@
                         </div>
                     </div>
                     <div class="post_activity_input_line" style="border-bottom: #e9e9e9 solid 1px;">
-                        <input id="act_region" class="input_default" type="text" placeholder="活动地点" style="width: 400px;border-right: #e9e9e9 solid 1px;"/>
-                        <input id="regional_sponsors" class="input_default" type="text" placeholder="需招募人数" oninput="value=value.replace(/[^\d]/g,'')" style="width: 400px"/>
+                        <input id="act_region" name="act_region" class="input_default" type="text" placeholder="活动地点" style="width: 400px;border-right: #e9e9e9 solid 1px;"/>
+                        <input id="regional_sponsors" name="regional_sponsors" class="input_default" type="text" placeholder="需招募人数" oninput="value=value.replace(/[^\d]/g,'')" style="width: 400px"/>
                     </div>
                     <div class="post_activity_input_line" style="border-bottom: #e9e9e9 solid 1px;">
                         <div class="post_activity_input_line_item_content" style="width: 400px;border-right: #e9e9e9 solid 1px;">
@@ -315,15 +315,15 @@
                         <div class="post_activity_input_line_item_content" style="width: 400px">
                             <span>截止时间</span>
                             <div class="post_activity_date_input_body">
-                                <input id="deadline_year" class="input_default" type="text" placeholder="年份" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">年</span>
-                                <input id="deadline_month" class="input_default" type="text" placeholder="月" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">月</span>
-                                <input id="deadline_day" class="input_default" type="text" placeholder="日" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">日</span>
+                                <input id="deadline_year" name="deadline_year" class="input_default" type="text" placeholder="年份" maxlength="4" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">年</span>
+                                <input id="deadline_month" name="deadline_month" class="input_default" type="text" placeholder="月" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">月</span>
+                                <input id="deadline_day" name="deadline_day" class="input_default" type="text" placeholder="日" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')" style="width: 70px;"><span class="birthday_label">日</span>
                             </div>
                         </div>
                     </div>
-                    <textarea id="recruitment" class="article_words" placeholder="在此处填写活动介绍..."></textarea>
+                    <textarea id="content" name="content" class="article_words" placeholder="在此处填写活动介绍..."></textarea>
                 </div>
-                <button class="main_button_default post_topic_btn" onclick="onPostActivityManager()">发布活动</button>
+                    <input type="submit" class="main_button_default post_topic_btn" value="发布活动">
                 </form>
             </div>
             <div class="mine_sent_activity" style="display: none;">
@@ -368,7 +368,6 @@
             </div>
         </div>
     </div>
-
 
     <script type="text/javascript" src="js/dialog_tips.js"></script>
     <script type="text/javascript" src="js/footer.js"></script>

@@ -752,9 +752,10 @@ function onPostTopicManager(){
     // }
 }
 
-function onPostActivityManager(){
+$('#post_active_btn').click(function (e) {
     var act_pic;
     var act_name = $.trim($('#act_name').val());
+    console.log(act_name);
     var act_region = $.trim($('#act_region').val());
     var regional_sponsors = $.trim($('#regional_sponsors').val());
     var initiation_time = $.trim($('#initiation_time').val());
@@ -827,7 +828,7 @@ function onPostActivityManager(){
         $('#act_name').css({'border-color': '#cb3638'});
     }
     // }
-}
+})
 
 $('#pa_all').click(function (e) {
     $('#pa_all').css({'background':'#ffede8', 'border':'#ffe3d9 solid 1px'});

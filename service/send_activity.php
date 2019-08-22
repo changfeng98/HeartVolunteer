@@ -7,21 +7,22 @@
 //////活动时长Deadline，活动截止时间Ending_time，活动所需人数Recruitment，活动已招人数Rec_ing，活动介绍introduce=0，活动内容content，活动摘要abstract=0，发布活动的组织Founder，活动小注notes=0，点赞数，look=0，活动图片picture
 ////图片存在的目录为images/activity/
 include("dbconfig.php");
-$arr=json_decode($_GET['data'],true);
+//$arr=json_decode($_GET['data'],true);
 
-$act_name=$arr['act_name'];
-$act_city=$arr['act_city'];
-$act_category=$arr['act_category'];
-$act_region=$arr['act_region'];
-$regional_sponsors=$arr['regional_sponsors'];
+$act_name=$_POST['act_name'];
+//echo $act_name;
+$act_city=$_POST['act_city'];
+$act_category=$_POST['act_category'];
+$act_region=$_POST['act_region'];
+$regional_sponsors=$_POST['regional_sponsors'];
 date_default_timezone_set('Asia/Shanghai');
 $Initiation_time=$release_date=date('Y-m-d H:i:s',time());//用时间戳获取
-$Deadline=$arr['Deadline'];
-$Ending_time=$arr['Ending_time'];
-$Recruitment=$arr['Recruitment'];
-$Rec_ing=$arr['Rec_ing'];
-$content=$arr['content'];
-$Founder=$arr['Founder'];
+$Deadline=$_POST['deadline_year']+$_POST['deadline_month']+$_POST['deadline_day'];
+$Ending_time=$_POST['Ending_time'];
+$Recruitment=$_POST['Recruitment'];
+$Rec_ing=$_POST['Rec_ing'];
+$content=$_POST['content'];
+$Founder=$_POST['Founder'];
 $picture='';
 //echo $act_name;
 //127.0.0.1/HeartVolunteer/service/send_activity.php?data={"act_name":"夕阳","act_city":"日照市","act_category":"生态环保","act_region":"东港","regional_sponsors":"哈哈","Deadline":"2","Ending_time":"11","Recruitment":"2","Rec_ing":"1","content":"公益","Founder":"心田地","picture":"children(6).jpg"}
