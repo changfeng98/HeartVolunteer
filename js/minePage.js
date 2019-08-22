@@ -25,6 +25,8 @@ function init(){
     if(type === '322858284'){
         $('#nav_post_topic').click();
     }
+
+
 }
 
 function initUserInfo(){
