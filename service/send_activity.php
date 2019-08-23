@@ -11,18 +11,18 @@ include("dbconfig.php");
 
 $act_name=$_POST['act_name'];
 //echo $act_name;
-$act_city=$_POST['act_city'];
-$act_category=$_POST['act_category'];
+//$act_city=$_POST['act_city'];
+//$act_category=$_POST['act_category'];
 $act_region=$_POST['act_region'];
 $regional_sponsors=$_POST['regional_sponsors'];
 date_default_timezone_set('Asia/Shanghai');
 $Initiation_time=$release_date=date('Y-m-d H:i:s',time());//用时间戳获取
 $Deadline=$_POST['deadline_year']+$_POST['deadline_month']+$_POST['deadline_day'];
-$Ending_time=$_POST['Ending_time'];
-$Recruitment=$_POST['Recruitment'];
-$Rec_ing=$_POST['Rec_ing'];
+//$Ending_time=$_POST['Ending_time'];
+//$Recruitment=$_POST['Recruitment'];
+//$Rec_ing=$_POST['Rec_ing'];
 $content=$_POST['content'];
-$Founder=$_POST['Founder'];
+//$Founder=$_POST['Founder'];
 $picture='';
 //echo $act_name;
 //127.0.0.1/HeartVolunteer/service/send_activity.php?data={"act_name":"夕阳","act_city":"日照市","act_category":"生态环保","act_region":"东港","regional_sponsors":"哈哈","Deadline":"2","Ending_time":"11","Recruitment":"2","Rec_ing":"1","content":"公益","Founder":"心田地","picture":"children(6).jpg"}
@@ -73,9 +73,10 @@ if ((($_FILES["file"]["type"] == "image/gif")
 $sql="select * from activity where act_name='$act_name'";
 $obj=mysqli_query($link,$sql);
 if($obj&&mysqli_affected_rows($link)){
-    $jsonstr=array('a' => 0);
-    echo json_encode($jsonstr);
+   // $jsonstr=array('a' => 0);
+   // echo json_encode($jsonstr);
     //该活动已发
+    echo "<script>alert('你已发布过该话题，点击返回修改！');history.back();</script>";
 
 }
 else{
@@ -83,8 +84,13 @@ else{
         values ('$act_name','济南市','生态环保','济南市沁东园','$regional_sponsors','$Initiation_time','$Deadline','$Ending_time','25','$Rec_ing',0,'$content','0','蓝天行','0','0','2.jpg')";
    // echo $sql;
     $obj=mysqli_query($link,$sql);
-    $jsonstr=array('a' => 1);
-    echo json_encode($jsonstr);
+    if($obj){
+        echo "<script>alert('发布成功，点击返回！');history.back();</script>";
+    }else{
+        echo "<script>alert('发布失败，请检查信息是否填写正确！');history.back();</script>";
+    }
+    //$jsonstr=array('a' => 1);
+    //echo json_encode($jsonstr);
     //活动发布成功
 }
 //

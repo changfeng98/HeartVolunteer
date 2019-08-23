@@ -1,7 +1,7 @@
 <?php
 include("./service/dbconfig.php");
     $act_id=$_GET['act_id'];
-    $act_name=$_GET['act_name'];
+
 
 $sql="SELECT * FROM activity where act_id = $act_id";
     //接收返回值
@@ -18,7 +18,7 @@ $sql="SELECT * FROM activity where act_id = $act_id";
 
 }
 //$act_name=$arr['act_name'];
-$sqli="select * from act_post where act_name='$act_name'";
+$sqli="select * from act_post ";
 $obji=mysqli_query($link,$sqli);
 $array = array();
 while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC))
@@ -95,26 +95,26 @@ while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC))
                     <span class="all_comments">所有评论</span>
                     <div class="all_comments_content">
                         <div class="comment">
-                            <img class="head_portrait" src="images/pic_home.jpeg">
+                            <img class="head_portrait" src="picture/user(1).jpg">
                             <div class="comment_right">
                                 <div class="comment_right_top">
-                                    <span class="nickname">一叶子</span>
-                                    <span class="time">2019-10-20</span>
+                                    <span class="nickname">可爱猫咪</span>
+                                    <span class="time">2019-7-20</span>
                                 </div>
                                 <p class="comment_content">
-                                    你好我们是学生，我们有个小组，对这个活动感兴趣，我们是自愿组织想参加一下这个活动，请问下这个活动如何参加的呢，去哪里集合呢？我们也想去献血。
+                                    我们应该多多参与公益活动中来，让生活更美好。
                                 </p>
                             </div>
                         </div>
                         <div class="comment">
-                            <img class="head_portrait" src="images/pic_home.jpeg">
+                            <img class="head_portrait" src="picture/user(2).jpg">
                             <div class="comment_right">
                                 <div class="comment_right_top">
-                                    <span class="nickname"></span>
-                                    <span class="time">2019-10-20</span>
+                                    <span class="nickname">小手牵大手</span>
+                                    <span class="time">2019-8-4</span>
                                 </div>
                                 <p class="comment_content">
-                                    你好我们是学生，我们有个小组，对这个活动感兴趣，我们是自愿组织想参加一下这个活动，请问下这个活动如何参加的呢，去哪里集合呢？我们也想去献血。
+                                   公益社会化，公益个人化，公益生活化。
                                 </p>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC))
             <div class="activity_state">
                 <span class="activity_content_ongoing">正在进行</span>
                 <span class="activity_content_end">已结束</span>
-                <button class="activity_btn secondary_button_default">活动报名</button>
+<!--                <button class="activity_btn secondary_button_default">活动报名</button>-->
             </div>
             <div class="activity_dynamic">
                 <span class="activity_dynamic_title">活动动态</span>
@@ -134,17 +134,17 @@ while($rowsi=mysqli_fetch_array($obji,MYSQLI_ASSOC))
             </div>
             <div class="activity_sign_up_details">
                 <div class="activity_sign_up_details_content">
-                    <img class="head_portrait" src="images/pic_home.jpeg">
+                    <img class="head_portrait" src="picture/user(4).jpg">
                     <div class="content_nickname_time">
-                        <span class="content_nickname_content">长风</span>
-                        <span class="content_participation_time_content">加入时间：2019-09-12</span>
+                        <span class="content_nickname_content">热爱生活</span>
+                        <span class="content_participation_time_content">加入时间：2019-08-12</span>
                     </div>
                 </div>
                 <div class="activity_sign_up_details_content">
-                    <img class="head_portrait" src="images/pic_home.jpeg">
+                    <img class="head_portrait" src="picture/user(3).jpg">
                     <div class="content_nickname_time">
-                        <span class="content_nickname_content">长风</span>
-                        <span class="content_participation_time_content">加入时间：2019-09-12</span>
+                        <span class="content_nickname_content">活在当下</span>
+                        <span class="content_participation_time_content">加入时间：2019-08-11</span>
                     </div>
                 </div>
             </div>
