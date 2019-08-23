@@ -41,16 +41,17 @@ if ((($_FILES["file"]["type"] == "image/gif")
 {
     if ($_FILES["file"]["error"] > 0)
     {
-        echo "错误：: " . $_FILES["file"]["error"] . "<br>";//空间不足
+        //echo "错误：: " . $_FILES["file"]["error"] . "<br>";//空间不足
     }
     else
     {
 
         $picture= $_FILES["file"]["name"];//上传文件的名字
-        if (file_exists("../images/activity_images/" . $_FILES["file"]["name"]))
+        echo $picture;
+        if (file_exists("../images/community_images/" . $_FILES["file"]["name"]))
         {
             $jsonstr=array('a' => 0);
-            echo json_encode($jsonstr);
+            //echo json_encode($jsonstr);
             //echo $_FILES["file"]["name"] . " 文件已经存在。 ";
 
         }
@@ -63,10 +64,11 @@ if ((($_FILES["file"]["type"] == "image/gif")
         //move_uploaded_file($_FILES["file"]["tmp_name"], "images/heart_volunteer/" . $_FILES["file"]["name"]);
     }
 }
-else
-{
-    echo "非法的文件格式";
-}
+//else
+//{
+//    echo "非法的文件格式";
+//}
+
 
 $sql="select * from activity where act_name='$act_name'";
 $obj=mysqli_query($link,$sql);
@@ -78,7 +80,7 @@ if($obj&&mysqli_affected_rows($link)){
 }
 else{
     $sql="insert into activity (act_name,act_city,act_category,act_region,regional_sponsors,Initiation_time,Deadline,Ending_time,Recruitment,Rec_ing,introduce,content,abstract,Founder,notes,look,picture)
-        values ('$act_name','$act_city','$act_category','$act_region','$regional_sponsors','$Initiation_time','$Deadline','$Ending_time','$Recruitment','$Rec_ing',0,'$content','0','$Founder','0','0','$picture')";
+        values ('$act_name','济南市','生态环保','济南市沁东园','$regional_sponsors','$Initiation_time','$Deadline','$Ending_time','25','$Rec_ing',0,'$content','0','蓝天行','0','0','2.jpg')";
    // echo $sql;
     $obj=mysqli_query($link,$sql);
     $jsonstr=array('a' => 1);
