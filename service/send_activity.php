@@ -13,12 +13,12 @@ $act_name=$_POST['act_name'];
 //echo $act_name;
 //$act_city=$_POST['act_city'];
 //$act_category=$_POST['act_category'];
-$act_region=$_POST['act_region'];
+//$act_region=$_POST['act_region'];
 $regional_sponsors=$_POST['regional_sponsors'];
 date_default_timezone_set('Asia/Shanghai');
 $Initiation_time=$release_date=date('Y-m-d H:i:s',time());//用时间戳获取
 $Deadline=$_POST['deadline_year']+$_POST['deadline_month']+$_POST['deadline_day'];
-//$Ending_time=$_POST['Ending_time'];
+$Ending_time=$_POST['Ending_time'];
 //$Recruitment=$_POST['Recruitment'];
 //$Rec_ing=$_POST['Rec_ing'];
 $content=$_POST['content'];
