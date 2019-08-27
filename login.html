@@ -17,9 +17,9 @@
         <div class="login_content_body">
             <div class="login_body">
                 <span class="login_title">登&nbsp;录</span>
-                <input id="input_account" class="input_default input_account" type="text" placeholder="用户名" value=""/>
+                <input id="input_account" class="input_default input_account" type="text" placeholder="用户名" value="爱地球"/>
                 <span id="account_tip" style="font-size: 12px;color: #ff0700;margin-top: 5px;"></span>
-                <input id="input_password" class="input_default input_password" type="password" placeholder="密码" value=""/>
+                <input id="input_password" class="input_default input_password" type="password" placeholder="密码" value="123456"/>
                 <span id="pwd_tip" style="font-size: 12px;color: #ff0700;margin-top: 5px;"></span>
                 <div class="drag" id="drag" onselectstart="return false;">
                     <div class="bg"></div>
@@ -37,6 +37,12 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="js/dialog_tips.js"></script>
+    <script type="text/javascript">
+        showTipHtml("默认志愿者账号：爱地球，<br>密码：123456<br><br>默认组织账号：爱心伞，<br>密码：123456");
+        $('.dialog_pop_tips').css({height: '17rem'});
+    </script>
 
     <script type="text/javascript" src="js/drag.js"></script>
     <script type="text/javascript" src="js/loginPage.js"></script>

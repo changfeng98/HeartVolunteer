@@ -20,3 +20,9 @@ function dialogBack(){
     $(".dialog_pop_delete_driver").hide();
     $(".dialog_content_process").hide();
 }
+
+function showTipHtml(msg){
+    $('.dialog_content').fadeIn('fast');
+    $('.dialog_pop_tips').fadeIn('fast');
+    $('.dialog_title_tips').html(msg);
+}
